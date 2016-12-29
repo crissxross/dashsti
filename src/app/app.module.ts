@@ -10,12 +10,18 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SceneComponent } from './scene/scene.component';
+import { NavComponent } from './nav/nav.component';
+import { ActorvizComponent } from './actorviz/actorviz.component';
+import { UicontrolsComponent } from './dashboard/uicontrols/uicontrols.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    SceneComponent
+    SceneComponent,
+    NavComponent,
+    ActorvizComponent,
+    UicontrolsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+:host {
+  /*border: solid 2px cornflowerblue;*/
+  background-color: #BDBDBD;
+  height: 700px;
+}
+/* like Galaxy S5*/
+@media all and (max-width: 590px) {
+  :host {
+    height: 640px;
+    background-color: cornflowerblue;
+  }
+}
+/* inbetween */
+@media all and (max-width: 556px) {
+  :host {
+    height: 604px;
+    background-color: pink;
+  }
+}
+/* like iPhone 5*/
+@media all and (max-width: 530px) {
+  :host {
+    height: 568px;
+    background-color: lightyellow;
+  }
+}
+
+

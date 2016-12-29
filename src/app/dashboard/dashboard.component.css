@@ -1,5 +1,6 @@
 :host {
   /*background-color: #3D3D32;*/
-  background-color: darkslateblue;
-  color: red;
+  background-color: #9e9e9e;
+  border: solid 2px sandybrown;
+  /*color: red;*/
 }
