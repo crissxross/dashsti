@@ -1,7 +1,17 @@
+/* :host is similar size to iPhone Plus or Nexus 6P */
 :host {
   /*border: solid 2px cornflowerblue;*/
   background-color: #BDBDBD;
-  height: 700px;
+  height: 720px;
+}
+/* NOTE: these max-widths in media queries need changing because spaces on left and right of scene, or what's in them, have changed or keep on changing !!!!!!!!! */
+
+/* like iPhone 6*/
+@media all and (max-width: 612px) {
+  :host {
+    height: 667px;
+    background-color: lightgreen;
+  }
 }
 /* like Galaxy S5*/
 @media all and (max-width: 590px) {

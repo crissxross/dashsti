@@ -13,6 +13,8 @@ import { SceneComponent } from './scene/scene.component';
 import { NavComponent } from './nav/nav.component';
 import { ActorvizComponent } from './actorviz/actorviz.component';
 import { UicontrolsComponent } from './dashboard/uicontrols/uicontrols.component';
+import { NpcComponent } from './scene/npc.component';
+import { PlayerComponent } from './scene/player.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { UicontrolsComponent } from './dashboard/uicontrols/uicontrols.component
     SceneComponent,
     NavComponent,
     ActorvizComponent,
-    UicontrolsComponent
+    UicontrolsComponent,
+    NpcComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
