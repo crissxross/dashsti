@@ -1,7 +1,11 @@
 :host {
   border: solid 2px cadetblue;
   background-color: linen;
-  height: 50%;
-  /*position: absolute;
-  top: 50%;*/
+}
+
+.player-viz {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: palegoldenrod;
 }

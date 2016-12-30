@@ -1,5 +1,12 @@
 :host {
   border: solid 2px lightblue;
   background-color: lightcyan;
-  height: 50%;
+  /*background-color: red;*/
+}
+
+.npc-viz {
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  background-color: lightgreen;
 }
