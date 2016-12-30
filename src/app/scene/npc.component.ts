@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-npc',
   template: `
-    <p>npc</p>
-    <app-actorviz class="npc-viz"></app-actorviz>
+    <app-actorviz fxFlexAlign="end" class="npc-viz"></app-actorviz>
+    <p>npc speaks here</p>
   `,
   styleUrls: ['./npc.component.css']
 })

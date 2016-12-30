@@ -5,8 +5,9 @@
 }
 
 .npc-viz {
-  position: absolute;
-  top: 1%;
-  left: 50%;
+  /*height: 100px;
+  width: 150px;*/
+  height: 50%;
+  width: 66%;
   background-color: lightgreen;
 }

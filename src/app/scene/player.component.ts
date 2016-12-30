@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-player',
   template: `
-    <p>player</p>
-    <app-actorviz class="player-viz"></app-actorviz>
+    <p>player speaks here</p>
+    <app-actorviz fxFlexAlign="end" class="player-viz"></app-actorviz>
+    <p>(player thoughts & options here)</p>
   `,
   styleUrls: ['./player.component.css']
 })

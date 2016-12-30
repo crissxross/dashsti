@@ -4,8 +4,8 @@
 }
 
 .player-viz {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  /*height: 100px;*/
+  height: 33%;
+  width: 50%;
   background-color: palegoldenrod;
 }
