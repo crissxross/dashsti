@@ -1,4 +1,9 @@
-main {
-  background-color: #eee;
+/*main {
   border: solid 2px cadetblue;
+}*/
+
+.menu-fab {
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }

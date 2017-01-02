@@ -1,11 +1,10 @@
 :host {
-  border: solid 2px cadetblue;
-  background-color: linen;
+  /*border: solid 2px cadetblue;*/
+  background-color: #38350d;
 }
 
 .player-viz {
-  /*height: 100px;*/
   height: 33%;
   width: 50%;
-  background-color: palegoldenrod;
+  background-color: #342652;
 }

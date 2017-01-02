@@ -1,13 +1,10 @@
 :host {
-  border: solid 2px lightblue;
-  background-color: lightcyan;
-  /*background-color: red;*/
+  /*border: solid 2px lightblue;*/
+  background-color: #1e3123;
 }
 
 .npc-viz {
-  /*height: 100px;
-  width: 150px;*/
   height: 50%;
   width: 66%;
-  background-color: lightgreen;
+  background-color: #6b1515;
 }

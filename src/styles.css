@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+@import '~normalize.css/normalize.css';
 
-/*body {
-  color: #ccc;
+/*@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';*/
+
+body {
+  /*color: #ccc;*/
   background-color: #252525;
-}*/
+  box-sizing: border-box;
+}

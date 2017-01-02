@@ -1,10 +1,10 @@
 :host {
-  /*background-color: #3D3D32;*/
-  background-color: #9e9e9e;
-  border: solid 2px sandybrown;
-  /*color: red;*/
+  flex: auto;
+  /*border: solid 2px sandybrown;*/
 }
 
 .sidepanel {
-  background-color: #e0e0e0;
+  padding: 10px;
+  /*background-color: #3D3D32;*/
+  /*border: solid 2px lightgreen;*/
 }

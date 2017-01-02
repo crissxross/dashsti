@@ -1,9 +1,13 @@
-<div fxFlex="20" class="sidepanel">dashboard
-  <button md-raised-button>button</button>
-</div>
+<div fxLayout="row" fxLayoutAlign="space-around">
 
-<app-scene fxLayout="column" fxLayoutAlign="space-between" fxFlex="405px"></app-scene>
+  <div fxFlex class="sidepanel">
+    <p>dashboard</p>
+  </div>
 
-<div fxFlex="20" class="sidepanel">
-<app-uicontrols fxLayout="column"></app-uicontrols>
+  <app-scene fxLayout="column" fxLayoutAlign="space-between" fxFlex="405px"></app-scene>
+
+  <div fxFlex class="sidepanel">
+    <app-uicontrols fxLayout="column"></app-uicontrols>
+  </div>
+
 </div>
