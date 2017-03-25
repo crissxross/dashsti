@@ -33,8 +33,8 @@ import { AppRoutingModule, routableComponents } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
-    FlexLayoutModule.forRoot(),
+    MaterialModule,
+    FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [],
