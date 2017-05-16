@@ -1,16 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 // @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 /* NOTE - importing material icons here in scss does not seem to work therefore, loading icon fonts via index.html */
 
-@import '~normalize.css/normalize.css';
-
-
-body {
-  /*color: #ccc;*/
-  background-color: #252525;
+// 'reset for minimalists' (Matt Smith)
+// universal selector * selects all elements in a page
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-// NOTE (16/05/17) - missing dark theme due to breaking changes with latest version Angular Material which broke my custom theme so had to temporarily remove to 'NotUsing+Backups' folder.
+/* For a fullscreen sidenav so that md-sidenav-container takes up full space. See: https://material.angular.io/components/component/sidenav */
+html, body, app-root, md-sidenav-container {
+  // margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// For convenience, same font as Material Design
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /*color: #ccc;*/
+  /* background-color: #252525; */
+}
+
+/* Some styles copied from normalize.css v6.0.0 | github.com/necolas/normalize.css */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/* copied from Meyer's Reset CSS | http://meyerweb.com/eric/tools/css/reset/
+*/
+ol, ul {
+	list-style: none;
+}
+

@@ -14,7 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { ActorvizComponent } from './actorviz/actorviz.component';
 import { UicontrolsComponent } from './dashboard/uicontrols/uicontrols.component';
 import { NpcComponent } from './scene/npc.component';
-import { PlayerComponent } from './scene/player.component';
+import { ProtagComponent } from './scene/protag.component';
 import { AppRoutingModule, routableComponents } from './app-routing.module';
 
 // OR do this (like John Papa):
@@ -28,7 +28,7 @@ import { AppRoutingModule, routableComponents } from './app-routing.module';
     ActorvizComponent,
     UicontrolsComponent,
     NpcComponent,
-    PlayerComponent
+    ProtagComponent
   ],
   imports: [
     BrowserModule,
