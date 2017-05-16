@@ -1,11 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+// @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+/* NOTE - importing material icons here in scss does not seem to work therefore, loading icon fonts via index.html */
+
 @import '~normalize.css/normalize.css';
 
-/*@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';*/
 
 body {
   /*color: #ccc;*/
   background-color: #252525;
   box-sizing: border-box;
 }
+
+// NOTE (16/05/17) - missing dark theme due to breaking changes with latest version Angular Material which broke my custom theme so had to temporarily remove to 'NotUsing+Backups' folder.

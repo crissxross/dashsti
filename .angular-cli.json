@@ -19,8 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "dashsti-app-theme.scss"
+        "styles.scss"
       ],
       "scripts": [
       ],
@@ -56,7 +55,7 @@
     "styleExt": "scss",
     "component": {
       "spec": true,
-      "inlineTemplate": false
+      "inlineTemplate": true
     }
   }
 }

@@ -21,3 +21,6 @@ $dashsti-app-theme: mat-dark-theme($dashsti-app-primary, $dashsti-app-accent, $d
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($dashsti-app-theme);
+
+// SINCE UPDATE OF ANGULAR MATERIAL (installed 16/05/17), THIS IS NOT LOADING
+// Therefore removed - "dashsti-app-theme.scss" - from styles array in .angular-cli.json
