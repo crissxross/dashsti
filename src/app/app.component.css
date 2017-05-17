@@ -1,8 +1,12 @@
-/* main is mobile app approx simulation ??? */
+.main-container {
+  display: flex;
+}
+
+/* main is mobile app height approx simulation */
 main {
+  flex: auto;
   height: 700px;
   border: 1px solid white;
-  /*background-color: lightcyan;*/
 }
 
 md-sidenav {
@@ -13,8 +17,8 @@ md-sidenav {
   padding: 0 16px;
 }*/
 
-.menu-fab {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
+
+/* I want to make the toolbar narrower but how? This does not work */
+/*md-toolbar-row.mat-toolbar-row {
+  height: 40px;
+}*/

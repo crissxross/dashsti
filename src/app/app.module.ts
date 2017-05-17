@@ -5,20 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
+
 import { DashMaterialModule } from './shared/dash-material.module';
+import { UicontrolsComponent } from './shared/uicontrols/uicontrols.component';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SceneComponent } from './scene/scene.component';
 import { NavComponent } from './nav/nav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ActorvizComponent } from './actorviz/actorviz.component';
-import { UicontrolsComponent } from './dashboard/uicontrols/uicontrols.component';
+import { SceneComponent } from './scene/scene.component';
 import { NpcComponent } from './scene/npc.component';
 import { ProtagComponent } from './scene/protag.component';
 import { AppRoutingModule, routableComponents } from './app-routing.module';
 
-// OR do this (like John Papa):
-// declarations: [AppComponent, routableComponents]
 @NgModule({
   declarations: [
     AppComponent,

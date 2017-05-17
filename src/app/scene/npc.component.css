@@ -5,28 +5,26 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 10px;
-  /*border: 1px solid green;*/
   background-color: darkolivegreen;
+  /*border: 1px solid green;*/
 }
 
 .speaks-container {
   flex: initial; /*equivalent to: 0 1 auto;*/
   overflow: hidden;
-  border: 1px solid palegreen;
+  /*border: 1px solid darkslategrey;*/
 }
 
 .npc-speaks {
-  background-color: darkgreen;
+  border: 1px solid olive;
 }
 
-
-/*:host {
-  border: solid 2px lightblue;
-  background-color: #1e3123;
-}*/
-
-.npc-viz {
-  height: 50%;
+/* not sure about this ??? */
+.npc-viz-container {
+  flex: auto;
+  align-self: flex-end;
   width: 66%;
-  background-color: #6b1515;
+  margin-bottom: 10px;
+  border: 2px dashed maroon;
 }
+

@@ -6,8 +6,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
-  border: 2px dashed purple;
-  background-color: darkgoldenrod
+  background-color: darkgoldenrod;
+  /*border: 2px dashed purple;*/
   ;
 }
 
@@ -15,7 +15,7 @@
   flex: auto;
   height: 33%;
   overflow: hidden;
-  border: 1px solid darkgoldenrod;
+  /*border: 1px solid beige;*/
 }
 
 /* contains protag-options (one ul element) */
@@ -24,13 +24,12 @@
 }
 
 .protag-speaks {
-  background-color: darkkhaki;
-  border: 1px solid khaki;
+  border: 1px solid tan;
 }
 
 .protag-thinks {
   font-style: italic;
-  background-color: tan;
+  border: 1px solid tan;
 }
 
 /* layout of the options list - OK, handles one, two or three options*/
@@ -39,15 +38,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /*background-color: beige;*/
-  border: 1px solid beige;
+  border: 1px solid tan;
 }
 
 li {
   flex: auto;
   max-width: 50%;
   min-width: 33%;
-  border: 1px solid yellow;
+  border: 1px solid khaki;
 }
 
 button {
@@ -67,15 +65,18 @@ button:hover {
   background-color: hsla(0, 50, 0, 0.2);
 }
 
-
-
-/*:host {
-  border: solid 2px cadetblue;
-  background-color: #38350d;
-}*/
-
-.protag-viz {
+/* what to do with this ??? */
+/*.protag-viz {
   height: 33%;
   width: 50%;
   background-color: #342652;
+}*/
+
+/* not sure about this ??? */
+.protag-viz-container {
+  flex: auto;
+  align-self: flex-end;
+  /*width: 100%;*/
+  margin-bottom: 10px;
+  border: 2px dashed rebeccapurple;
 }

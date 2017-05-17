@@ -3,16 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-npc',
   template: `
-        <div class="npc">
+    <div class="npc">
+<!-- WHERE DOES ACTORVIZ GO? -->
+      <div class="npc-viz-container">
+        <app-actorviz class="npc-viz"></app-actorviz>
+      </div>
       <div class="speaks-container">
         <div class="npc-speaks">
           <!--{{ npcSpeak }}-->
-          Dummy text for npc
+          Dummy text for npc speaks
         </div>
       </div>
     </div>
-<!-- WHERE DOES ACTORVIZ GO? -->
-    <!--<app-actorviz class="npc-viz"></app-actorviz>-->
   `,
   styleUrls: ['./npc.component.css']
 })

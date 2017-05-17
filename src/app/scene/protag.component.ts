@@ -8,43 +8,49 @@ import { Component, Input, Output, OnInit } from '@angular/core';
       <div class="speaks-container">
         <div class="protag-speaks">
           <!--{{ protagSpeak }}-->
-          Dummy text
+          Dummy text for protag speaks
         </div>
       </div>
 
       <div class="thinks-container">
         <div class="protag-thinks">
           <!--{{ protagThink }}-->
-          Dummy text
+          Dummy protag thinks
         </div>
+<!-- WHERE DOES ACTORVIZ GO? -->
+    <div class="protag-viz-container">
+      <app-actorviz class="protag-viz"></app-actorviz>
+    </div>
       </div>
+
 
       <div class="options-container">
           <ul class="protag-options">
-            <li *ngIf="OP_option">
+            <!--<li *ngIf="OP_option">-->
+            <li>
               <button (click)="selectOP($event)">
                 <!--{{ OP_option.text }}-->
-                Dummy text
+                Dummy text option
               </button>
             </li>
-            <li *ngIf="VK_option">
+            <!--<li *ngIf="VK_option">-->
+            <li>
               <button (click)="selectVK($event)">
                 <!--{{ VK_option.text }}-->
                 Dummy text
               </button>
             </li>
-            <li *ngIf="UN_option">
+            <!--<li *ngIf="UN_option">-->
+            <li>
               <button (click)="selectUN($event)">
                 <!--{{ UN_option.text }}-->
-                Dummy text
+                Dummy option
               </button>
             </li>
           </ul>
       </div>
 
     </div>
-<!-- WHERE DOES ACTORVIZ GO? -->
-    <!--<app-actorviz class="protag-viz"></app-actorviz>-->
   `,
   styleUrls: ['./protag.component.css']
 })

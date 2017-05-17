@@ -5,23 +5,29 @@ import { Component } from '@angular/core';
   template: `
     <md-sidenav-container>
 
+      <!-- sidenav content -->
       <md-sidenav #sidenav>
-        <!-- sidenav content -->
         <app-nav (click)="sidenav.close()"></app-nav>
       </md-sidenav>
 
-      <!-- primary content -->
-      <main fxLayout="row" fxLayoutAlign="space-around">
-        <button md-mini-fab class="menu-fab" (click)="sidenav.toggle()">
+      <md-toolbar>
+        <button md-icon-button (click)="sidenav.toggle()">
           <md-icon>menu</md-icon>
         </button>
-        <router-outlet ></router-outlet>
-      </main>
+        {{title}}
+      </md-toolbar>
+
+      <!-- primary content -->
+      <div class="main-container">
+        <main>
+          <router-outlet ></router-outlet>
+        </main>
+      </div>
 
   </md-sidenav-container>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'dashsti';
 }

@@ -3,16 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   template: `
-    <div fxLayout="row" fxLayoutAlign="space-around">
+    <div class="dashboard">
 
-      <div fxFlex class="sidepanel">
-        <p>dashboard</p>
+      <div class="sidepanel-container">
+        <p>side panel</p>
       </div>
 
-      <app-scene fxLayout="column" fxLayoutAlign="space-between" fxFlex="405px"></app-scene>
+      <div class="content-container">
+        <app-scene></app-scene>
+      </div>
 
-      <div fxFlex class="sidepanel">
-        <app-uicontrols fxLayout="column"></app-uicontrols>
+      <div class="sidepanel-container">
+        <app-uicontrols></app-uicontrols>
       </div>
 
     </div>
