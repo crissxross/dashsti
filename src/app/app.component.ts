@@ -4,13 +4,12 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <md-sidenav-container>
+
       <md-sidenav #sidenav>
         <!-- sidenav content -->
-        <button md-mini-fab class="menu-fab" (click)="sidenav.toggle()">
-        <md-icon>close</md-icon>
-        </button>
-        <app-nav></app-nav>
+        <app-nav (click)="sidenav.close()"></app-nav>
       </md-sidenav>
+
       <!-- primary content -->
       <main fxLayout="row" fxLayoutAlign="space-around">
         <button md-mini-fab class="menu-fab" (click)="sidenav.toggle()">
@@ -18,6 +17,7 @@ import { Component } from '@angular/core';
         </button>
         <router-outlet ></router-outlet>
       </main>
+
   </md-sidenav-container>
   `,
   styleUrls: ['./app.component.css']

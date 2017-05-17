@@ -1,5 +1,16 @@
-/*main {
-  border: solid 2px cadetblue;
+/* main is mobile app approx simulation ??? */
+main {
+  height: 700px;
+  border: 1px solid white;
+  /*background-color: lightcyan;*/
+}
+
+md-sidenav {
+  width: 200px;
+}
+
+/*.side-title {
+  padding: 0 16px;
 }*/
 
 .menu-fab {

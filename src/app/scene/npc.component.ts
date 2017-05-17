@@ -3,8 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-npc',
   template: `
-    <app-actorviz fxFlexAlign="end" class="npc-viz"></app-actorviz>
-    <p>npc speaks here</p>
+        <div class="npc">
+      <div class="speaks-container">
+        <div class="npc-speaks">
+          <!--{{ npcSpeak }}-->
+          Dummy text for npc
+        </div>
+      </div>
+    </div>
+<!-- WHERE DOES ACTORVIZ GO? -->
+    <!--<app-actorviz class="npc-viz"></app-actorviz>-->
   `,
   styleUrls: ['./npc.component.css']
 })

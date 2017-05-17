@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-scene',
   template: `
-    <div fxLayout="column" fxFlex="50" class="actorContainer">
-      <app-npc fxLayout="column" fxLayoutAlign="space-between" fxFlex></app-npc>
+  <div class="scene">
+    <div class="npc-container">
+      <app-npc></app-npc>
     </div>
-    <div fxLayout="column" fxFlex="50" class="actorContainer">
-      <app-protag fxLayout="column" fxLayoutAlign="space-between" fxFlex></app-protag>
+    <div class="protag-container">
+      <app-protag></app-protag>
+    </div>
     </div>
   `,
   styleUrls: ['./scene.component.css']

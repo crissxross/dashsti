@@ -1,7 +1,78 @@
-:host {
-  /*border: solid 2px cadetblue;*/
-  background-color: #38350d;
+
+
+.protag {
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border: 2px dashed purple;
+  background-color: darkgoldenrod
+  ;
 }
+
+.speaks-container, .thinks-container, .options-container {
+  flex: auto;
+  height: 33%;
+  overflow: hidden;
+  border: 1px solid darkgoldenrod;
+}
+
+/* contains protag-options (one ul element) */
+.options-container {
+  display: flex;
+}
+
+.protag-speaks {
+  background-color: darkkhaki;
+  border: 1px solid khaki;
+}
+
+.protag-thinks {
+  font-style: italic;
+  background-color: tan;
+}
+
+/* layout of the options list - OK, handles one, two or three options*/
+.protag-options {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /*background-color: beige;*/
+  border: 1px solid beige;
+}
+
+li {
+  flex: auto;
+  max-width: 50%;
+  min-width: 33%;
+  border: 1px solid yellow;
+}
+
+button {
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: 0 0;
+  font-size: 14px;
+  font-style: italic;
+  text-align: left;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: hsla(0, 50, 0, 0.2);
+}
+
+
+
+/*:host {
+  border: solid 2px cadetblue;
+  background-color: #38350d;
+}*/
 
 .protag-viz {
   height: 33%;

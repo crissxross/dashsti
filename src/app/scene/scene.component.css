@@ -1,38 +1,76 @@
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  /*border: 3px solid tomato;*/
+  background-color:lavenderblush;
+}
+
+.npc-container {
+  flex: auto;
+  height: 50%;
+  /*flex: 1;*/
+  /*border: 3px dashed green;*/
+  background-color: greenyellow;
+}
+
+.protag-container {
+  flex: auto;
+  height: 50%;
+  /*flex: 1;*/
+  /*border: 3px dashed blue;*/
+  background-color: blueviolet;
+}
+
+/* NOTE: the above ...-container classes are flex items only. I'm leaving the display:flex responsibilty to the npc and protag components because I think their layout should be self-contained because component CSS is encapsulated. */
+
+p {
+  border: 1px solid black;
+}
+
+
+
+
+
+/* BELOW IS PREVIOUS VERSION CSS */
+
 /* :host is similar size to iPhone Plus or Nexus 6P */
-:host {
-  /*border: solid 2px cornflowerblue;*/
+/*:host {
+  border: solid 2px cornflowerblue;
   background-color: #BDBDBD;
   height: 720px;
-}
+}*/
 /* NOTE: these max-widths in media queries need changing because spaces on left and right of scene, or what's in them, have changed or keep on changing !!!!!!!!! */
 
 /* like iPhone 6*/
-@media all and (max-width: 612px) {
+/*@media all and (max-width: 612px) {
   :host {
     height: 667px;
     background-color: lightgreen;
   }
-}
+}*/
 /* like Galaxy S5*/
-@media all and (max-width: 590px) {
+/*@media all and (max-width: 590px) {
   :host {
     height: 640px;
     background-color: cornflowerblue;
   }
-}
+}*/
 /* inbetween */
-@media all and (max-width: 556px) {
+/*@media all and (max-width: 556px) {
   :host {
     height: 604px;
     background-color: pink;
   }
-}
+}*/
 /* like iPhone 5*/
-@media all and (max-width: 530px) {
+/*@media all and (max-width: 530px) {
   :host {
     height: 568px;
     background-color: lightyellow;
   }
-}
+}*/
 
 
