@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-dash-scene',
   template: `
     <div class="dashboard">
 
       <div class="sidepanel-container">
-        <p class="muted">Dashboard for emo-viz experiments</p>
+        <p>Scene layout</p>
       </div>
 
       <div class="content-container">
-        <app-actorviz></app-actorviz>
+        <app-scene></app-scene>
       </div>
 
       <div class="sidepanel-container">
@@ -19,9 +19,9 @@ import { Component, OnInit } from '@angular/core';
 
     </div>
   `,
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dash-scene.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashSceneComponent implements OnInit {
 
   constructor() { }
 

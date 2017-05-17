@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
 import { DashMaterialModule } from './shared/dash-material.module';
@@ -17,6 +17,7 @@ import { SceneComponent } from './scene/scene.component';
 import { NpcComponent } from './scene/npc.component';
 import { ProtagComponent } from './scene/protag.component';
 import { AppRoutingModule, routableComponents } from './app-routing.module';
+import { DashSceneComponent } from './dash-scene/dash-scene.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AppRoutingModule, routableComponents } from './app-routing.module';
     ActorvizComponent,
     UicontrolsComponent,
     NpcComponent,
-    ProtagComponent
+    ProtagComponent,
+    DashSceneComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { AppRoutingModule, routableComponents } from './app-routing.module';
     FormsModule,
     HttpModule,
     DashMaterialModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [],

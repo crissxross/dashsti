@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="npc">
 <!-- WHERE DOES ACTORVIZ GO? -->
-      <div class="npc-viz-container">
+      <!--<div class="npc-viz-container">
         <app-actorviz class="npc-viz"></app-actorviz>
-      </div>
+      </div>-->
       <div class="speaks-container">
         <div class="npc-speaks">
           <!--{{ npcSpeak }}-->

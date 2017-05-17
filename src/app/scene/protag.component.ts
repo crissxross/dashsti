@@ -17,12 +17,12 @@ import { Component, Input, Output, OnInit } from '@angular/core';
           <!--{{ protagThink }}-->
           Dummy protag thinks
         </div>
-<!-- WHERE DOES ACTORVIZ GO? -->
-    <div class="protag-viz-container">
-      <app-actorviz class="protag-viz"></app-actorviz>
-    </div>
       </div>
 
+<!-- WHERE DOES ACTORVIZ GO? -->
+    <!--<div class="protag-viz-container">
+      <app-actorviz class="protag-viz"></app-actorviz>
+    </div>-->
 
       <div class="options-container">
           <ul class="protag-options">
