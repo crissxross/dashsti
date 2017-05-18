@@ -7,15 +7,35 @@
 
 .content-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /*justify-content: center;*/
+  /*align-items: center;*/
   flex: 3;
+  /*max-width: 400px;*/
   border: solid 2px red;
+}
+
+.viz-container {
+  display: flex;
+  flex: 1;
+  /*border: 2px dashed wheat;*/
+  background-color: grey;
+}
+
+.ui-container {
+  display: flex;
+  /*justify-content: center;*/
+  flex: 1;
+  padding: 10px;
+  border: 2px dashed paleturquoise;
 }
 
 .sidepanel-container {
   display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 10px;
+  line-height: 2em;
   border: solid 2px lightgreen;
 }
 

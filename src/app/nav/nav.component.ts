@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
         <a [routerLink]="['/dashboard']">Dashboard</a>
       </md-list-item>
       <md-list-item>
-        <a [routerLink]="['/dash-scene']">Dash with Scene</a>
+        <a [routerLink]="['/dash-scene']">Dash: scene layout</a>
       </md-list-item>
       <!--<md-list-item>
         <a routerLink=".">nav link</a>

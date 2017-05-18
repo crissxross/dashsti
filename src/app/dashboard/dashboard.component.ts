@@ -10,11 +10,30 @@ import { Component, OnInit } from '@angular/core';
       </div>
 
       <div class="content-container">
-        <app-actorviz></app-actorviz>
+        <div class="viz-container">
+          <app-actorviz
+            [pValue]="pleasureValue"
+            [aValue]="arousalValue"
+            [dValue]="dominanceValue"
+          ></app-actorviz>
+        </div>
+        <div class="ui-container">
+          <app-uicontrols
+          (Pleasure)="changeP($event)"
+          (Arousal)="changeA($event)"
+          (Dominance)="changeD($event)"
+          ></app-uicontrols>
+        </div>
       </div>
 
       <div class="sidepanel-container">
-        <app-uicontrols></app-uicontrols>
+        <h3 class="muted">P A D</h3>
+        <ul>
+          <li>Pleasure: {{pleasureValue}}</li>
+          <li>Arousal: {{arousalValue}}</li>
+          <li>Dominance: {{dominanceValue}}</li>
+        </ul>
+        <!--<app-uicontrols></app-uicontrols>-->
       </div>
 
     </div>
@@ -22,10 +41,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  pleasureValue;
+  arousalValue;
+  dominanceValue;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeP(event) {
+    this.pleasureValue = event;
+    // console.log('Dashboard changeP: ', event);
+  }
+
+  changeA(event) {
+    this.arousalValue = event;
+    // console.log('Dashboard changeA: ', event);
+  }
+
+  changeD(event) {
+    this.dominanceValue = event;
+    // console.log('Dashboard changeD: ', event);
   }
 
 }

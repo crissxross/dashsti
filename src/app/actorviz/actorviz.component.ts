@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-actorviz',
   template: `
-    <p>
-      actorviz works!
-    </p>
+    <p>actorviz</p>
+    <p>P: {{pValue}} | A: {{aValue}} | D: {{dValue}}</p>
   `,
   styleUrls: ['./actorviz.component.css']
 })
 export class ActorvizComponent implements OnInit {
+  @Input() pValue;
+  @Input() aValue;
+  @Input() dValue;
 
   constructor() { }
 
