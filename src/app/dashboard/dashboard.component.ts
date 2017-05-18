@@ -10,19 +10,21 @@ import { Component, OnInit } from '@angular/core';
       </div>
 
       <div class="content-container">
-        <div class="viz-container">
-          <app-actorviz
-            [pValue]="pleasureValue"
-            [aValue]="arousalValue"
-            [dValue]="dominanceValue"
-          ></app-actorviz>
-        </div>
-        <div class="ui-container">
-          <app-uicontrols
-          (Pleasure)="changeP($event)"
-          (Arousal)="changeA($event)"
-          (Dominance)="changeD($event)"
-          ></app-uicontrols>
+        <div class="content">
+          <div class="actorviz-container">
+            <app-actorviz
+              [pValue]="pleasureValue"
+              [aValue]="arousalValue"
+              [dValue]="dominanceValue"
+            ></app-actorviz>
+          </div>
+          <div class="ui-container">
+            <app-uicontrols
+            (Pleasure)="changeP($event)"
+            (Arousal)="changeA($event)"
+            (Dominance)="changeD($event)"
+            ></app-uicontrols>
+          </div>
         </div>
       </div>
 

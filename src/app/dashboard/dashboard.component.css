@@ -2,32 +2,34 @@
 .dashboard {
   display: flex;
   height: 100%;
-  border: solid 2px blue;
+  /*border: solid 2px blue;*/
 }
 
 .content-container {
   display: flex;
-  flex-direction: column;
-  /*justify-content: center;*/
-  /*align-items: center;*/
+  justify-content: center;
   flex: 3;
-  /*max-width: 400px;*/
-  border: solid 2px red;
+  /*border: solid 2px red;*/
 }
 
-.viz-container {
+.content {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 500px;
+  /*border: solid 1px lime;*/
+}
+.actorviz-container {
   display: flex;
   flex: 1;
-  /*border: 2px dashed wheat;*/
-  background-color: grey;
+  /*border: 2px dashed grey;*/
 }
 
 .ui-container {
   display: flex;
-  /*justify-content: center;*/
   flex: 1;
   padding: 10px;
-  border: 2px dashed paleturquoise;
+  /*border: 2px dashed paleturquoise;*/
 }
 
 .sidepanel-container {
@@ -36,7 +38,7 @@
   flex: 1;
   padding: 10px;
   line-height: 2em;
-  border: solid 2px lightgreen;
+  /*border: solid 2px lightgreen;*/
 }
 
 .muted {
