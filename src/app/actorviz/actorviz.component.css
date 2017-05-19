@@ -1,58 +1,19 @@
 p {
   color: darkgrey;
 }
+/* should i use flex-layout? */
 
+/* .viz-container needs to be inside a display: flex container */
 .viz-container {
-  flex: auto;
+  /*flex: 1;*/
   padding: 10px;
-  /*width: 500px;*/
+  width: 400px;
+  /*height: 100%;*/
   /*background-color: grey;*/
-  border: 1px solid beige;
+  border: 1px solid yellow;
 }
 
-.pad-bar-chart {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+svg {
+  border: 1px solid grey;
 }
 
-.pos-bars {
-  display: flex;
-  align-items: flex-end;
-}
-
-.neg-bars {
-  display: flex;
-  align-items: flex-start;
-}
-
-.x-axis {
-  height: 1px;
-  background-color: white;
-}
-
-.bar {
-  height: 100px;
-  width: 20px;
-  margin: 0 2px;
-  background-color: grey;
-}
-
-.p-pos {
-  height: 50px;
-}
-.a-pos {
-  height: 0px;
-}
-.d-pos {
-  height: 90px;
-}
-.p-neg {
-  height: 50px;
-}
-.a-neg {
-  height: 80px;
-}
-.d-neg {
-  height: 50px;
-}

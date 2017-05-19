@@ -6,22 +6,22 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     <div>Dashboard UI</div>
     <div class="pad-slider-container">
       <div>P
-        <md-slider #P min=-10 max=10 value=0 step=1 tickInterval=1
+        <md-slider #P min=-100 max=100 value=0 step=10 tickInterval=1
         (change)="onPleasureChange($event)"
         ></md-slider>
-        {{P.value}}
+        {{P.value}} %
       </div>
       <div>A
-        <md-slider #A min=-10 max=10 value=0 step=1 tickInterval=1
+        <md-slider #A min=-100 max=100 value=0 step=10 tickInterval=1
         (change)="onArousalChange($event)"
         ></md-slider>
-        {{A.value}}
+        {{A.value}} %
       </div>
       <div>D
-        <md-slider #D min=-10 max=10 value=0 step=1 tickInterval=1
+        <md-slider #D min=-100 max=100 value=0 step=10 tickInterval=1
         (change)="onDominanceChange($event)"
         ></md-slider>
-        {{D.value}}
+        {{D.value}} %
       </div>
     </div>
 `,

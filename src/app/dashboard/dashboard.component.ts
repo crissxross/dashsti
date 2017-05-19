@@ -31,9 +31,9 @@ import { Component, OnInit } from '@angular/core';
       <div class="sidepanel-container">
         <h3 class="muted">P A D</h3>
         <ul>
-          <li>Pleasure: {{pleasureValue}}</li>
-          <li>Arousal: {{arousalValue}}</li>
-          <li>Dominance: {{dominanceValue}}</li>
+          <li>Pleasure: {{pleasureValue}}%</li>
+          <li>Arousal: {{arousalValue}}%</li>
+          <li>Dominance: {{dominanceValue}}%</li>
         </ul>
         <!--<app-uicontrols></app-uicontrols>-->
       </div>
@@ -43,9 +43,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  pleasureValue;
-  arousalValue;
-  dominanceValue;
+  pleasureValue = 0;
+  arousalValue = 0;
+  dominanceValue = 0;
 
   constructor() { }
 
