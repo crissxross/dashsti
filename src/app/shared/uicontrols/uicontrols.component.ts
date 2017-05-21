@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-uicontrols',
   template: `
-    <div>Dashboard UI</div>
+    <div>Dashboard UI controls</div>
     <div class="pad-slider-container">
       <div>P
         <md-slider #P min=-100 max=100 value=0 step=10 tickInterval=1

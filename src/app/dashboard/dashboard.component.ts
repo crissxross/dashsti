@@ -13,9 +13,9 @@ import { Component, OnInit } from '@angular/core';
         <div class="content">
           <div class="actorviz-container">
             <app-actorviz
-              [pValue]="pleasureValue"
-              [aValue]="arousalValue"
-              [dValue]="dominanceValue"
+              [pValue]="pValue"
+              [aValue]="aValue"
+              [dValue]="dValue"
             ></app-actorviz>
           </div>
           <div class="ui-container">
@@ -31,9 +31,9 @@ import { Component, OnInit } from '@angular/core';
       <div class="sidepanel-container">
         <h3 class="muted">P A D</h3>
         <ul>
-          <li>Pleasure: {{pleasureValue}}%</li>
-          <li>Arousal: {{arousalValue}}%</li>
-          <li>Dominance: {{dominanceValue}}%</li>
+          <li>Pleasure: {{pValue}}%</li>
+          <li>Arousal: {{aValue}}%</li>
+          <li>Dominance: {{dValue}}%</li>
         </ul>
         <!--<app-uicontrols></app-uicontrols>-->
       </div>
@@ -43,9 +43,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  pleasureValue = 0;
-  arousalValue = 0;
-  dominanceValue = 0;
+  pValue = 0;
+  aValue = 0;
+  dValue = 0;
 
   constructor() { }
 
@@ -53,17 +53,17 @@ export class DashboardComponent implements OnInit {
   }
 
   changeP(event) {
-    this.pleasureValue = event;
+    this.pValue = event;
     // console.log('Dashboard changeP: ', event);
   }
 
   changeA(event) {
-    this.arousalValue = event;
+    this.aValue = event;
     // console.log('Dashboard changeA: ', event);
   }
 
   changeD(event) {
-    this.dominanceValue = event;
+    this.dValue = event;
     // console.log('Dashboard changeD: ', event);
   }
 
