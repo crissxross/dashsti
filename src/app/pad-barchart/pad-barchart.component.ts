@@ -1,28 +1,33 @@
-import { Component, ElementRef, Input, OnInit, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-// import { TweenMax } from 'gsap';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-actorviz',
-  // templateUrl: './actorviz.component.html',
+  selector: 'app-pad-barchart',
   template: `
-    <div class="viz-container">
-      <p>actorviz</p>
-      <br>
-      <p>P: {{pValue}}% | A: {{aValue}}% | D: {{dValue}}%</p><br>
-
+    <div class="chart-container">
+      <!--<p>PAD barchart</p>-->
       <svg width="160" height="200">
-        <svg:rect #P x="10" [attr.y]="pY" width="40px" [attr.height]="pHeight" />
-        <svg:rect #A x="60" [attr.y]="aY" width="40px" [attr.height]="aHeight" />
-        <svg:rect #D x="110" [attr.y]="dY" width="40px" [attr.height]="dHeight" />
+        <svg:rect #P x="10" [attr.y]="pY" width="40px" [attr.height]="pHeight" [attr.fill]="pFill" />
+        <svg:rect #A x="60" [attr.y]="aY" width="40px" [attr.height]="aHeight" [attr.fill]="aFill" />
+        <svg:rect #D x="110" [attr.y]="dY" width="40px" [attr.height]="dHeight" [attr.fill]="dFill" />
         <svg:line x1="0" y1="100" x2="160" y2="100" stroke="white"/>
       </svg>
-
+      <div class="labels">
+        <ul>
+          <li>P</li>
+          <li>A</li>
+          <li>D</li>
+        </ul>
+        <ul>
+          <li><small>{{pValue}}</small></li>
+          <li><small>{{aValue}}</small></li>
+          <li><small>{{dValue}}</small></li>
+        </ul>
+      </div>
     </div>
   `,
-  styleUrls: ['./actorviz.component.css']
+  styleUrls: ['./pad-barchart.component.css']
 })
-export class ActorvizComponent implements OnInit, OnChanges {
+export class PadBarchartComponent implements OnInit, OnChanges {
   @Input() pValue;
   @Input() aValue;
   @Input() dValue;
@@ -32,18 +37,15 @@ export class ActorvizComponent implements OnInit, OnChanges {
   pY = 100;
   aY = 100;
   dY = 100;
-  // @ViewChild... for animating SVG
-  // @ViewChild('P') P: ElementRef;
-  // @ViewChild('A') A: ElementRef;
-  // @ViewChild('D') D: ElementRef;
-
-  // pHeight = 50; // was for TweenMax animating SVG
+  pFill: string;
+  aFill: string;
+  dFill: string;
+  fillPos = '#c0c0c0';
+  fillNeg = '#7f7f7f';
 
   constructor() { }
 
   ngOnInit() {
-    // This does not work now that I've fully implemented ngOnChanges
-    // TweenMax.to(this.P.nativeElement, 2, { height: this.pHeight, delay: 2, repeat: -1, yoyo: true });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -52,33 +54,34 @@ export class ActorvizComponent implements OnInit, OnChanges {
       // console.log('Pos changes.pValue: ', changes.pValue);
       this.pY = 100 - this.pValue;
       this.pHeight = this.pValue;
+      this.pFill = this.fillPos;
     } else if (changes.pValue && changes.pValue.currentValue < 0) {
       // console.log('Neg changes.pValue: ', changes.pValue);
       this.pY = 100;
       this.pHeight = Math.abs(this.pValue);
+      this.pFill = this.fillNeg;
     } else if (changes.aValue && changes.aValue.currentValue >= 0) {
       // console.log('Pos changes.aValue: ', changes.aValue);
       this.aY = 100 - this.aValue;
       this.aHeight = this.aValue;
+      this.aFill = this.fillPos;
     } else if (changes.aValue && changes.aValue.currentValue < 0) {
       // console.log('Neg changes.aValue: ', changes.aValue);
       this.aY = 100;
       this.aHeight = Math.abs(this.aValue);
+      this.aFill = this.fillNeg;
     } else if (changes.dValue && changes.dValue.currentValue >= 0) {
       // console.log('Pos changes.dValue: ', changes.dValue);
       this.dY = 100 - this.dValue;
       this.dHeight = this.dValue;
+      this.dFill = this.fillPos;
     } else if (changes.dValue && changes.dValue.currentValue < 0) {
       // console.log('Neg changes.dValue: ', changes.dValue);
       this.dY = 100;
       this.dHeight = Math.abs(this.dValue);
+      this.dFill = this.fillNeg;
     }
 
-    // for (let propName in changes) {
-    //   console.log('propname changed: ', changes[propName]);
-    // }
   }
 
 }
-
-// MAYBE I SHOULD TRY AND SOLVE THIS USING NGRX? See the basic incrementing & decrementing numbers example in converseng-test3.

@@ -1,0 +1,30 @@
+/* should .chart-container be inside a display: flex ? */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0 0 0;
+  /*border: 1px solid black;*/
+}
+
+svg {
+  border: 1px solid grey;
+}
+
+.labels {
+  padding-top: 3px;
+  color: darkgrey;
+}
+
+p, small {
+  color: darkgrey;
+}
+
+ul {
+  display: flex;
+  justify-content:space-around;
+  line-height: 1em;
+}
+
+rect {
+  transition: y 200ms, height 200ms, fill 200ms;
+}

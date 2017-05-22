@@ -18,6 +18,7 @@ import { NpcComponent } from './scene/npc.component';
 import { ProtagComponent } from './scene/protag.component';
 import { AppRoutingModule, routableComponents } from './app-routing.module';
 import { DashSceneComponent } from './dash-scene/dash-scene.component';
+import { PadBarchartComponent } from './pad-barchart/pad-barchart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
     UicontrolsComponent,
     NpcComponent,
     ProtagComponent,
-    DashSceneComponent
+    DashSceneComponent,
+    PadBarchartComponent
   ],
   imports: [
     BrowserModule,

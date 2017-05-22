@@ -36,6 +36,11 @@ import { Component, OnInit } from '@angular/core';
           <li>Dominance: {{dValue}}%</li>
         </ul>
         <!--<app-uicontrols></app-uicontrols>-->
+        <app-pad-barchart
+          [pValue]="pValue"
+          [aValue]="aValue"
+          [dValue]="dValue"
+        ></app-pad-barchart>
       </div>
 
     </div>
