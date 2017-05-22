@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+
 import { DashMaterialModule } from './shared/dash-material.module';
 import { UicontrolsComponent } from './shared/uicontrols/uicontrols.component';
 
@@ -40,6 +43,7 @@ import { PadBarchartComponent } from './pad-barchart/pad-barchart.component';
     HttpModule,
     DashMaterialModule,
     // FlexLayoutModule,
+    StoreModule.provideStore(reducers),
     AppRoutingModule
   ],
   providers: [],
