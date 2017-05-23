@@ -17,11 +17,7 @@ import * as fromRoot from '../reducers';
       <div class="main-content-container">
         <div class="main-content">
           <div class="actorviz-container">
-            <app-actorviz
-              [pValue]="pValue | async"
-              [aValue]="aValue | async"
-              [dValue]="dValue | async"
-            ></app-actorviz>
+            <app-actorviz></app-actorviz>
           </div>
           <div class="ui-container">
             <app-uicontrols
