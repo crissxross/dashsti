@@ -5,14 +5,14 @@
   border: solid 2px blue;
 }
 
-.content-container {
+.main-content-container {
   display: flex;
   justify-content: center;
   flex: 3;
   border: solid 1px red;
 }
 
-.content {
+.main-content {
   display: flex;
   flex-direction: column;
   min-width: 400px;
@@ -45,4 +45,9 @@
 
 .muted {
   color: silver;
+}
+
+.section {
+  margin: 10px 0;
+ /*padding: 10px 0;*/
 }

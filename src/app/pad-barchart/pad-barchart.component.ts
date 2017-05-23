@@ -48,6 +48,8 @@ export class PadBarchartComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
+  // CHANGE THIS TO OBSERVABLES ? (FROM NGRX/STORE)
+
   ngOnChanges(changes: SimpleChanges) {
     // console.log('changes: ', changes);
     if (changes.pValue && changes.pValue.currentValue >= 0) {

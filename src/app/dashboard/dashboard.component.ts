@@ -14,8 +14,8 @@ import * as fromRoot from '../reducers';
         <p class="muted">Dashboard for emo-viz experiments</p>
       </div>
 
-      <div class="content-container">
-        <div class="content">
+      <div class="main-content-container">
+        <div class="main-content">
           <div class="actorviz-container">
             <app-actorviz
               [pValue]="pValue | async"
@@ -46,6 +46,9 @@ import * as fromRoot from '../reducers';
           [aValue]="aValue | async"
           [dValue]="dValue | async"
         ></app-pad-barchart>
+        <div class="section">
+          <button md-raised-button (click)="resetPAD()">Reset PAD - fix !!</button>
+        </div>
       </div>
 
     </div>
@@ -76,6 +79,10 @@ export class DashboardComponent implements OnInit {
 
   changeD(event) {
     this.store.dispatch(new PadActions.ChangeD(event));
+  }
+  // FIX reset!
+  resetPAD() {
+    this.store.dispatch(new PadActions.Reset());
   }
 
 }
