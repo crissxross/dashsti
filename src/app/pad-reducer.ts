@@ -34,7 +34,7 @@ export function reducer(state = initialState, action: PadActions.All): State {
         D: action.payload
       };
     }
-// FIX reset!
+
     case PadActions.RESET: {
       return {
         ...state,

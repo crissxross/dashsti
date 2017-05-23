@@ -39,8 +39,10 @@ import * as fromRoot from '../reducers';
         <!--<app-uicontrols></app-uicontrols>-->
         <app-pad-barchart></app-pad-barchart>
         <div class="section">
-          <button md-raised-button (click)="resetPAD()">Reset PAD - fix !!</button>
+          <button md-raised-button (click)="resetPAD()">Reset PAD</button>
         </div>
+        <br>
+        <small class="muted">NOTE: Reset does not currently reset UI slider controls.</small>
       </div>
 
     </div>
@@ -72,7 +74,7 @@ export class DashboardComponent implements OnInit {
   changeD(event) {
     this.store.dispatch(new PadActions.ChangeD(event));
   }
-  // FIX reset!
+  // Currently, does not reset UI slider controls
   resetPAD() {
     this.store.dispatch(new PadActions.Reset());
   }

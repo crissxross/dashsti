@@ -26,8 +26,6 @@ export class ChangeD implements Action {
 
 export class Reset implements Action {
   readonly type = RESET;
-
-  // constructor(public payload: number) {}
 }
 
 export type All
