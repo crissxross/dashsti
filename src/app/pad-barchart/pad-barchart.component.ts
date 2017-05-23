@@ -1,4 +1,9 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import { Store } from '@ngrx/store';
+import * as PadActions from '../pad-actions';
+import * as fromRoot from '../reducers';
 
 @Component({
   selector: 'app-pad-barchart',
@@ -6,9 +11,9 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
     <div class="chart-container">
       <!--<p>PAD barchart</p>-->
       <svg width="160" height="200">
-        <svg:rect #P x="10" [attr.y]="pY" width="40px" [attr.height]="pHeight" [attr.fill]="pFill" />
-        <svg:rect #A x="60" [attr.y]="aY" width="40px" [attr.height]="aHeight" [attr.fill]="aFill" />
-        <svg:rect #D x="110" [attr.y]="dY" width="40px" [attr.height]="dHeight" [attr.fill]="dFill" />
+        <svg:rect #P x="10" [attr.y]="pY$ | async" width="40px" [attr.height]="pHeight$ | async" [attr.fill]="pFill$ | async" />
+        <svg:rect #A x="60" [attr.y]="aY$ | async" width="40px" [attr.height]="aHeight$ | async" [attr.fill]="aFill$ | async" />
+        <svg:rect #D x="110" [attr.y]="dY$ | async" width="40px" [attr.height]="dHeight$ | async" [attr.fill]="dFill$ | async" />
         <svg:line x1="0" y1="100" x2="160" y2="100" stroke="white"/>
       </svg>
       <div class="labels">
@@ -18,72 +23,49 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
           <li>D</li>
         </ul>
         <ul>
-          <li><small>{{pValue}}</small></li>
-          <li><small>{{aValue}}</small></li>
-          <li><small>{{dValue}}</small></li>
+          <li><small>{{pValue$ | async}}</small></li>
+          <li><small>{{aValue$ | async}}</small></li>
+          <li><small>{{dValue$ | async}}</small></li>
         </ul>
       </div>
     </div>
   `,
   styleUrls: ['./pad-barchart.component.css']
 })
-export class PadBarchartComponent implements OnInit, OnChanges {
-  @Input() pValue;
-  @Input() aValue;
-  @Input() dValue;
-  pHeight = 0;
-  aHeight = 0;
-  dHeight = 0;
-  pY = 100;
-  aY = 100;
-  dY = 100;
-  pFill: string;
-  aFill: string;
-  dFill: string;
+export class PadBarchartComponent implements OnInit {
+  pValue$: Observable<number>;
+  aValue$: Observable<number>;
+  dValue$: Observable<number>;
+  pY$: Observable<number>;
+  aY$: Observable<number>;
+  dY$: Observable<number>;
+  pHeight$: Observable<number>;
+  aHeight$: Observable<number>;
+  dHeight$: Observable<number>;
+  pFill$: Observable<string>;
+  aFill$: Observable<string>;
+  dFill$: Observable<string>;
   fillPos = '#c0c0c0';
   fillNeg = '#7f7f7f';
 
-  constructor() { }
+  constructor(private store: Store<fromRoot.State>) {
+    this.pValue$ = store.select(state => state.pad.P);
+    this.aValue$ = store.select(state => state.pad.A);
+    this.dValue$ = store.select(state => state.pad.D);
+   }
 
   ngOnInit() {
-  }
+    this.pY$ = this.pValue$.map(x => (x >= 0) ? (100 - x) : 100);
+    this.aY$ = this.aValue$.map(x => (x >= 0) ? (100 - x) : 100);
+    this.dY$ = this.dValue$.map(x => (x >= 0) ? (100 - x) : 100);
 
-  // CHANGE THIS TO OBSERVABLES ? (FROM NGRX/STORE)
+    this.pHeight$ = this.pValue$.map(x => (x < 0) ? Math.abs(x) : x);
+    this.aHeight$ = this.aValue$.map(x => (x < 0) ? Math.abs(x) : x);
+    this.dHeight$ = this.dValue$.map(x => (x < 0) ? Math.abs(x) : x);
 
-  ngOnChanges(changes: SimpleChanges) {
-    // console.log('changes: ', changes);
-    if (changes.pValue && changes.pValue.currentValue >= 0) {
-      // console.log('Pos changes.pValue: ', changes.pValue);
-      this.pY = 100 - this.pValue;
-      this.pHeight = this.pValue;
-      this.pFill = this.fillPos;
-    } else if (changes.pValue && changes.pValue.currentValue < 0) {
-      // console.log('Neg changes.pValue: ', changes.pValue);
-      this.pY = 100;
-      this.pHeight = Math.abs(this.pValue);
-      this.pFill = this.fillNeg;
-    } else if (changes.aValue && changes.aValue.currentValue >= 0) {
-      // console.log('Pos changes.aValue: ', changes.aValue);
-      this.aY = 100 - this.aValue;
-      this.aHeight = this.aValue;
-      this.aFill = this.fillPos;
-    } else if (changes.aValue && changes.aValue.currentValue < 0) {
-      // console.log('Neg changes.aValue: ', changes.aValue);
-      this.aY = 100;
-      this.aHeight = Math.abs(this.aValue);
-      this.aFill = this.fillNeg;
-    } else if (changes.dValue && changes.dValue.currentValue >= 0) {
-      // console.log('Pos changes.dValue: ', changes.dValue);
-      this.dY = 100 - this.dValue;
-      this.dHeight = this.dValue;
-      this.dFill = this.fillPos;
-    } else if (changes.dValue && changes.dValue.currentValue < 0) {
-      // console.log('Neg changes.dValue: ', changes.dValue);
-      this.dY = 100;
-      this.dHeight = Math.abs(this.dValue);
-      this.dFill = this.fillNeg;
-    }
-
+    this.pFill$ = this.pValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
+    this.aFill$ = this.aValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
+    this.dFill$ = this.dValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
   }
 
 }

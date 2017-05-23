@@ -32,16 +32,12 @@ import * as fromRoot from '../reducers';
       <div class="sidepanel-container">
         <h3 class="muted">P A D</h3>
         <ul>
-          <li>Pleasure: {{pValue | async}}%</li>
-          <li>Arousal: {{aValue | async}}%</li>
-          <li>Dominance: {{dValue | async}}%</li>
+          <li>Pleasure: {{pValue$| async}}%</li>
+          <li>Arousal: {{aValue$ | async}}%</li>
+          <li>Dominance: {{dValue$ | async}}%</li>
         </ul>
         <!--<app-uicontrols></app-uicontrols>-->
-        <app-pad-barchart
-          [pValue]="pValue | async"
-          [aValue]="aValue | async"
-          [dValue]="dValue | async"
-        ></app-pad-barchart>
+        <app-pad-barchart></app-pad-barchart>
         <div class="section">
           <button md-raised-button (click)="resetPAD()">Reset PAD - fix !!</button>
         </div>
@@ -52,14 +48,14 @@ import * as fromRoot from '../reducers';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  pValue: Observable<number>;
-  aValue: Observable<number>;
-  dValue: Observable<number>;
+  pValue$: Observable<number>;
+  aValue$: Observable<number>;
+  dValue$: Observable<number>;
 
   constructor(private store: Store<fromRoot.State>) {
-    this.pValue = store.select(state => state.pad.P);
-    this.aValue = store.select(state => state.pad.A);
-    this.dValue = store.select(state => state.pad.D);
+    this.pValue$ = store.select(state => state.pad.P);
+    this.aValue$ = store.select(state => state.pad.A);
+    this.dValue$ = store.select(state => state.pad.D);
   }
 
   ngOnInit() {
