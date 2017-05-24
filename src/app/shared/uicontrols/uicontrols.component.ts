@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-uicontrols',
@@ -27,19 +27,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 `,
   styleUrls: ['./uicontrols.component.css']
 })
-export class UicontrolsComponent implements OnInit {
+export class UicontrolsComponent {
   @Output() Pleasure = new EventEmitter();
   @Output() Arousal = new EventEmitter();
   @Output() Dominance = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor() {}
 
   onPleasureChange(event) {
     this.Pleasure.emit(event.value);
-    // console.log('UI emits Pleasure: ', this.Pleasure);
     // console.log('the event: ', event);
   }
 
@@ -54,3 +50,5 @@ export class UicontrolsComponent implements OnInit {
   }
 
 }
+  // Reset button/function does not reset UI md-sliders.
+  // If I want to reset, might need to use ng Form controls ??

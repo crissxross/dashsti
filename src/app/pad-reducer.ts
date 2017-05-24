@@ -4,12 +4,15 @@ export interface State {
   P: number;
   A: number;
   D: number;
+  isEmoting: boolean;
 }
+// isEmoting state is experimental - not sure when/if to use?
 
 const initialState: State = {
   P: 0,
   A: 0,
-  D: 0
+  D: 0,
+  isEmoting: false
 };
 
 export function reducer(state = initialState, action: PadActions.All): State {
@@ -17,21 +20,24 @@ export function reducer(state = initialState, action: PadActions.All): State {
     case PadActions.CHANGE_P: {
       return {
         ...state,
-        P: action.payload
+        P: action.payload,
+        isEmoting: true
       };
     }
 
     case PadActions.CHANGE_A: {
       return {
         ...state,
-        A: action.payload
+        A: action.payload,
+        isEmoting: true
       };
     }
 
   case PadActions.CHANGE_D: {
       return {
         ...state,
-        D: action.payload
+        D: action.payload,
+        isEmoting: true
       };
     }
 
@@ -41,6 +47,7 @@ export function reducer(state = initialState, action: PadActions.All): State {
         P: 0,
         A: 0,
         D: 0,
+        isEmoting: false
       };
     }
 
