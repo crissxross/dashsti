@@ -12,15 +12,12 @@ import * as fromRoot from '../reducers';
   selector: 'app-actorviz',
   template: `
     <div class="viz-container">
-      <p>actorviz</p>
-      <br>
-      <p>P: {{pValue$ | async}}% | A: {{aValue$ | async}}% | D: {{dValue$ | async}}%</p><br>
 
-      <svg width="160" height="200">
-        <svg:rect #P x="10" [attr.y]="pY$ |async" width="40px" [attr.height]="pHeight$ | async" />
-        <svg:rect #A x="60" [attr.y]="aY$ | async" width="40px" [attr.height]="aHeight$ | async" />
-        <svg:rect #D x="110" [attr.y]="dY$ | async" width="40px" [attr.height]="dHeight$ | async" />
-        <svg:line x1="0" y1="100" x2="160" y2="100" stroke="white"/>
+      <svg width="100%" height="300">
+        <svg:rect #P x="10" [attr.y]="pY$ |async" width="40px" [attr.height]="pHeight$ | async" [attr.fill]="pFill$ | async"/>
+        <svg:rect #A x="60" [attr.y]="aY$ | async" width="40px" [attr.height]="aHeight$ | async" [attr.fill]="aFill$ | async"/>
+        <svg:rect #D x="110" [attr.y]="dY$ | async" width="40px" [attr.height]="dHeight$ | async" [attr.fill]="dFill$ | async"/>
+        <!--<svg:line x1="0" y1="100" x2="160" y2="100" stroke="white"/>-->
       </svg>
 
     </div>
@@ -37,6 +34,11 @@ export class ActorvizComponent implements OnInit {
   pHeight$: Observable<number>;
   aHeight$: Observable<number>;
   dHeight$: Observable<number>;
+  pFill$: Observable<string>;
+  aFill$: Observable<string>;
+  dFill$: Observable<string>;
+  fillPos = '#c0c0c0';
+  fillNeg = '#000000';
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -52,6 +54,10 @@ export class ActorvizComponent implements OnInit {
     this.pHeight$ = this.pValue$.map(x => (x < 0) ? Math.abs(x) : x);
     this.aHeight$ = this.aValue$.map(x => (x < 0) ? Math.abs(x) : x);
     this.dHeight$ = this.dValue$.map(x => (x < 0) ? Math.abs(x) : x);
+
+    this.pFill$ = this.pValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
+    this.aFill$ = this.aValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
+    this.dFill$ = this.dValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
 
     // TweenMax.to(this.P.nativeElement, 2, { height: this.pHeight, delay: 2, repeat: -1, yoyo: true });
   }

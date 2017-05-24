@@ -2,14 +2,14 @@
 .dashboard {
   display: flex;
   height: 100%;
-  border: solid 2px blue;
+  /*border: solid 2px blue;*/
 }
 
 .main-content-container {
   display: flex;
   justify-content: center;
   flex: 3;
-  border: solid 1px red;
+  /*border: solid 1px red;*/
 }
 
 .main-content {
@@ -17,21 +17,21 @@
   flex-direction: column;
   min-width: 400px;
   max-width: 500px;
-  border: solid 1px lime;
+  /*border: solid 1px lime;*/
 }
 
 .actorviz-container {
   display: flex;
   flex: 1;
   /*overflow: hidden;*/
-  border: 2px dashed pink;
+  /*border: 2px dashed pink;*/
 }
 
 .ui-container {
   display: flex;
   flex: 1;
   padding: 10px;
-  border: 1px dashed paleturquoise;
+  border: 1px dashed grey;
 }
 
 .sidepanel-container {

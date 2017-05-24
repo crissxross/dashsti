@@ -1,19 +1,20 @@
-p {
-  color: darkgrey;
-}
 /* should i use flex-layout? */
 
 /* .viz-container needs to be inside a display: flex container */
 .viz-container {
   /*flex: 1;*/
-  padding: 10px;
+  /*padding: 10px;*/
   width: 400px;
   /*height: 100%;*/
   /*background-color: grey;*/
-  border: 1px solid yellow;
+  /*border: 1px solid yellow;*/
 }
 
 svg {
   border: 1px solid grey;
+  background-color: hsla(0, 80%, 50%, 0.2);
 }
 
+rect {
+  transition: y 300ms, height 300ms, fill 600ms;
+}

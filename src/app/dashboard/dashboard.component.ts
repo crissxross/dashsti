@@ -31,17 +31,18 @@ import * as fromRoot from '../reducers';
 
       <div class="sidepanel-container">
         <h3 class="muted">P A D</h3>
-        <ul>
-          <li>Pleasure: {{pValue$| async}}%</li>
-          <li>Arousal: {{aValue$ | async}}%</li>
-          <li>Dominance: {{dValue$ | async}}%</li>
-        </ul>
-        <!--<app-uicontrols></app-uicontrols>-->
         <app-pad-barchart></app-pad-barchart>
+        <div class="section muted">
+          <ul>
+            <li>Pleasure: {{pValue$| async}}%</li>
+            <li>Arousal: {{aValue$ | async}}%</li>
+            <li>Dominance: {{dValue$ | async}}%</li>
+          </ul>
+        </div>
         <div class="section">
           <button md-button (click)="resetPAD()">Reset PAD</button>
         </div>
-        <small class="muted">NOTE: Reset does not reset UI slider controls.</small>
+        <small class="muted">(Note: does not reset UI slider controls)</small>
       </div>
 
     </div>
