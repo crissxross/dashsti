@@ -12,9 +12,14 @@
 
 svg {
   border: 1px solid grey;
-  background-color: hsla(0, 80%, 50%, 0.2);
+  /*background-color: hsla(0, 80%, 50%, 0.2);*/
 }
 
 rect {
-  transition: y 300ms, height 300ms, fill 600ms;
+  transition:
+    x 200ms,
+    y 300ms,
+    width 200ms,
+    height 300ms,
+    fill 600ms;
 }
