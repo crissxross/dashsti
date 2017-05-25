@@ -17,9 +17,9 @@ svg {
 
 rect {
   transition:
-    x 200ms,
+    x 300ms,
     y 300ms,
-    width 200ms,
+    width 300ms,
     height 300ms,
-    fill 600ms;
+    fill 300ms;
 }

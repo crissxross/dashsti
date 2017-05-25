@@ -6,22 +6,22 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
     <div>Dashboard UI controls</div>
     <div class="pad-slider-container">
       <div>P
-        <md-slider #P min=-100 max=100 value=0 step=10 tickInterval=1
+        <md-slider #P min=-1 max=1 value=0 step=0.1 tickInterval=1
         (change)="onPleasureChange($event)"
         ></md-slider>
-        {{P.value}} %
+        {{P.value | number}}
       </div>
       <div>A
-        <md-slider #A min=-100 max=100 value=0 step=10 tickInterval=1
+        <md-slider #A min=-1 max=1 value=0 step=0.1 tickInterval=1
         (change)="onArousalChange($event)"
         ></md-slider>
-        {{A.value}} %
+        {{A.value | number}}
       </div>
       <div>D
-        <md-slider #D min=-100 max=100 value=0 step=10 tickInterval=1
+        <md-slider #D min=-1 max=1 value=0 step=0.1 tickInterval=1
         (change)="onDominanceChange($event)"
         ></md-slider>
-        {{D.value}} %
+        {{D.value | number}}
       </div>
     </div>
 `,
@@ -36,17 +36,14 @@ export class UicontrolsComponent {
 
   onPleasureChange(event) {
     this.Pleasure.emit(event.value);
-    // console.log('the event: ', event);
   }
 
   onArousalChange(event) {
     this.Arousal.emit(event.value);
-    // console.log('Arousal: ', this.Arousal);
   }
 
   onDominanceChange(event) {
     this.Dominance.emit(event.value);
-    // console.log('Dominance: ', this.Dominance);
   }
 
 }

@@ -55,8 +55,9 @@ export class ActorvizComponent implements OnInit {
   pOpacity$: Observable<number>;
   aOpacity$: Observable<number>;
   dOpacity$: Observable<number>;
-  fillPos = '#c0c0c0';
-  fillNeg = '#000000';
+  fillPos = 'hsl(0, 50%, 50%)'; // '#c0c0c0';
+  fillNeg = 'hsl(0, 40%, 20%)'; // '#000000';
+
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -66,29 +67,29 @@ export class ActorvizComponent implements OnInit {
 
   ngOnInit() {
 
-    this.pX$ = this.pValue$.map(v => (v >= 0) ? (100 + v) : 100);
-    this.aX$ = this.aValue$.map(v => (v >= 0) ? (125 + v) : 150);
-    this.dX$ = this.dValue$.map(v => (v >= 0) ? (150 + v) : 200);
+    this.pX$ = this.pValue$.map(v => (v >= 0) ? 100 + (v * 100) : 100);
+    this.aX$ = this.aValue$.map(v => (v >= 0) ? 125 + (v * 100) : 150);
+    this.dX$ = this.dValue$.map(v => (v >= 0) ? 150 + (v * 100) : 200);
 
-    this.pY$ = this.pValue$.map(v => (v >= 0) ? (100 - v) : 100);
-    this.aY$ = this.aValue$.map(v => (v >= 0) ? (100 - v) : 100);
-    this.dY$ = this.dValue$.map(v => (v >= 0) ? (100 - v) : 100);
+    this.pY$ = this.pValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
+    this.aY$ = this.aValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
+    this.dY$ = this.dValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
 
-    this.pWidth$ = this.pValue$.map(v => (v >= 0) ? (50 + v) : 50);
-    this.aWidth$ = this.aValue$.map(v => (v >= 0) ? (50 + v) : 50);
-    this.dWidth$ = this.dValue$.map(v => (v >= 0) ? (50 + v) : 50);
+    this.pWidth$ = this.pValue$.map(v => (v >= 0) ? 50 + (v * 100) : 50);
+    this.aWidth$ = this.aValue$.map(v => (v >= 0) ? 50 + (v * 100) : 50);
+    this.dWidth$ = this.dValue$.map(v => (v >= 0) ? 50 + (v * 100) : 50);
 
-    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) : v);
-    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) : v);
-    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) : v);
+    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
+    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
+    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
 
     this.pFill$ = this.pValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
     this.aFill$ = this.aValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
     this.dFill$ = this.dValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
 
-    this.pOpacity$ = this.pValue$.map(v => (v >= 0) ? (v / 100) : 1);
-    this.aOpacity$ = this.aValue$.map(v => (v >= 0) ? (v / 100) : 1);
-    this.dOpacity$ = this.dValue$.map(v => (v >= 0) ? (v / 100) : 1);
+    this.pOpacity$ = this.pValue$.map(v => (v >= 0) ? v : Math.abs(v));
+    this.aOpacity$ = this.aValue$.map(v => (v >= 0) ? v : Math.abs(v));
+    this.dOpacity$ = this.dValue$.map(v => (v >= 0) ? v : Math.abs(v));
 
     // TweenMax.to(this.P.nativeElement, 2, { height: this.pHeight, delay: 2, repeat: -1, yoyo: true });
   }

@@ -34,9 +34,9 @@ import * as fromRoot from '../reducers';
         <app-pad-barchart></app-pad-barchart>
         <div class="section muted">
           <ul>
-            <li>Pleasure: {{pValue$| async}}%</li>
-            <li>Arousal: {{aValue$ | async}}%</li>
-            <li>Dominance: {{dValue$ | async}}%</li>
+            <li>Pleasure: {{pValue$ | async | percent}}</li>
+            <li>Arousal: {{aValue$ | async | percent}}</li>
+            <li>Dominance: {{dValue$ | async | percent}}</li>
           </ul>
         </div>
         <div class="section">

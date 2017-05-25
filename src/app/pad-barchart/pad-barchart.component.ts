@@ -23,9 +23,9 @@ import * as fromRoot from '../reducers';
           <li>D</li>
         </ul>
         <ul>
-          <li><small>{{pValue$ | async}}</small></li>
-          <li><small>{{aValue$ | async}}</small></li>
-          <li><small>{{dValue$ | async}}</small></li>
+          <li><small>{{pValue$ | async | number}}</small></li>
+          <li><small>{{aValue$ | async | number}}</small></li>
+          <li><small>{{dValue$ | async | number}}</small></li>
         </ul>
       </div>
     </div>
@@ -55,17 +55,17 @@ export class PadBarchartComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.pY$ = this.pValue$.map(x => (x >= 0) ? (100 - x) : 100);
-    this.aY$ = this.aValue$.map(x => (x >= 0) ? (100 - x) : 100);
-    this.dY$ = this.dValue$.map(x => (x >= 0) ? (100 - x) : 100);
+    this.pY$ = this.pValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
+    this.aY$ = this.aValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
+    this.dY$ = this.dValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
 
-    this.pHeight$ = this.pValue$.map(x => (x < 0) ? Math.abs(x) : x);
-    this.aHeight$ = this.aValue$.map(x => (x < 0) ? Math.abs(x) : x);
-    this.dHeight$ = this.dValue$.map(x => (x < 0) ? Math.abs(x) : x);
+    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
+    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
+    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
 
-    this.pFill$ = this.pValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
-    this.aFill$ = this.aValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
-    this.dFill$ = this.dValue$.map(x => (x >= 0) ? this.fillPos : this.fillNeg);
+    this.pFill$ = this.pValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
+    this.aFill$ = this.aValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
+    this.dFill$ = this.dValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
   }
 
 }
