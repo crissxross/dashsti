@@ -66,30 +66,31 @@ export class ActorvizComponent implements OnInit {
    }
 
   ngOnInit() {
+  // roughly centred the rects within the svg space
+    this.pX$ = this.pValue$.map(v => (v >= 0) ? 60 + (v * 100) : 60);
+    this.aX$ = this.aValue$.map(v => (v >= 0) ? 170 + (v * 100) : 170);
+    this.dX$ = this.dValue$.map(v => (v >= 0) ? 280 + (v * 100) : 280);
 
-    this.pX$ = this.pValue$.map(v => (v >= 0) ? 100 + (v * 100) : 100);
-    this.aX$ = this.aValue$.map(v => (v >= 0) ? 125 + (v * 100) : 150);
-    this.dX$ = this.dValue$.map(v => (v >= 0) ? 150 + (v * 100) : 200);
-
-    this.pY$ = this.pValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
-    this.aY$ = this.aValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
-    this.dY$ = this.dValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
+    this.pY$ = this.pValue$.map(v => (v >= 0) ? 150 - (v * 100) : 150);
+    this.aY$ = this.aValue$.map(v => (v >= 0) ? 150 - (v * 100) : 150);
+    this.dY$ = this.dValue$.map(v => (v >= 0) ? 150 - (v * 100) : 150);
 
     this.pWidth$ = this.pValue$.map(v => (v >= 0) ? 50 + (v * 100) : 50);
     this.aWidth$ = this.aValue$.map(v => (v >= 0) ? 50 + (v * 100) : 50);
     this.dWidth$ = this.dValue$.map(v => (v >= 0) ? 50 + (v * 100) : 50);
 
-    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
-    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
-    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
+    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100 + 1);
+    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100 + 1);
+    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100 + 1);
 
     this.pFill$ = this.pValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
     this.aFill$ = this.aValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
     this.dFill$ = this.dValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
 
-    this.pOpacity$ = this.pValue$.map(v => (v >= 0) ? v : Math.abs(v));
-    this.aOpacity$ = this.aValue$.map(v => (v >= 0) ? v : Math.abs(v));
-    this.dOpacity$ = this.dValue$.map(v => (v >= 0) ? v : Math.abs(v));
+    // note: trying to avoid zero opacity
+    this.pOpacity$ = this.pValue$.map(v => (v >= 0) ? v + 0.1 : 1.1 - Math.abs(v));
+    this.aOpacity$ = this.aValue$.map(v => (v >= 0) ? v + 0.1 : 1.1 - Math.abs(v));
+    this.dOpacity$ = this.dValue$.map(v => (v >= 0) ? v + 0.1 : 1.1 - Math.abs(v));
 
     // TweenMax.to(this.P.nativeElement, 2, { height: this.pHeight, delay: 2, repeat: -1, yoyo: true });
   }
