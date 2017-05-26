@@ -27,7 +27,15 @@ import * as fromRoot from '../reducers';
             ></app-uicontrols>
             <div class="ui-section">
               <button md-raised-button (click)="toggleBG()">toggle bg</button>
-              <button md-raised-button>button</button>
+              <small class="muted section">specific emotional states</small>
+              <md-button-toggle-group vertical>
+                <md-button-toggle (click)="anger()">anger</md-button-toggle>
+                <md-button-toggle (click)="fear()">fear</md-button-toggle>
+                <md-button-toggle (click)="joy()" >joy</md-button-toggle>
+                <md-button-toggle (click)="relaxed()">relaxed</md-button-toggle>
+                <md-button-toggle (click)="anxious()">anxious</md-button-toggle>
+                <md-button-toggle (click)="resetPAD()">reset to 0</md-button-toggle>
+              </md-button-toggle-group>
             </div>
           </div>
         </div>
@@ -88,6 +96,36 @@ export class DashboardComponent implements OnInit {
   toggleBG() {
     const next = (this.BGCOLORS.indexOf(this.bg) + 1) % this.BGCOLORS.length;
     this.bg = this.BGCOLORS[next];
+  }
+
+  anger() {
+    this.store.dispatch(new PadActions.ChangeP(-1));
+    this.store.dispatch(new PadActions.ChangeA(1));
+    this.store.dispatch(new PadActions.ChangeD(1));
+  }
+
+  fear() {
+    this.store.dispatch(new PadActions.ChangeP(-1));
+    this.store.dispatch(new PadActions.ChangeA(1));
+    this.store.dispatch(new PadActions.ChangeD(-1));
+  }
+
+  joy() {
+    this.store.dispatch(new PadActions.ChangeP(1));
+    this.store.dispatch(new PadActions.ChangeA(1));
+    this.store.dispatch(new PadActions.ChangeD(0.2));
+  }
+
+  relaxed() {
+    this.store.dispatch(new PadActions.ChangeP(0.8));
+    this.store.dispatch(new PadActions.ChangeA(-0.2));
+    this.store.dispatch(new PadActions.ChangeD(-0.5));
+  }
+
+  anxious() {
+    this.store.dispatch(new PadActions.ChangeP(-0.2));
+    this.store.dispatch(new PadActions.ChangeA(0.8));
+    this.store.dispatch(new PadActions.ChangeD(-0.2));
   }
 
 }
