@@ -15,6 +15,11 @@ svg {
   /*background-color: hsla(0, 80%, 50%, 0.2);*/
 }
 
+.bg-color {
+  /*background-color: hsla(0, 80%, 50%, 0.2);*/
+  background-color: hsla(137, 50%, 50%, 0.1);
+}
+
 rect {
   transition:
     x 300ms,

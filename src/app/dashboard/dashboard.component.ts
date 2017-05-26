@@ -17,7 +17,7 @@ import * as fromRoot from '../reducers';
       <div class="main-content-container">
         <div class="main-content">
           <div class="actorviz-container">
-            <app-actorviz></app-actorviz>
+            <app-actorviz [bg]="bg"></app-actorviz>
           </div>
           <div class="ui-container">
             <app-uicontrols
@@ -25,6 +25,10 @@ import * as fromRoot from '../reducers';
             (Arousal)="changeA($event)"
             (Dominance)="changeD($event)"
             ></app-uicontrols>
+            <div class="ui-section">
+              <button md-raised-button (click)="toggleBG()">toggle bg</button>
+              <button md-raised-button>button</button>
+            </div>
           </div>
         </div>
       </div>
@@ -42,7 +46,7 @@ import * as fromRoot from '../reducers';
         <div class="section">
           <button md-button (click)="resetPAD()">Reset PAD</button>
         </div>
-        <small class="muted">(Note: does not reset UI slider controls)</small>
+        <small class="muted">(does not reset UI sliders)</small>
       </div>
 
     </div>
@@ -53,6 +57,8 @@ export class DashboardComponent implements OnInit {
   pValue$: Observable<number>;
   aValue$: Observable<number>;
   dValue$: Observable<number>;
+  bg = '#303030'; // matches main bg color
+  BGCOLORS = ['hsla(0, 80%, 50%, 0.1)', 'hsla(137, 80%, 50%, 0.1)', '#303030'];
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -77,6 +83,11 @@ export class DashboardComponent implements OnInit {
   // Note: this does not reset UI slider controls
   resetPAD() {
     this.store.dispatch(new PadActions.Reset());
+  }
+
+  toggleBG() {
+    const next = (this.BGCOLORS.indexOf(this.bg) + 1) % this.BGCOLORS.length;
+    this.bg = this.BGCOLORS[next];
   }
 
 }

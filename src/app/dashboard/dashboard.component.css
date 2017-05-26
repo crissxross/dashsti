@@ -29,9 +29,16 @@
 
 .ui-container {
   display: flex;
+  justify-content: space-between;
   flex: 1;
   padding: 10px;
   border: 1px dashed grey;
+}
+
+.ui-section {
+  display: flex;
+  flex-direction: column;
+  /*border: solid 1px lightslategray;*/
 }
 
 .sidepanel-container {
@@ -43,11 +50,15 @@
   /*border: solid 2px lightgreen;*/
 }
 
-.muted {
-  color: silver;
-}
-
 .section {
   margin: 10px 0;
  /*padding: 10px 0;*/
+}
+
+button {
+  margin: 5px;
+}
+
+.muted {
+  color: silver;
 }
