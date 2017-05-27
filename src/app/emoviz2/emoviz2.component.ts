@@ -9,19 +9,12 @@ import * as fromRoot from '../reducers';
 import { TweenMax, TimelineMax } from 'gsap';
 
 @Component({
-  selector: 'app-emoviz',
+  selector: 'app-emoviz2',
   template: `
     <div class="viz-container">
 
       <svg width="400" height="300">
         <svg:rect #background x = "0" y = "0" width="100%" height="100%" [attr.fill]="bg"/>
-
-        <!--<text x="20" y="30">emoviz SVG text</text>
-        <text x="20" y="60">
-          P: {{pValue$ | async | number}} |
-          A: {{aValue$ | async | number}} |
-          D: {{dValue$ | async | number}} |
-        </text>-->
 
         <svg:g id="polygroup">
           <svg:polygon #poly6 class="cls-1"
@@ -35,10 +28,10 @@ import { TweenMax, TimelineMax } from 'gsap';
       </svg>
     </div>
   `,
-  styleUrls: ['./emoviz.component.css']
+  styleUrls: ['./emoviz2.component.css']
 })
-export class EmovizComponent implements OnInit, OnDestroy {
-  @Input() bg;
+export class Emoviz2Component implements OnInit, OnDestroy {
+    @Input() bg;
 // svg elements
   @ViewChild('poly6') poly6: ElementRef;
   @ViewChild('poly8') poly8: ElementRef;
@@ -62,63 +55,44 @@ export class EmovizComponent implements OnInit, OnDestroy {
     const poly8El = this.poly8.nativeElement;
     const trianEl = this.triangle.nativeElement;
     // approximately centred in a group
-    TweenMax.set(poly6El, { x: 60, y: 114 });
-    TweenMax.set(poly8El, { x: 168, y: 119 });
-    TweenMax.set(trianEl, { x: 267, y: 118 });
-
-// ? Would it be better to map PAD values to timeline labels?
-  // Then I could use tl.pause(PADvalue);
-  // see: https://greensock.com/docs/#/HTML5/GSAP/TimelineMax/pause/
-
-// P
-    const pTl = new TimelineMax({ paused: true });
-
-    this.pProgressSub = this.pValue$
-      // map bipolar scale to unipolar of only positive values
-      .map(v => (v + 1) / 2)
-      .subscribe(v => {
-      pTl.progress(v).play();
-      // console.log('pProgressSub v: ', v);
-      // console.log('tl.progress() ', tl.progress()); // initially returns NaN
+    TweenMax.set(poly6El, {
+      x: 60, y: 114, fill: 'hsl(137, 50%, 50%)', opacity: 0.5
+    });
+    TweenMax.set(poly8El, {
+      x: 168, y: 119, fill: 'hsl(137, 50%, 50%)', opacity: 0.5
+    });
+    TweenMax.set(trianEl, {
+      x: 267, y: 118, fill: 'hsl(137, 50%, 50%)', opacity: 0.5
     });
 
-    // tl.progress(0).play();
-    pTl.to(poly6El, 2, { delay: 1, x: 200, y: 20 });
-    pTl.to(poly8El, 3, { x: 240, y: 200 }, '-=1');
-    pTl.to(trianEl, 2, { x: 40, y: 70 }, '-=1');
-    pTl.to(poly6El, 2, { rotation: 360, transformOrigin: '50% 50%' });
-    pTl.to(poly8El, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
-    pTl.to(trianEl, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
-    pTl.to(poly6El, 2, { x: 60, y: 114 });
-    pTl.to(poly8El, 2, { x: 60, y: 114 }, '-=1');
-    pTl.to(trianEl, 2, { x: 60, y: 118 }, '-=1');
-    pTl.to(poly6El, 2, { x: 267, y: 114 });
-    pTl.to(poly8El, 2, { x: 168, y: 119 }, '-=1');
+    // I don't think hsl colours are working so well.
+    // I might have to change to an array (or object map) of hex colours
+    // like Material Design uses
 
-// A
-    const aTl = new TimelineMax({ paused: true });
-
-    this.aProgressSub = this.aValue$
-      .map(v => (v + 1) / 2)
+// P
+    this.pProgressSub = this.pValue$
+      // .map(v => ((v + 1) / 2) * 50)
+      .map(v => (v + 1) * 50)
       .subscribe(v => {
-        aTl.progress(v).play();
-        // console.log('a v: ', v);
+        console.log('P v: ', v);
+        TweenMax.staggerTo([poly6El, poly8El, trianEl], 1, {
+          fill: `hsl(137, ${v}%, +=0)`
+         }, 0.1);
       });
 
-    // aTl.progress(0).play();
-    aTl.to(poly6El, 3, { fill: 'green', opacity: 0.5 });
-    aTl.to(poly8El, 3, { fill: 'green', opacity: 0.3 });
-    aTl.to(trianEl, 3, { fill: 'green', opacity: 0.2 });
-    aTl.to(poly6El, 3, { fill: 'red', opacity: 0.3 });
-    aTl.to(poly8El, 3, { fill: 'red', opacity: 0.2 });
-    aTl.to(trianEl, 3, { fill: 'red', opacity: 0.5 });
+// A <- TO DO
+    this.aProgressSub = this.aValue$
+      .map(v => (v + 1.1) * 1.5)
+      .subscribe(v => {
+        console.log('A v: ', v);
+      });
 
 // D
     this.dProgressSub = this.dValue$
       // .map(v => ((v + 1) / 2) * 2)
       .map(v => (v + 1.1) * 1.5)
       .subscribe(v => {
-        // console.log('d v: ', v);
+        console.log('D v: ', v);
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);
       });
 

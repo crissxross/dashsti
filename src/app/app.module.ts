@@ -23,6 +23,7 @@ import { AppRoutingModule, routableComponents } from './app-routing.module';
 import { DashSceneComponent } from './dash-scene/dash-scene.component';
 import { PadBarchartComponent } from './pad-barchart/pad-barchart.component';
 import { EmovizComponent } from './emoviz/emoviz.component';
+import { Emoviz2Component } from './emoviz2/emoviz2.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EmovizComponent } from './emoviz/emoviz.component';
     ProtagComponent,
     DashSceneComponent,
     PadBarchartComponent,
-    EmovizComponent
+    EmovizComponent,
+    Emoviz2Component
   ],
   imports: [
     BrowserModule,

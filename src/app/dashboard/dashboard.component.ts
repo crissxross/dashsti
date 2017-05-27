@@ -18,7 +18,8 @@ import * as fromRoot from '../reducers';
         <div class="main-content">
           <div class="actorviz-container">
             <!--<app-actorviz [bg]="bg"></app-actorviz>-->
-            <app-emoviz [bg]="bg"></app-emoviz>
+            <!--<app-emoviz [bg]="bg"></app-emoviz>-->
+            <app-emoviz2 [bg]="bg"></app-emoviz2>
           </div>
           <div class="ui-container">
             <app-uicontrols

@@ -1,0 +1,42 @@
+/* should i use flex-layout? */
+/* COPIED from emoviz, which was copied from actorviz */
+
+/* .viz-container needs to be inside a display: flex container */
+.viz-container {
+  /*flex: 1;*/
+  /*padding: 10px;*/
+  width: 400px;
+  /*height: 100%;*/
+  /*background-color: grey;*/
+  /*border: 1px solid yellow;*/
+}
+
+svg {
+  border: 1px solid grey;
+  /*background-color: hsla(0, 80%, 50%, 0.2);*/
+}
+
+.bg-color {
+  /*background-color: hsla(0, 80%, 50%, 0.2);*/
+  background-color: hsla(137, 50%, 50%, 0.1);
+}
+
+rect {
+  transition:
+    x 300ms,
+    y 300ms,
+    width 300ms,
+    height 300ms,
+    fill 300ms;
+}
+
+text {
+  fill: grey;
+}
+
+/* polygon styles - adapted from Illustrator */
+.cls-1 {
+        fill: hsla(0, 100%, 100%, 0.5);
+        /*stroke: #fff;
+        stroke-miterlimit: 10;*/
+      }
