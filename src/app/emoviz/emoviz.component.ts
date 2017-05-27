@@ -16,12 +16,12 @@ import { TweenMax, TimelineMax } from 'gsap';
       <svg width="400" height="300">
         <svg:rect #background x = "0" y = "0" width="100%" height="100%" [attr.fill]="bg"/>
 
-        <text x="20" y="30">emoviz SVG text</text>
+        <!--<text x="20" y="30">emoviz SVG text</text>
         <text x="20" y="60">
           P: {{pValue$ | async | number}} |
           A: {{aValue$ | async | number}} |
           D: {{dValue$ | async | number}} |
-        </text>
+        </text>-->
 
         <svg:g id="polygroup">
           <svg:polygon #poly6 class="cls-1"
@@ -48,6 +48,8 @@ export class EmovizComponent implements OnInit, OnDestroy {
   aValue$: Observable<number>;
   dValue$: Observable<number>;
   pProgressSub: Subscription;
+  aProgressSub: Subscription;
+  dProgressSub: Subscription;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -56,47 +58,76 @@ export class EmovizComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    const poly6El = this.poly6.nativeElement;
+    const poly8El = this.poly8.nativeElement;
+    const trianEl = this.triangle.nativeElement;
     // approximately centred in a group
-    TweenMax.set(this.poly6.nativeElement, { x: 60, y: 114 });
-    TweenMax.set(this.poly8.nativeElement, { x: 168, y: 119 });
-    TweenMax.set(this.triangle.nativeElement, { x: 267, y: 118 });
-
-    const tl = new TimelineMax({ paused: true });
+    TweenMax.set(poly6El, { x: 60, y: 114 });
+    TweenMax.set(poly8El, { x: 168, y: 119 });
+    TweenMax.set(trianEl, { x: 267, y: 118 });
 
 // ? Would it be better to map PAD values to timeline labels?
-// Then I could use tl.pause(PADvalue);
-// see: https://greensock.com/docs/#/HTML5/GSAP/TimelineMax/pause/
+  // Then I could use tl.pause(PADvalue);
+  // see: https://greensock.com/docs/#/HTML5/GSAP/TimelineMax/pause/
+
+// P
+    const pTl = new TimelineMax({ paused: true });
 
     this.pProgressSub = this.pValue$
       // map bipolar scale to unipolar of only positive values
       .map(v => (v + 1) / 2)
       .subscribe(v => {
-      tl.progress(v).play();
+      pTl.progress(v).play();
       console.log('pProgressSub v: ', v);
       // console.log('tl.progress() ', tl.progress()); // initially returns NaN
     });
 
     // tl.progress(0).play();
-    tl.to(this.poly6.nativeElement, 2, { delay: 1, x: 200, y: 20 });
-    tl.to(this.poly8.nativeElement, 3, { x: 240, y: 200 }, '-=1');
-    tl.to(this.triangle.nativeElement, 2, { x: 40, y: 70 }, '-=1');
-    tl.to(this.poly6.nativeElement, 2, { rotation: 360, transformOrigin: '50% 50%' });
-    tl.to(this.poly8.nativeElement, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
-    tl.to(this.triangle.nativeElement, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
-    tl.to(this.poly6.nativeElement, 2, { x: 60, y: 114 });
-    tl.to(this.poly8.nativeElement, 2, { x: 60, y: 114 }, '-=1');
-    tl.to(this.triangle.nativeElement, 2, { x: 60, y: 114 }, '-=1');
-
-// P
+    pTl.to(poly6El, 2, { delay: 1, x: 200, y: 20 });
+    pTl.to(poly8El, 3, { x: 240, y: 200 }, '-=1');
+    pTl.to(trianEl, 2, { x: 40, y: 70 }, '-=1');
+    pTl.to(poly6El, 2, { rotation: 360, transformOrigin: '50% 50%' });
+    pTl.to(poly8El, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
+    pTl.to(trianEl, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
+    pTl.to(poly6El, 2, { x: 60, y: 114 });
+    pTl.to(poly8El, 2, { x: 60, y: 114 }, '-=1');
+    pTl.to(trianEl, 2, { x: 60, y: 118 }, '-=1');
+    pTl.to(poly6El, 2, { x: 267, y: 114 });
+    pTl.to(poly8El, 2, { x: 168, y: 119 }, '-=1');
 
 // A
+    const aTl = new TimelineMax({ paused: true });
+
+    this.aProgressSub = this.aValue$
+      .map(v => (v + 1) / 2)
+      .subscribe(v => {
+        aTl.progress(v).play();
+        // console.log('a v: ', v);
+      });
+
+    // aTl.progress(0).play();
+    aTl.to(poly6El, 3, { fill: 'green', opacity: 0.5 });
+    aTl.to(poly8El, 3, { fill: 'green', opacity: 0.3 });
+    aTl.to(trianEl, 3, { fill: 'green', opacity: 0.2 });
+    aTl.to(poly6El, 3, { fill: 'red', opacity: 0.3 });
+    aTl.to(poly8El, 3, { fill: 'red', opacity: 0.2 });
+    aTl.to(trianEl, 3, { fill: 'red', opacity: 0.5 });
 
 // D
+    this.dProgressSub = this.dValue$
+      // .map(v => ((v + 1) / 2) * 2)
+      .map(v => (v + 1.1) * 1.5)
+      .subscribe(v => {
+        console.log('d v: ', v);
+        TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);
+      });
 
   }
 
   ngOnDestroy() {
     this.pProgressSub.unsubscribe();
+    this.aProgressSub.unsubscribe();
+    this.dProgressSub.unsubscribe();
   }
 
 }
