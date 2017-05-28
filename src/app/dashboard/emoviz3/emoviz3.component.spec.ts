@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmovizComponent } from './emoviz.component';
+import { Emoviz3Component } from './emoviz3.component';
 
-describe('EmovizComponent', () => {
-  let component: EmovizComponent;
-  let fixture: ComponentFixture<EmovizComponent>;
+describe('Emoviz3Component', () => {
+  let component: Emoviz3Component;
+  let fixture: ComponentFixture<Emoviz3Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmovizComponent ]
+      declarations: [ Emoviz3Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmovizComponent);
+    fixture = TestBed.createComponent(Emoviz3Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -18,8 +18,9 @@ import * as fromRoot from '../reducers';
         <div class="main-content">
           <div class="actorviz-container">
             <!--<app-actorviz [bg]="bg"></app-actorviz>-->
-            <!--<app-emoviz [bg]="bg"></app-emoviz>-->
-            <app-emoviz2 [bg]="bg"></app-emoviz2>
+            <!--<app-emoviz1 [bg]="bg"></app-emoviz1>-->
+            <!--<app-emoviz2 [bg]="bg"></app-emoviz2>-->
+            <app-emoviz3 [bg]="bg"></app-emoviz3>
           </div>
           <div class="ui-container">
             <app-uicontrols
@@ -94,7 +95,7 @@ export class DashboardComponent implements OnInit {
   resetPAD() {
     this.store.dispatch(new PadActions.Reset());
   }
-
+// NOTE: the BG could be for viz container component
   toggleBG() {
     const next = (this.BGCOLORS.indexOf(this.bg) + 1) % this.BGCOLORS.length;
     this.bg = this.BGCOLORS[next];

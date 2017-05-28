@@ -1,5 +1,4 @@
 /* should i use flex-layout? */
-/* COPIED from actorviz */
 
 /* .viz-container needs to be inside a display: flex container */
 .viz-container {
@@ -29,14 +28,3 @@ rect {
     height 300ms,
     fill 300ms;
 }
-
-text {
-  fill: grey;
-}
-
-/* polygon styles - adapted from Illustrator */
-.cls-1 {
-        fill: hsla(0, 100%, 100%, 0.5);
-        stroke: #fff;
-        stroke-miterlimit: 10;
-      }
