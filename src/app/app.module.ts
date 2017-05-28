@@ -10,26 +10,22 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 
 import { SharedModule } from './shared/shared.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { SceneModule } from './scene/scene.module';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-
-import { DashboardModule } from './dashboard/dashboard.module';
-
-import { SceneComponent } from './scene/scene.component';
-import { NpcComponent } from './scene/npc.component';
-import { ProtagComponent } from './scene/protag.component';
-import { AppRoutingModule, routableComponents } from './app-routing.module';
 import { DashSceneComponent } from './dash-scene/dash-scene.component';
+
+
+import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule, routableComponents } from './app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SceneComponent,
     NavComponent,
-    NpcComponent,
-    ProtagComponent,
     DashSceneComponent,
   ],
   imports: [
@@ -40,6 +36,7 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
     SharedModule,
     // FlexLayoutModule,
     DashboardModule,
+    SceneModule,
     StoreModule.provideStore(reducers),
     AppRoutingModule
   ],

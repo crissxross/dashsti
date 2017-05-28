@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SceneModule } from '../scene/scene.module';
+
 @Component({
   selector: 'app-dash-scene',
   template: `

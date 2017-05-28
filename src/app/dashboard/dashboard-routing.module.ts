@@ -13,4 +13,9 @@ const routes: Routes = [
 })
 export class DashboardRoutingModule { }
 
-export const routedComponents = [DashboardComponent];
+// export const routedComponents = [DashboardComponent];
+
+// NOTE: the routedComponents export was added by default when
+// routing module code was generated from Angular snippet (JPapa)
+// But why/when would I need to export routedComponents?
+
