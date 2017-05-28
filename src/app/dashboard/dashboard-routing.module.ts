@@ -2,9 +2,25 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
+import { Emoviz1Component } from './emoviz1/emoviz1.component';
+import { Emoviz2Component } from './emoviz2/emoviz2.component';
+import { Emoviz3Component } from './emoviz3/emoviz3.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard', component: DashboardComponent,
+    children: [
+      {
+        path: 'emoviz1', component: Emoviz1Component
+      },
+      {
+        path: 'emoviz2', component: Emoviz2Component
+      },
+      {
+        path: 'emoviz3', component: Emoviz3Component
+      }
+    ]
+  },
 ];
 
 @NgModule({

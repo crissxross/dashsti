@@ -6,22 +6,35 @@ import * as PadActions from '../pad-actions';
 import * as fromRoot from '../reducers';
 
 @Component({
-  selector: 'app-dashboard',
+  // selector: 'app-dashboard',
   template: `
     <div class="dashboard">
 
       <div class="sidepanel-container">
-        <p class="muted">Dashboard for emo-viz experiments</p>
+        <small class="muted">Dashboard for experiments</small>
+        <md-divider></md-divider>
+        <md-nav-list>
+          <md-list-item>
+            <a [routerLink]="['/dashboard/emoviz1']" routerLinkActive="active">emo-viz 1</a>
+          </md-list-item>
+          <md-list-item>
+            <a [routerLink]="['/dashboard/emoviz2']" routerLinkActive="active">emo-viz 2</a>
+          </md-list-item>
+          <md-list-item>
+            <a [routerLink]="['/dashboard/emoviz3']" routerLinkActive="active">emo-viz 3</a>
+          </md-list-item>
+        </md-nav-list>
       </div>
 
       <div class="main-content-container">
         <div class="main-content">
+
           <div class="actorviz-container">
-            <!--<app-actorviz [bg]="bg"></app-actorviz>-->
-            <!--<app-emoviz1 [bg]="bg"></app-emoviz1>-->
-            <!--<app-emoviz2 [bg]="bg"></app-emoviz2>-->
-            <app-emoviz3 [bg]="bg"></app-emoviz3>
+
+            <router-outlet></router-outlet>
+
           </div>
+
           <div class="ui-container">
             <app-uicontrols
             (Pleasure)="changeP($event)"
@@ -95,7 +108,7 @@ export class DashboardComponent implements OnInit {
   resetPAD() {
     this.store.dispatch(new PadActions.Reset());
   }
-// NOTE: the BG could be for viz container component
+// NOTE: the BG could be for viz container component ???
   toggleBG() {
     const next = (this.BGCOLORS.indexOf(this.bg) + 1) % this.BGCOLORS.length;
     this.bg = this.BGCOLORS[next];

@@ -38,7 +38,8 @@ import { TweenMax, TimelineMax } from 'gsap';
   styleUrls: ['./emoviz2.component.css']
 })
 export class Emoviz2Component implements OnInit, OnDestroy {
-  @Input() bg;
+  // @Input() bg;
+  bg = '#303030'; // matches main bg color - BUT A TEMPORARY HACK!!
 // svg elements
   @ViewChild('poly6') poly6: ElementRef;
   @ViewChild('poly8') poly8: ElementRef;

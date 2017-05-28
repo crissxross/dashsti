@@ -62,3 +62,11 @@ button {
 .muted {
   color: silver;
 }
+
+.mat-nav-list .mat-list-item {
+  color: grey;
+}
+
+.active {
+  color: white;
+}
