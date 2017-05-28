@@ -9,44 +9,37 @@ import 'hammerjs';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 
-import { DashMaterialModule } from './shared/dash-material.module';
-import { UicontrolsComponent } from './shared/uicontrols/uicontrols.component';
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ActorvizComponent } from './actorviz/actorviz.component';
+
+import { DashboardModule } from './dashboard/dashboard.module';
+
 import { SceneComponent } from './scene/scene.component';
 import { NpcComponent } from './scene/npc.component';
 import { ProtagComponent } from './scene/protag.component';
 import { AppRoutingModule, routableComponents } from './app-routing.module';
 import { DashSceneComponent } from './dash-scene/dash-scene.component';
-import { PadBarchartComponent } from './pad-barchart/pad-barchart.component';
-import { EmovizComponent } from './emoviz/emoviz.component';
-import { Emoviz2Component } from './emoviz2/emoviz2.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SceneComponent,
     NavComponent,
-    ActorvizComponent,
-    UicontrolsComponent,
     NpcComponent,
     ProtagComponent,
     DashSceneComponent,
-    PadBarchartComponent,
-    EmovizComponent,
-    Emoviz2Component
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    DashMaterialModule,
+    SharedModule,
     // FlexLayoutModule,
+    DashboardModule,
     StoreModule.provideStore(reducers),
     AppRoutingModule
   ],

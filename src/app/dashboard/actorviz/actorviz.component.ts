@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../pad-actions';
-import * as fromRoot from '../reducers';
+import * as PadActions from '../../pad-actions';
+import * as fromRoot from '../../reducers';
 // import { TweenMax } from 'gsap';
 
 @Component({

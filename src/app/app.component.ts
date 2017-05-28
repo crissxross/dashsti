@@ -21,7 +21,6 @@ import { Component } from '@angular/core';
       <div class="main-container">
         <main>
           <router-outlet ></router-outlet>
-          <router-outlet name="viz"></router-outlet>
         </main>
       </div>
 

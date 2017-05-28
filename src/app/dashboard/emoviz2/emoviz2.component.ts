@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../pad-actions';
-import * as fromRoot from '../reducers';
+import * as PadActions from '../../pad-actions';
+import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax } from 'gsap';
 
 @Component({

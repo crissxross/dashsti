@@ -5,8 +5,9 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'dash-scene' },
+  // { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  // { path: 'dashboard', component: DashboardComponent },
   { path: 'dash-scene', component: DashSceneComponent }
 ];
 
@@ -17,5 +18,6 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routableComponents = [
-  DashboardComponent
+  // DashboardComponent
+  DashSceneComponent
 ];
