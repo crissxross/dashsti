@@ -11,9 +11,7 @@ import * as fromRoot from '../../reducers';
   template: `
     <div class="viz-container">
 
-      <svg width="400" height="300">
-        <!--<svg:rect #background x = "0" y = "0" width="100%" height="100%" [attr.fill]="bg"/>-->
-        <svg:rect #background x = "0" y = "0" width="100%" height="100%"/>
+      <svg>
         <svg:rect #P
           [attr.x]="pX$ | async"
           [attr.y]="pY$ |async"
@@ -39,10 +37,10 @@ import * as fromRoot from '../../reducers';
 
     </div>
   `,
-  styleUrls: ['./emoviz1.component.css']
+  styleUrls: ['../emoviz.css', './emoviz1.component.css']
 })
 export class Emoviz1Component implements OnInit {
-  @Input() bg = '#303030'; // matches main bg color - BUT A TEMPORARY HACK!!
+  // @Input() bg;
 // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;

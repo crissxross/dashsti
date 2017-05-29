@@ -12,10 +12,7 @@ import { TweenMax, TimelineMax } from 'gsap';
   selector: 'app-emoviz3',
   template: `
     <div class="viz-container">
-
-      <svg width="400" height="300">
-        <svg:rect #background x = "0" y = "0" width="100%" height="100%" [attr.fill]="bg"/>
-
+      <svg>
         <svg:g id="polygroup">
           <svg:polygon #poly6 class="cls-1"
             points="60.5 52.5 30.5 69.9 0.5 52.5 0.5 17.9 30.5 0.6 60.5 17.9 60.5 52.5"/>
@@ -24,14 +21,12 @@ import { TweenMax, TimelineMax } from 'gsap';
           <polygon #triangle class="cls-1"
             points="35.5 1 0.9 61 70.1 61 35.5 1"/>
         </svg:g>
-
       </svg>
     </div>
   `,
-  styleUrls: ['./emoviz3.component.css']
+  styleUrls: ['../emoviz.css', './emoviz3.component.css']
 })
 export class Emoviz3Component implements OnInit, OnDestroy {
-  @Input() bg = '#303030'; // matches main bg color - BUT A TEMPORARY HACK!!
 // svg elements
   @ViewChild('poly6') poly6: ElementRef;
   @ViewChild('poly8') poly8: ElementRef;

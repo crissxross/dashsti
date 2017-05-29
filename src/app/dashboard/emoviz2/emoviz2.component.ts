@@ -13,9 +13,7 @@ import { TweenMax, TimelineMax } from 'gsap';
   template: `
     <div class="viz-container">
 
-      <svg width="400" height="300">
-        <svg:rect #background x = "0" y = "0" width="100%" height="100%" [attr.fill]="bg"/>
-
+      <svg>
         <!--<text x="20" y="30">emoviz2 SVG text</text>
         <text x="20" y="60">
           P: {{pValue$ | async | number}} |
@@ -35,11 +33,9 @@ import { TweenMax, TimelineMax } from 'gsap';
       </svg>
     </div>
   `,
-  styleUrls: ['./emoviz2.component.css']
+  styleUrls: ['../emoviz.css', './emoviz2.component.css']
 })
 export class Emoviz2Component implements OnInit, OnDestroy {
-  // @Input() bg;
-  bg = '#303030'; // matches main bg color - BUT A TEMPORARY HACK!!
 // svg elements
   @ViewChild('poly6') poly6: ElementRef;
   @ViewChild('poly8') poly8: ElementRef;

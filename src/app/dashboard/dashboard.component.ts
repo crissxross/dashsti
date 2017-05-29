@@ -11,25 +11,23 @@ import * as fromRoot from '../reducers';
     <div class="dashboard">
 
       <div class="sidepanel-container">
-        <small class="muted">Dashboard for experiments</small>
+        <div class="section">
+          <small class="muted">Dashboard for experiments</small>
+        </div>
         <md-divider></md-divider>
         <md-nav-list>
-          <md-list-item>
-            <a [routerLink]="['/dashboard/emoviz1']" routerLinkActive="active">emo-viz 1</a>
-          </md-list-item>
-          <md-list-item>
-            <a [routerLink]="['/dashboard/emoviz2']" routerLinkActive="active">emo-viz 2</a>
-          </md-list-item>
-          <md-list-item>
-            <a [routerLink]="['/dashboard/emoviz3']" routerLinkActive="active">emo-viz 3</a>
-          </md-list-item>
+          <a md-list-item *ngFor="let id of navIds"
+            [routerLink]="['/dashboard/emoviz'+id]"
+            routerLinkActive="active">
+            emo-viz {{id}}
+          </a>
         </md-nav-list>
       </div>
 
       <div class="main-content-container">
         <div class="main-content">
 
-          <div class="actorviz-container">
+          <div class="actorviz-container" [ngStyle]="{'background-color': bg}">
 
             <router-outlet></router-outlet>
 
@@ -61,16 +59,25 @@ import * as fromRoot from '../reducers';
         <h3 class="muted">P A D</h3>
         <app-pad-barchart></app-pad-barchart>
         <div class="section muted">
-          <ul>
-            <li>Pleasure: {{pValue$ | async | percent}}</li>
-            <li>Arousal: {{aValue$ | async | percent}}</li>
-            <li>Dominance: {{dValue$ | async | percent}}</li>
-          </ul>
+        <table>
+          <tr>
+            <td>Pleasure:</td>
+            <td>{{pValue$ | async | percent}}</td>
+          </tr>
+          <tr>
+            <td>Arousal:</td>
+            <td>{{aValue$ | async | percent}}</td>
+          </tr>
+          <tr>
+            <td>Dominance:</td>
+            <td>{{dValue$ | async | percent}}</td>
+          </tr>
+        </table>
         </div>
         <div class="section">
-          <button md-button (click)="resetPAD()">Reset PAD</button>
+          <p><button md-button (click)="resetPAD()">Reset PAD</button></p>
+          <small class="muted">(does not reset UI sliders)</small>
         </div>
-        <small class="muted">(does not reset UI sliders)</small>
       </div>
 
     </div>
@@ -83,6 +90,7 @@ export class DashboardComponent implements OnInit {
   dValue$: Observable<number>;
   bg = '#303030'; // matches main bg color
   BGCOLORS = ['hsla(0, 80%, 50%, 0.1)', 'hsla(137, 80%, 50%, 0.1)', '#303030'];
+  navIds = ['1', '2', '3'];
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -108,7 +116,7 @@ export class DashboardComponent implements OnInit {
   resetPAD() {
     this.store.dispatch(new PadActions.Reset());
   }
-// NOTE: the BG could be for viz container component ???
+  // Toggles background-color of actorviz-container
   toggleBG() {
     const next = (this.BGCOLORS.indexOf(this.bg) + 1) % this.BGCOLORS.length;
     this.bg = this.BGCOLORS[next];

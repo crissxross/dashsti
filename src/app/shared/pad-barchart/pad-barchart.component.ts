@@ -9,11 +9,11 @@ import * as fromRoot from '../../reducers';
   selector: 'app-pad-barchart',
   template: `
     <div class="chart-container">
-      <!--<p>PAD barchart</p>-->
-      <svg width="160" height="200">
-        <svg:rect #P x="10" [attr.y]="pY$ | async" width="40px" [attr.height]="pHeight$ | async" [attr.fill]="pFill$ | async" />
-        <svg:rect #A x="60" [attr.y]="aY$ | async" width="40px" [attr.height]="aHeight$ | async" [attr.fill]="aFill$ | async" />
-        <svg:rect #D x="110" [attr.y]="dY$ | async" width="40px" [attr.height]="dHeight$ | async" [attr.fill]="dFill$ | async" />
+      <!-- viewBox declared to make SVG responsively scalable -->
+      <svg viewBox="0 0 160 200">
+        <svg:rect #P x="10" [attr.y]="pY$ | async" width="40" [attr.height]="pHeight$ | async" [attr.fill]="pFill$ | async" />
+        <svg:rect #A x="60" [attr.y]="aY$ | async" width="40" [attr.height]="aHeight$ | async" [attr.fill]="aFill$ | async" />
+        <svg:rect #D x="110" [attr.y]="dY$ | async" width="40" [attr.height]="dHeight$ | async" [attr.fill]="dFill$ | async" />
         <svg:line x1="0" y1="100" x2="160" y2="100" stroke="white"/>
       </svg>
       <div class="labels">

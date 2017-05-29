@@ -31,8 +31,8 @@
   display: flex;
   justify-content: space-between;
   flex: 1;
-  padding: 10px;
-  border: 1px dashed grey;
+  padding: 20px 10px 10px;
+  /*border: 1px dashed black;*/
 }
 
 .ui-section {
@@ -46,7 +46,7 @@
   flex-direction: column;
   flex: 1;
   padding: 10px;
-  line-height: 2em;
+  /*line-height: 2em;*/
   /*border: solid 2px lightgreen;*/
 }
 
@@ -67,6 +67,14 @@ button {
   color: grey;
 }
 
-.active {
+.mat-nav-list .mat-list-item.active, .active {
   color: white;
+}
+
+table {
+  margin: 10px 0;
+}
+
+td {
+  padding: 5px 5px 5px 0;
 }

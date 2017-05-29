@@ -4,15 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-nav',
   template: `
     <md-nav-list>
-      <md-list-item>
-        <a [routerLink]="['/dashboard/emoviz1']">Dashboard</a>
-      </md-list-item>
-      <md-list-item>
-        <a [routerLink]="['/dash-scene']">Dash: scene layout</a>
-      </md-list-item>
-      <!--<md-list-item>
-        <a routerLink=".">nav link</a>
-      </md-list-item>-->
+      <a md-list-item [routerLink]="['/dashboard/emoviz1']">Dashboard</a>
+      <a md-list-item [routerLink]="['/dash-scene']">Dash: scene layout</a>
     </md-nav-list>
   `,
   styleUrls: ['./nav.component.css']
