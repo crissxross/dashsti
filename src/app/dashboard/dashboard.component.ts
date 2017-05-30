@@ -40,7 +40,7 @@ import * as fromRoot from '../reducers';
             (Dominance)="changeD($event)"
             ></app-uicontrols>
             <div class="ui-section">
-              <button md-raised-button (click)="toggleBG()">toggle bg</button>
+              <button md-raised-button (click)="toggleBG()">Toggle bg</button>
               <small class="muted section">specific emotional states</small>
               <md-button-toggle-group vertical>
                 <md-button-toggle (click)="anger()">anger</md-button-toggle>
@@ -74,10 +74,10 @@ import * as fromRoot from '../reducers';
           </tr>
         </table>
         </div>
-        <div class="section">
+        <!--<div class="section">
           <p><button md-button (click)="resetPAD()">Reset PAD</button></p>
           <small class="muted">(does not reset UI sliders)</small>
-        </div>
+        </div>-->
       </div>
 
     </div>
