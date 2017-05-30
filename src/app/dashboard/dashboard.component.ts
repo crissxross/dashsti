@@ -38,6 +38,7 @@ import * as fromRoot from '../reducers';
             (Pleasure)="changeP($event)"
             (Arousal)="changeA($event)"
             (Dominance)="changeD($event)"
+            [show]="showSliders"
             ></app-uicontrols>
             <div class="ui-section">
               <button md-raised-button (click)="toggleBG()">Toggle bg</button>
@@ -74,10 +75,6 @@ import * as fromRoot from '../reducers';
           </tr>
         </table>
         </div>
-        <!--<div class="section">
-          <p><button md-button (click)="resetPAD()">Reset PAD</button></p>
-          <small class="muted">(does not reset UI sliders)</small>
-        </div>-->
       </div>
 
     </div>
@@ -91,6 +88,7 @@ export class DashboardComponent implements OnInit {
   bg = '#303030'; // matches main bg color
   BGCOLORS = ['hsla(0, 80%, 50%, 0.1)', 'hsla(137, 80%, 50%, 0.1)', '#303030'];
   navIds = ['1', '2', '3'];
+  showSliders = true;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -98,8 +96,7 @@ export class DashboardComponent implements OnInit {
     this.dValue$ = store.select(state => state.pad.D);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeP(event) {
     this.store.dispatch(new PadActions.ChangeP(event));
@@ -112,9 +109,14 @@ export class DashboardComponent implements OnInit {
   changeD(event) {
     this.store.dispatch(new PadActions.ChangeD(event));
   }
-  // Note: this does not reset UI slider controls
+  /**
+   * Note: show/hide & reset UI slider controls functionality
+   * does not keep all UI perfectly in sync but it will suffice.
+   */
   resetPAD() {
     this.store.dispatch(new PadActions.Reset());
+    this.showSliders = !this.showSliders;
+    // this.showSliders = true;
   }
   // Toggles background-color of actorviz-container
   toggleBG() {
@@ -126,30 +128,35 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch(new PadActions.ChangeP(-1));
     this.store.dispatch(new PadActions.ChangeA(1));
     this.store.dispatch(new PadActions.ChangeD(1));
+    this.showSliders = false;
   }
 
   fear() {
     this.store.dispatch(new PadActions.ChangeP(-1));
     this.store.dispatch(new PadActions.ChangeA(1));
     this.store.dispatch(new PadActions.ChangeD(-1));
+    this.showSliders = false;
   }
 
   joy() {
     this.store.dispatch(new PadActions.ChangeP(1));
     this.store.dispatch(new PadActions.ChangeA(1));
     this.store.dispatch(new PadActions.ChangeD(0.2));
+    this.showSliders = false;
   }
 
   relaxed() {
     this.store.dispatch(new PadActions.ChangeP(0.8));
     this.store.dispatch(new PadActions.ChangeA(-0.2));
     this.store.dispatch(new PadActions.ChangeD(-0.5));
+    this.showSliders = false;
   }
 
   anxious() {
     this.store.dispatch(new PadActions.ChangeP(-0.2));
     this.store.dispatch(new PadActions.ChangeA(0.8));
     this.store.dispatch(new PadActions.ChangeD(-0.2));
+    this.showSliders = false;
   }
 
 }

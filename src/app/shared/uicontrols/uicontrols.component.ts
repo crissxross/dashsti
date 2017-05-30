@@ -7,13 +7,9 @@ import * as fromRoot from '../../reducers';
 @Component({
   selector: 'app-uicontrols',
   template: `
-      <!--
-    <div>Dashboard UI controls</div>
-    <br>
-      -->
-      <button md-raised-button (click)="showAndReset()">
-        {{show ? 'Reset & hide sliders' : 'Show PAD sliders'}}
-      </button>
+    <button md-raised-button (click)="showAndReset()">
+      {{show ? 'Reset & hide sliders' : 'Show PAD sliders'}}
+    </button>
     <div class="pad-slider-container" *ngIf="show">
       <div>P
         <md-slider #P min=-1 max=1 value=0 step=0.1 tickInterval=1
@@ -33,9 +29,7 @@ import * as fromRoot from '../../reducers';
         ></md-slider>
         {{D.value | number}}
       </div>
-
     </div>
-    <!--<small>show = {{show}}</small>-->
   `,
   styleUrls: ['./uicontrols.component.css']
 })
@@ -43,8 +37,7 @@ export class UicontrolsComponent {
   @Output() Pleasure = new EventEmitter();
   @Output() Arousal = new EventEmitter();
   @Output() Dominance = new EventEmitter();
-  // value = 0;
-  show = true;
+  @Input() show: boolean;
 
   constructor(private store: Store<fromRoot.State>) {}
 
@@ -64,8 +57,8 @@ export class UicontrolsComponent {
     this.show = !this.show;
     this.store.dispatch(new PadActions.Reset());
   }
-
 }
-// NOTE -USE SHOW/HIDE BUTTON TO RESET PAD VALUES TO TRY TO KEEP ALL IN SYNC!!!
-  // Reset button/function does not reset UI md-sliders.
-  // If I want to reset, might need to use ng Form controls ??
+/**
+ * Note: show/hide & reset UI slider controls functionality
+ * does not keep all UI perfectly in sync but it will suffice.
+ */
