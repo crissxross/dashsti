@@ -6,7 +6,9 @@ import 'rxjs/add/operator/map';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax } from 'gsap';
+import { TweenMax, TimelineMax, Power0 } from 'gsap';
+import * as CustomEase from 'gsap/CustomEase';
+import * as CustomWiggle from 'gsap/CustomWiggle';
 
 @Component({
   selector: 'app-emoviz3',
@@ -64,10 +66,13 @@ export class Emoviz3Component implements OnInit, OnDestroy {
     // I might have to change to an array (or object map) of hex colours
     // like Material Design uses
 
+    CustomWiggle.create('wiggle', { wiggles: 5 });
+    TweenMax.to(trianEl, 4, {x: 250, ease: 'wiggle' });
+
 // P
     this.pProgressSub = this.pValue$
-      // .map(v => ((v + 1) / 2) * 50)
-      .map(v => (v + 1) * 50)
+      // returns a positive integer in steps of 5 from 0 to 100
+      .map(v => Math.round((v + 1) * 50))
       .subscribe(v => {
         console.log('P v: ', v);
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 1, {
@@ -75,11 +80,18 @@ export class Emoviz3Component implements OnInit, OnDestroy {
          }, 0.1);
       });
 
-// A <- TO DO
+// A
     this.aProgressSub = this.aValue$
-      .map(v => (v + 1.1) * 1.5)
+      // returns a positive integer from 0 to 20
+      .map(v => Math.round((v + 1) * 10))
       .subscribe(v => {
         console.log('A v: ', v);
+        CustomWiggle.create('wiggle', { wiggles: v, type: 'easeInOut' });
+        TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, {
+          x: `+=${v}`, y: `+=${v}`,
+          rotation: `+=${v}`, transformOrigin: '50% 50%',
+          ease: 'wiggle', repeat: -1
+        }, 0.05);
       });
 
 // D

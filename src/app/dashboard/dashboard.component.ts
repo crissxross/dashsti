@@ -42,14 +42,14 @@ import * as fromRoot from '../reducers';
             ></app-uicontrols>
             <div class="ui-section">
               <button md-raised-button (click)="toggleBG()">Toggle bg</button>
-              <small class="muted section">specific emotional states</small>
+              <small class="muted section">Specific emotional states</small>
               <md-button-toggle-group vertical>
-                <md-button-toggle (click)="anger()">anger</md-button-toggle>
-                <md-button-toggle (click)="fear()">fear</md-button-toggle>
-                <md-button-toggle (click)="joy()" >joy</md-button-toggle>
-                <md-button-toggle (click)="relaxed()">relaxed</md-button-toggle>
-                <md-button-toggle (click)="anxious()">anxious</md-button-toggle>
-                <md-button-toggle (click)="resetPAD()">reset to 0</md-button-toggle>
+                <md-button-toggle (click)="anger()">Anger</md-button-toggle>
+                <md-button-toggle (click)="fear()">Fear</md-button-toggle>
+                <md-button-toggle (click)="joy()" >Joy</md-button-toggle>
+                <md-button-toggle (click)="relaxed()">Relaxed</md-button-toggle>
+                <md-button-toggle (click)="anxious()">Anxious</md-button-toggle>
+                <md-button-toggle (click)="resetPAD()">Reset to 0</md-button-toggle>
               </md-button-toggle-group>
             </div>
           </div>

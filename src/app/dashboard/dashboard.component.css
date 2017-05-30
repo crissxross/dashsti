@@ -77,4 +77,6 @@ table {
 
 td {
   padding: 5px 5px 5px 0;
+  font-size: 0.95em;
+  letter-spacing: 0.05em;
 }
