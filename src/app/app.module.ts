@@ -19,6 +19,7 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
 
 
 import { AppRoutingModule } from './app-routing.module';
+import { HanColorsComponent } from './han-colors/han-colors.component';
 // import { AppRoutingModule, routableComponents } from './app-routing.module';
 
 
@@ -27,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     NavComponent,
     DashSceneComponent,
+    HanColorsComponent,
   ],
   imports: [
     BrowserModule,
