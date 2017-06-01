@@ -1,0 +1,42 @@
+.dashboard {
+  display: flex;
+  height: 100%;
+  border: solid 1px blue;
+}
+
+.main-content-container {
+  display: flex;
+  justify-content: center;
+  flex: 3;
+  border: solid 1px red;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 500px;
+  border: dashed 1px lightgreen;
+}
+
+.sidepanel-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  /*line-height: 2em;*/
+  border: solid 1px grey;
+}
+
+.section {
+  margin: 10px 0;
+ /*padding: 10px 0;*/
+}
+
+button {
+  margin: 5px;
+}
+
+.muted {
+  color: silver;
+}

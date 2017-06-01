@@ -12,6 +12,7 @@ import { reducers } from './reducers';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SceneModule } from './scene/scene.module';
+import { ColPalettesModule } from './col-palettes/col-palettes.module';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -19,7 +20,6 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { HanColorsComponent } from './han-colors/han-colors.component';
 // import { AppRoutingModule, routableComponents } from './app-routing.module';
 
 
@@ -28,7 +28,7 @@ import { HanColorsComponent } from './han-colors/han-colors.component';
     AppComponent,
     NavComponent,
     DashSceneComponent,
-    HanColorsComponent,
+    // HanColorsComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +39,7 @@ import { HanColorsComponent } from './han-colors/han-colors.component';
     // FlexLayoutModule,
     DashboardModule,
     SceneModule,
+    ColPalettesModule,
     StoreModule.provideStore(reducers),
     AppRoutingModule
   ],
