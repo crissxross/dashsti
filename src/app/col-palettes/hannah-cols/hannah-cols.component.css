@@ -1,28 +1,4 @@
-/*:host {
-  flex: 1;
+rect {
+  width: 100px;
+  height: 25px;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  background-color:grey;
-  border: dashed 1px wheat;
-}
-
-svg {
-  flex: auto;
-}
-
-.muted {
-  color: #999;
-}
-
-.small {
-  font-size: .8em;
-}
-
-.right {
-  text-align: right;
-}*/
