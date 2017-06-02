@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <md-nav-list>
       <a md-list-item [routerLink]="['/dashboard']">Dashboard</a>
-      <a md-list-item [routerLink]="['/dash-scene']">Dash: scene layout</a>
       <a md-list-item [routerLink]="['/col-palettes']">Colour palettes</a>
+      <a md-list-item [routerLink]="['/dash-scene']">Dash: scene layout</a>
     </md-nav-list>
   `,
   styleUrls: ['./nav.component.css']

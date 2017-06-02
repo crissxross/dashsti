@@ -1,37 +1,17 @@
 
-.dashboard {
-  display: flex;
-  height: 100%;
-  border: solid 1px blue;
-}
-
-.main-content-container {
-  display: flex;
-  justify-content: center;
-  flex: 3;
-  border: solid 1px red;
-}
-
-.main-content {
+.content-container {
   display: flex;
   flex-direction: column;
-  min-width: 400px;
-  max-width: 500px;
-  border: dashed 1px lightgreen;
+  /*border: solid 1px black;*/
 }
 
-.sidepanel-container {
+.palettes-container {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 10px;
-  /*line-height: 2em;*/
-  border: solid 1px grey;
+  /*border: dashed 1px lightgreen;*/
 }
 
-.section {
+section {
   margin: 10px 0;
- /*padding: 10px 0;*/
 }
 
 button {
@@ -39,10 +19,14 @@ button {
 }
 
 .muted {
-  color: silver;
+  color: #999;
 }
 
-/* ---- Styles copied from/based on Material Design Color Palettes web page */
+.small {
+  font-size: .8em;
+}
+
+/* ---- Styles based on/copied from Material Design Color Palettes web page */
 
 .color-group {
     padding-right: 0;
@@ -52,6 +36,9 @@ button {
 
 li.group-label {
     border-bottom: 4px solid #303030;
+    height: 60px;
+    color: silver;
+    font-size:.9em;
 }
 
 li.color {
@@ -73,37 +60,3 @@ li.divide {
     border-top: 4px solid #303030;
 }
 
-
-/* ---------------------------- */
-
-.ui-container {
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
-  padding: 20px 10px 10px;
-  /*border: 1px dashed black;*/
-}
-
-.ui-section {
-  display: flex;
-  flex-direction: column;
-  /*border: solid 1px lightslategray;*/
-}
-
-/*.mat-nav-list .mat-list-item {
-  color: grey;
-}
-
-.mat-nav-list .mat-list-item.active, .active {
-  color: white;
-}
-
-table {
-  margin: 10px 0;
-}
-
-td {
-  padding: 5px 5px 5px 0;
-  font-size: 0.95em;
-  letter-spacing: 0.05em;
-}*/
