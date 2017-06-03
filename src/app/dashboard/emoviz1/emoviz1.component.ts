@@ -35,6 +35,15 @@ import * as fromRoot from '../../reducers';
           [attr.opacity]="dOpacity$ | async"/>
       </svg>
 
+      <div class="notes">Notes<br>
+        Same as bar chart except:
+        <ul>
+          <li>{{pNote}}</li>
+          <li>{{aNote}}</li>
+          <li>{{dNote}}</li>
+        </ul>
+      </div>
+
     </div>
   `,
   styleUrls: ['../emoviz.css', './emoviz1.component.css']
@@ -68,6 +77,9 @@ export class Emoviz1Component implements OnInit {
   pFill = 'hsl(0, 70%, 50%)';
   aFill = 'hsl(0, 50%, 80%)';
   dFill = 'hsl(0, 40%, 45%)';
+  pNote: string;
+  aNote: string;
+  dNote: string;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -76,7 +88,9 @@ export class Emoviz1Component implements OnInit {
    }
 
   ngOnInit() {
-      // roughly centred the rects within the svg space
+    this.pNote = 'P: opacity varies saturation';
+    this.aNote = 'A: opacity varies lightness';
+    this.dNote = 'D: width varies';
 
 // P
     this.pX$ = this.pValue$.map(v => (v >= 0) ? 60 + v : 60); // minimal change
@@ -104,6 +118,7 @@ export class Emoviz1Component implements OnInit {
     this.dOpacity$ = this.dValue$.map(v => (v > 0) ? 0.8 + (v / 10) : 0.8 - (Math.abs(v) / 10)); // minimal change
     // this.dFill$ = this.dValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
 
+    // Note: roughly centred the rects above within the svg space
   }
 
 }

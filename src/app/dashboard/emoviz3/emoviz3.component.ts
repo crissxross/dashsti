@@ -24,6 +24,13 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
             points="35.5 1 0.9 61 70.1 61 35.5 1"/>
         </svg:g>
       </svg>
+      <div class="notes">Notes<br>
+        <ul>
+          <li>{{pNote}}</li>
+          <li>{{aNote}}</li>
+          <li>{{dNote}}</li>
+        </ul>
+      </div>
     </div>
   `,
   styleUrls: ['../emoviz.css', './emoviz3.component.css']
@@ -37,9 +44,12 @@ export class Emoviz3Component implements OnInit, OnDestroy {
   pValue$: Observable<number>;
   aValue$: Observable<number>;
   dValue$: Observable<number>;
-  pProgressSub: Subscription;
-  aProgressSub: Subscription;
-  dProgressSub: Subscription;
+  pProgress: Subscription;
+  aProgress: Subscription;
+  dProgress: Subscription;
+  pNote: string;
+  aNote: string;
+  dNote: string;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -70,7 +80,7 @@ export class Emoviz3Component implements OnInit, OnDestroy {
     TweenMax.to(trianEl, 4, {x: 250, ease: 'wiggle' });
 
 // P
-    this.pProgressSub = this.pValue$
+    this.pProgress = this.pValue$
       // returns a positive integer in steps of 5 from 0 to 100
       .map(v => Math.round((v + 1) * 50))
       .subscribe(v => {
@@ -81,7 +91,7 @@ export class Emoviz3Component implements OnInit, OnDestroy {
       });
 
 // A
-    this.aProgressSub = this.aValue$
+    this.aProgress = this.aValue$
       // returns a positive integer from 0 to 20
       .map(v => Math.round((v + 1) * 10))
       .subscribe(v => {
@@ -95,7 +105,7 @@ export class Emoviz3Component implements OnInit, OnDestroy {
       });
 
 // D
-    this.dProgressSub = this.dValue$
+    this.dProgress = this.dValue$
       // .map(v => ((v + 1) / 2) * 2)
       .map(v => (v + 1.1) * 1.5)
       .subscribe(v => {
@@ -103,12 +113,17 @@ export class Emoviz3Component implements OnInit, OnDestroy {
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);
       });
 
+    // NOTES
+    this.pNote = 'P: hsl saturation varies';
+    this.aNote = 'A: various CustomWiggle properties';
+    this.dNote = 'D: scale varies';
+
   }
 
   ngOnDestroy() {
-    this.pProgressSub.unsubscribe();
-    this.aProgressSub.unsubscribe();
-    this.dProgressSub.unsubscribe();
+    this.pProgress.unsubscribe();
+    this.aProgress.unsubscribe();
+    this.dProgress.unsubscribe();
   }
 
 }

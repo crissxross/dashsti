@@ -31,6 +31,15 @@ import { TweenMax, TimelineMax } from 'gsap';
         </svg:g>
 
       </svg>
+
+        <div class="notes">Notes<br>
+          <ul>
+            <li>{{pNote}}</li>
+            <li>{{aNote}}</li>
+            <li>{{dNote}}</li>
+          </ul>
+        </div>
+
     </div>
   `,
   styleUrls: ['../emoviz.css', './emoviz2.component.css']
@@ -47,6 +56,9 @@ export class Emoviz2Component implements OnInit, OnDestroy {
   pProgressSub: Subscription;
   aProgressSub: Subscription;
   dProgressSub: Subscription;
+  pNote: string;
+  aNote: string;
+  dNote: string;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -118,6 +130,11 @@ export class Emoviz2Component implements OnInit, OnDestroy {
         // console.log('d v: ', v);
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);
       });
+
+// NOTES
+    this.pNote = 'P: jump to timeline position';
+    this.aNote = 'A: jump to timeline position';
+    this.dNote = 'D: jump to timeline position';
 
   }
 
