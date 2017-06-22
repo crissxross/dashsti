@@ -34,21 +34,26 @@ import * as fromRoot from '../reducers';
           </div>
 
           <div class="ui-container">
-            <app-uicontrols
-            (Pleasure)="changeP($event)"
-            (Arousal)="changeA($event)"
-            (Dominance)="changeD($event)"
-            [show]="showSliders"
-            ></app-uicontrols>
             <div class="ui-section">
+              <app-uicontrols
+              (Pleasure)="changeP($event)"
+              (Arousal)="changeA($event)"
+              (Dominance)="changeD($event)"
+              [show]="showSliders"
+              ></app-uicontrols>
               <button md-raised-button (click)="toggleBG()">Toggle bg</button>
-              <small class="muted section">Specific emotional states</small>
+            </div>
+            <div class="ui-section">
+              <!--<small class="muted section">Specific emotional states</small>-->
               <md-button-toggle-group vertical>
-                <md-button-toggle (click)="anger()">Anger</md-button-toggle>
-                <md-button-toggle (click)="fear()">Fear</md-button-toggle>
-                <md-button-toggle (click)="joy()" >Joy</md-button-toggle>
-                <md-button-toggle (click)="relaxed()">Relaxed</md-button-toggle>
-                <md-button-toggle (click)="anxious()">Anxious</md-button-toggle>
+                <md-button-toggle (click)="angry()">Angry -++</md-button-toggle>
+                <md-button-toggle (click)="fear()">Fearful -+-</md-button-toggle>
+                <md-button-toggle (click)="comfortable()">Comfortable +-+</md-button-toggle>
+                <md-button-toggle (click)="elated()" >Elated +++</md-button-toggle>
+                <md-button-toggle (click)="bored()">Bored ---</md-button-toggle>
+                <md-button-toggle (click)="impressed()">Impressed ++-</md-button-toggle>
+                <md-button-toggle (click)="uncaring()">Uncaring --+</md-button-toggle>
+                <md-button-toggle (click)="sleepy()">( sleepy +-- )</md-button-toggle>
                 <md-button-toggle (click)="resetPAD()">Reset to 0</md-button-toggle>
               </md-button-toggle-group>
             </div>
@@ -86,7 +91,7 @@ export class DashboardComponent implements OnInit {
   aValue$: Observable<number>;
   dValue$: Observable<number>;
   bg = '#303030'; // matches main bg color
-  BGCOLORS = ['hsla(0, 80%, 50%, 0.1)', 'hsla(137, 80%, 50%, 0.1)', '#303030'];
+  BGCOLORS = ['hsl(0, 30%, 10%)', 'hsl(137, 20%, 10%)', '#303030'];
   navIds = ['1', '2', '3'];
   showSliders = true;
 
@@ -124,38 +129,59 @@ export class DashboardComponent implements OnInit {
     this.bg = this.BGCOLORS[next];
   }
 
-  anger() {
-    this.store.dispatch(new PadActions.ChangeP(-1));
-    this.store.dispatch(new PadActions.ChangeA(1));
-    this.store.dispatch(new PadActions.ChangeD(1));
+  angry() {
+    this.store.dispatch(new PadActions.ChangeP(-0.51));
+    this.store.dispatch(new PadActions.ChangeA(0.59));
+    this.store.dispatch(new PadActions.ChangeD(0.25));
     this.showSliders = false;
   }
 
   fear() {
-    this.store.dispatch(new PadActions.ChangeP(-1));
-    this.store.dispatch(new PadActions.ChangeA(1));
-    this.store.dispatch(new PadActions.ChangeD(-1));
+    this.store.dispatch(new PadActions.ChangeP(-0.64));
+    this.store.dispatch(new PadActions.ChangeA(0.6));
+    this.store.dispatch(new PadActions.ChangeD(-0.43));
     this.showSliders = false;
   }
 
-  joy() {
-    this.store.dispatch(new PadActions.ChangeP(1));
-    this.store.dispatch(new PadActions.ChangeA(1));
-    this.store.dispatch(new PadActions.ChangeD(0.2));
+  comfortable() {
+    this.store.dispatch(new PadActions.ChangeP(0.85));
+    this.store.dispatch(new PadActions.ChangeA(-0.19));
+    this.store.dispatch(new PadActions.ChangeD(0.13));
     this.showSliders = false;
   }
 
-  relaxed() {
-    this.store.dispatch(new PadActions.ChangeP(0.8));
-    this.store.dispatch(new PadActions.ChangeA(-0.2));
-    this.store.dispatch(new PadActions.ChangeD(-0.5));
+  elated() {
+    this.store.dispatch(new PadActions.ChangeP(0.5));
+    this.store.dispatch(new PadActions.ChangeA(0.42));
+    this.store.dispatch(new PadActions.ChangeD(0.23));
     this.showSliders = false;
   }
 
-  anxious() {
-    this.store.dispatch(new PadActions.ChangeP(-0.2));
-    this.store.dispatch(new PadActions.ChangeA(0.8));
-    this.store.dispatch(new PadActions.ChangeD(-0.2));
+    bored() {
+    this.store.dispatch(new PadActions.ChangeP(-0.65));
+    this.store.dispatch(new PadActions.ChangeA(-0.62));
+    this.store.dispatch(new PadActions.ChangeD(-0.33));
+    this.showSliders = false;
+    }
+
+    impressed() {
+    this.store.dispatch(new PadActions.ChangeP(0.41));
+    this.store.dispatch(new PadActions.ChangeA(0.30));
+    this.store.dispatch(new PadActions.ChangeD(-0.32));
+    this.showSliders = false;
+    }
+
+  uncaring() {
+    this.store.dispatch(new PadActions.ChangeP(-0.32));
+    this.store.dispatch(new PadActions.ChangeA(-0.12));
+    this.store.dispatch(new PadActions.ChangeD(0.28));
+    this.showSliders = false;
+  }
+
+  sleepy() {
+    this.store.dispatch(new PadActions.ChangeP(0.2));
+    this.store.dispatch(new PadActions.ChangeA(-0.7));
+    this.store.dispatch(new PadActions.ChangeD(-0.44));
     this.showSliders = false;
   }
 
