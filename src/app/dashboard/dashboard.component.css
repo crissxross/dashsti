@@ -27,6 +27,18 @@
   /*border: 2px dashed pink;*/
 }
 
+.actor-speaks {
+  position: absolute;
+  top: 42%;
+  width: 400px;
+  padding: 10px;
+  color:#D9E6DC;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 18px;
+}
+
 .ui-container {
   display: flex;
   justify-content: space-between;
@@ -79,4 +91,14 @@ td {
   padding: 5px 5px 5px 0;
   font-size: 0.95em;
   letter-spacing: 0.05em;
+}
+
+.citations {
+  margin-top: auto;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.citations, a {
+  color: grey;
 }

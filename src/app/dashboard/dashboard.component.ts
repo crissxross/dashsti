@@ -31,6 +31,11 @@ import * as fromRoot from '../reducers';
 
             <router-outlet></router-outlet>
 
+            <div *ngIf="showText" class="actor-speaks">
+              This is roughly where the NPC actor speaks.
+              The font and style of this placeholder text are temporary. The character's speech will animate in and animate out.
+            </div>
+
           </div>
 
           <div class="ui-container">
@@ -41,10 +46,9 @@ import * as fromRoot from '../reducers';
               (Dominance)="changeD($event)"
               [show]="showSliders"
               ></app-uicontrols>
-              <button md-raised-button (click)="toggleBG()">Toggle bg</button>
             </div>
             <div class="ui-section">
-              <!--<small class="muted section">Specific emotional states</small>-->
+              <!-- Specific emotional states -->
               <md-button-toggle-group vertical>
                 <md-button-toggle (click)="angry()">Angry -++</md-button-toggle>
                 <md-button-toggle (click)="fear()">Fearful -+-</md-button-toggle>
@@ -80,6 +84,16 @@ import * as fromRoot from '../reducers';
           </tr>
         </table>
         </div>
+        <button md-raised-button (click)="toggleBG()">Toggle bg</button>
+        <button md-raised-button (click)="toggleText()">Toggle text</button>
+        <p class="citations">Specific emotional state PAD ratings from:
+          <cite>
+            <a href="http://psycnet.apa.org/journals/xge/123/4/394/">
+            Valdez and Mehrabian, 1994</a>;
+            <a href="http://www.kaaj.com/psych/scales/emotion.html">
+            Mehrabian, 2010</a>
+          </cite>.
+        </p>
       </div>
 
     </div>
@@ -94,6 +108,7 @@ export class DashboardComponent implements OnInit {
   BGCOLORS = ['hsl(0, 30%, 10%)', 'hsl(137, 20%, 10%)', '#303030'];
   navIds = ['1', '2', '3'];
   showSliders = true;
+  showText = false;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -128,56 +143,59 @@ export class DashboardComponent implements OnInit {
     const next = (this.BGCOLORS.indexOf(this.bg) + 1) % this.BGCOLORS.length;
     this.bg = this.BGCOLORS[next];
   }
-
+  toggleText() {
+    this.showText = !this.showText;
+  }
+  // hostile PAD mood octant -++
   angry() {
     this.store.dispatch(new PadActions.ChangeP(-0.51));
     this.store.dispatch(new PadActions.ChangeA(0.59));
     this.store.dispatch(new PadActions.ChangeD(0.25));
     this.showSliders = false;
   }
-
+  // anxious PAD mood octant -+-
   fear() {
     this.store.dispatch(new PadActions.ChangeP(-0.64));
     this.store.dispatch(new PadActions.ChangeA(0.6));
     this.store.dispatch(new PadActions.ChangeD(-0.43));
     this.showSliders = false;
   }
-
+  // relaxed PAD mood octant +-+
   comfortable() {
     this.store.dispatch(new PadActions.ChangeP(0.85));
     this.store.dispatch(new PadActions.ChangeA(-0.19));
     this.store.dispatch(new PadActions.ChangeD(0.13));
     this.showSliders = false;
   }
-
+  // exuberant PAD mood octant +++
   elated() {
     this.store.dispatch(new PadActions.ChangeP(0.5));
     this.store.dispatch(new PadActions.ChangeA(0.42));
     this.store.dispatch(new PadActions.ChangeD(0.23));
     this.showSliders = false;
   }
-
+  // bored PAD mood octant ---
     bored() {
     this.store.dispatch(new PadActions.ChangeP(-0.65));
     this.store.dispatch(new PadActions.ChangeA(-0.62));
     this.store.dispatch(new PadActions.ChangeD(-0.33));
     this.showSliders = false;
     }
-
+  // dependent PAD mood octant ++-
     impressed() {
     this.store.dispatch(new PadActions.ChangeP(0.41));
     this.store.dispatch(new PadActions.ChangeA(0.30));
     this.store.dispatch(new PadActions.ChangeD(-0.32));
     this.showSliders = false;
     }
-
+  // disdainful PAD mood octant --+
   uncaring() {
     this.store.dispatch(new PadActions.ChangeP(-0.32));
     this.store.dispatch(new PadActions.ChangeA(-0.12));
     this.store.dispatch(new PadActions.ChangeD(0.28));
     this.showSliders = false;
   }
-
+  // docile PAD mood octant +--
   sleepy() {
     this.store.dispatch(new PadActions.ChangeP(0.2));
     this.store.dispatch(new PadActions.ChangeA(-0.7));

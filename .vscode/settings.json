@@ -1,4 +1,7 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "vsicons.presets.angular": true
+  "vsicons.presets.angular": true,
+
+  // Controls if the minimap is shown
+  "editor.minimap.enabled": false
 }
