@@ -7,3 +7,7 @@ rect {
     height 300ms,
     fill 300ms;
 }
+
+svg {
+  border: 1px solid black;
+}

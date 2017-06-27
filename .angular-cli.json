@@ -56,7 +56,7 @@
     "styleExt": "css",
     "component": {
       "spec": true,
-      "inlineTemplate": false
+      "inlineTemplate": true
     }
   }
 }

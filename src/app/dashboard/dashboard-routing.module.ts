@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { Emoviz1Component } from './emoviz1/emoviz1.component';
 import { Emoviz2Component } from './emoviz2/emoviz2.component';
 import { Emoviz3Component } from './emoviz3/emoviz3.component';
+import { Emoviz4Component } from './emoviz4/emoviz4.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
       },
       {
         path: 'emoviz3', component: Emoviz3Component
+      },
+      {
+        path: 'emoviz4', component: Emoviz4Component
       }
     ]
   },

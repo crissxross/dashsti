@@ -15,6 +15,7 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
   template: `
     <div class="viz-container">
       <svg>
+        <svg:rect #bg x="0" y="0" width="400" height="333" fill="#201818" />
         <svg:g id="polygroup">
           <svg:polygon #poly6 class="cls-1"
             points="60.5 52.5 30.5 69.9 0.5 52.5 0.5 17.9 30.5 0.6 60.5 17.9 60.5 52.5"/>
@@ -37,6 +38,7 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
 })
 export class Emoviz3Component implements OnInit, OnDestroy {
 // svg elements
+  @ViewChild('bg') bg: ElementRef;
   @ViewChild('poly6') poly6: ElementRef;
   @ViewChild('poly8') poly8: ElementRef;
   @ViewChild('triangle') triangle: ElementRef;
@@ -58,6 +60,7 @@ export class Emoviz3Component implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    const bg = this.bg.nativeElement;
     const poly6El = this.poly6.nativeElement;
     const poly8El = this.poly8.nativeElement;
     const trianEl = this.triangle.nativeElement;

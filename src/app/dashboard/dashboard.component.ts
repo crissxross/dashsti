@@ -84,8 +84,8 @@ import * as fromRoot from '../reducers';
           </tr>
         </table>
         </div>
-        <button md-raised-button (click)="toggleBG()">Toggle bg</button>
         <button md-raised-button (click)="toggleText()">Toggle text</button>
+        <button md-raised-button (click)="toggleBG()">Toggle bg</button>
         <p class="citations">Specific emotional state PAD ratings from:
           <cite>
             <a href="http://psycnet.apa.org/journals/xge/123/4/394/">
@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit {
   dValue$: Observable<number>;
   bg = '#303030'; // matches main bg color
   BGCOLORS = ['hsl(0, 30%, 10%)', 'hsl(137, 20%, 10%)', '#303030'];
-  navIds = ['1', '2', '3'];
+  navIds = ['1', '2', '3', '4'];
   showSliders = true;
   showText = false;
 

@@ -1,21 +1,19 @@
-/* originally COPIED from actorviz */
-
-rect {
-  transition:
-    x 300ms,
-    y 300ms,
-    width 300ms,
-    height 300ms,
-    fill 300ms;
+.bg {
+  fill: #101f13;
 }
 
-text {
-  fill: grey;
+/*.cls-1 {
+  fill: #364d3d;
 }
 
-/* polygon styles - adapted from Illustrator */
-.cls-1 {
-        fill: hsla(0, 100%, 100%, 0.5);
-        stroke: #fff;
-        stroke-miterlimit: 10;
-      }
+.cls-2 {
+  fill: #803333;
+}
+
+.cls-3 {
+  fill: #1b261e;
+}
+
+.cls-1, .cls-2, .cls-3 {
+  opacity: 0.5;
+}*/

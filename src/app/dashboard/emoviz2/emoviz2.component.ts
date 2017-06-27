@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
@@ -6,56 +6,51 @@ import 'rxjs/add/operator/map';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax } from 'gsap';
+import { TweenMax, TimelineMax, Power0 } from 'gsap';
 
 @Component({
   selector: 'app-emoviz2',
   template: `
     <div class="viz-container">
-
       <svg>
-        <!--<text x="20" y="30">emoviz2 SVG text</text>
-        <text x="20" y="60">
-          P: {{pValue$ | async | number}} |
-          A: {{aValue$ | async | number}} |
-          D: {{dValue$ | async | number}} |
-        </text>-->
-
-        <svg:g id="polygroup">
-          <svg:polygon #poly6 class="cls-1"
-            points="60.5 52.5 30.5 69.9 0.5 52.5 0.5 17.9 30.5 0.6 60.5 17.9 60.5 52.5"/>
-          <svg:polygon #poly8 class="cls-1"
-            points="42.9 0.5 18.1 0.5 0.5 18.1 0.5 42.9 18.1 60.5 42.9 60.5 60.5 42.9 60.5 18.1 42.9 0.5"/>
-          <polygon #triangle class="cls-1"
-            points="35.5 1 0.9 61 70.1 61 35.5 1"/>
-        </svg:g>
-
+        <svg:rect #bg class="bg" width="400" height="333"/>
+        <svg:ellipse #gP cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #gA cx="140" cy="90" rx="100" ry="80"/>
+        <svg:ellipse #gD cx="180" cy="100" rx="100" ry="80"/>
+        <svg:ellipse #rP cx="220" cy="100" rx="100" ry="80"/>
+        <svg:ellipse #rA cx="260" cy="90" rx="100" ry="80"/>
+        <svg:ellipse #rD cx="300" cy="80" rx="100" ry="80"/>
+        <!-- NOTE: transforms & opacity are the most performant things to animate
+        GSAP shorthand for the transform properties: x, y, z, scale, rotation -->
       </svg>
-
-        <div class="notes">Notes<br>
-          <ul>
-            <li>{{pNote}}</li>
-            <li>{{aNote}}</li>
-            <li>{{dNote}}</li>
-          </ul>
-        </div>
-
+      <div class="notes">Notes<br>
+        <ul>
+          <li>{{pNote}}</li>
+          <li>{{aNote}}</li>
+          <li>{{dNote}}</li>
+        </ul>
+      </div>
     </div>
   `,
   styleUrls: ['../emoviz.css', './emoviz2.component.css']
 })
 export class Emoviz2Component implements OnInit, OnDestroy {
 // svg elements
-  @ViewChild('poly6') poly6: ElementRef;
-  @ViewChild('poly8') poly8: ElementRef;
-  @ViewChild('triangle') triangle: ElementRef;
+  @ViewChild('bg') bg: ElementRef;
+  @ViewChild('gP') gP: ElementRef;
+  @ViewChild('gA') gA: ElementRef;
+  @ViewChild('gD') gD: ElementRef;
+  @ViewChild('rP') rP: ElementRef;
+  @ViewChild('rA') rA: ElementRef;
+  @ViewChild('rD') rD: ElementRef;
 // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;
   dValue$: Observable<number>;
-  pProgressSub: Subscription;
-  aProgressSub: Subscription;
-  dProgressSub: Subscription;
+  pProgress: Subscription;
+  aProgress: Subscription;
+  dProgress: Subscription;
+// notes
   pNote: string;
   aNote: string;
   dNote: string;
@@ -67,81 +62,68 @@ export class Emoviz2Component implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    const poly6El = this.poly6.nativeElement;
-    const poly8El = this.poly8.nativeElement;
-    const trianEl = this.triangle.nativeElement;
-    // approximately centred in a group
-    TweenMax.set(poly6El, { x: 60, y: 114 });
-    TweenMax.set(poly8El, { x: 168, y: 119 });
-    TweenMax.set(trianEl, { x: 267, y: 118 });
+    const bg = this.bg.nativeElement;
+    const gP = this.gP.nativeElement;
+    const gA = this.gA.nativeElement;
+    const gD = this.gD.nativeElement;
+    const rP = this.rP.nativeElement;
+    const rA = this.rA.nativeElement;
+    const rD = this.rD.nativeElement;
+    // set default PAD 000 values of SVG elements to animate
+    TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
+    TweenMax.set(gP, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5 });
+    TweenMax.set(gA, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5 });
+    TweenMax.set(gD, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5 });
+    TweenMax.set(rP, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5 });
+    TweenMax.set(rA, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5 });
+    TweenMax.set(rD, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5 });
 
-// ? Would it be better to map PAD values to timeline labels?
-  // Then I could use tl.pause(PADvalue);
-  // see: https://greensock.com/docs/#/HTML5/GSAP/TimelineMax/pause/
-
-// P
-    const pTl = new TimelineMax({ paused: true });
-
-    this.pProgressSub = this.pValue$
-      // map bipolar scale to unipolar of only positive values
-      .map(v => (v + 1) / 2)
+//  P: brightness & saturation
+    this.pProgress = this.pValue$
+      // returns a positive integer in steps of 5 from 0 to 100
+      .map(v => Math.round((v + 1) * 50))
       .subscribe(v => {
-      pTl.progress(v).play();
-      // console.log('pProgressSub v: ', v);
-      // console.log('tl.progress() ', tl.progress()); // initially returns NaN
-    });
-
-    // tl.progress(0).play();
-    pTl.to(poly6El, 2, { delay: 1, x: 200, y: 20 });
-    pTl.to(poly8El, 3, { x: 240, y: 200 }, '-=1');
-    pTl.to(trianEl, 2, { x: 40, y: 70 }, '-=1');
-    pTl.to(poly6El, 2, { rotation: 360, transformOrigin: '50% 50%' });
-    pTl.to(poly8El, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
-    pTl.to(trianEl, 2, { rotation: 360, transformOrigin: '50% 50%' }, '-=1');
-    pTl.to(poly6El, 2, { x: 60, y: 114 });
-    pTl.to(poly8El, 2, { x: 60, y: 114 }, '-=1');
-    pTl.to(trianEl, 2, { x: 60, y: 118 }, '-=1');
-    pTl.to(poly6El, 2, { x: 267, y: 114 });
-    pTl.to(poly8El, 2, { x: 168, y: 119 }, '-=1');
-
-// A
-    const aTl = new TimelineMax({ paused: true });
-
-    this.aProgressSub = this.aValue$
-      .map(v => (v + 1) / 2)
-      .subscribe(v => {
-        aTl.progress(v).play();
-        // console.log('a v: ', v);
+        console.log('P v: ', v);
+        TweenMax.to(gP, 0.5, { fill: `hsl(137, ${v}%, ${v}%)` });
+        TweenMax.to(rP, 0.5, { fill: `hsl(0, ${v}%, ${v}%)` });
       });
 
-    // aTl.progress(0).play();
-    aTl.to(poly6El, 3, { fill: 'green', opacity: 0.5 });
-    aTl.to(poly8El, 3, { fill: 'green', opacity: 0.3 });
-    aTl.to(trianEl, 3, { fill: 'green', opacity: 0.2 });
-    aTl.to(poly6El, 3, { fill: 'red', opacity: 0.3 });
-    aTl.to(poly8El, 3, { fill: 'red', opacity: 0.2 });
-    aTl.to(trianEl, 3, { fill: 'red', opacity: 0.5 });
-
-// D
-    this.dProgressSub = this.dValue$
-      // .map(v => ((v + 1) / 2) * 2)
-      .map(v => (v + 1.1) * 1.5)
+//  A: brightness & saturation ???
+    this.aProgress = this.aValue$
+      // returns a positive integer from 0 to 50
+      .map(v => Math.round((v + 1) * 25))
       .subscribe(v => {
-        // console.log('d v: ', v);
-        TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);
+        console.log('A v: ', v);
+        TweenMax.to(gA, 0.5, { fill: `hsl(137, ${v * 2}%, ${v}%)` });
+        TweenMax.to(rA, 0.5, { fill: `hsl(0, ${v * 2}%, ${v}%)` });
       });
 
-// NOTES
-    this.pNote = 'P: jump to timeline position';
-    this.aNote = 'A: jump to timeline position';
-    this.dNote = 'D: jump to timeline position';
+//  D: brightness & saturation ??? - needs to be inverse effect of P on brightness !!!
+    this.dProgress = this.dValue$
+      // returns a positive integer from 0 to 20
+      .map(v => Math.round((v + 1) * 10))
+      .subscribe(v => {
+        console.log('A v: ', v);
+        TweenMax.to(gD, 0.5, { fill: `hsl(137, ${v}%, ${v}%)` });
+        TweenMax.to(rD, 0.5, { fill: `hsl(0, ${v}%, ${v}%)` });
+      });
 
+
+  // NOTES
+    this.pNote = 'P: (hsl) saturation (S) & brightness (L) vary';
+    // because "Pleasure was simply a joint positive function of color brightness and saturation" (Valdez & Mehrabian, 1994)
+    this.aNote = 'A: (hsl) saturation (S) varies';
+    // because arousal increases with more saturation
+    this.dNote = 'D: (hsl) brightness (L) varies';
+    // because "dominance decreases sharply with increases in colour brightness" (Valdez & Mehrabian, 1994)
   }
 
   ngOnDestroy() {
-    this.pProgressSub.unsubscribe();
-    this.aProgressSub.unsubscribe();
-    this.dProgressSub.unsubscribe();
+    this.pProgress.unsubscribe();
+    // this.aProgress.unsubscribe();
+    // this.dProgress.unsubscribe();
+    console.log('emoviz2 destroyed');
   }
+
 
 }

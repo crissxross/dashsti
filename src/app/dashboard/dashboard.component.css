@@ -17,6 +17,7 @@
   flex-direction: column;
   min-width: 400px;
   max-width: 500px;
+  margin-top: 8px;
   /*border: solid 1px lime;*/
 }
 
@@ -31,7 +32,7 @@
   position: absolute;
   top: 42%;
   width: 400px;
-  padding: 10px;
+  padding: 0 20px;
   color:#D9E6DC;
   font-weight: 300;
   font-style: italic;
