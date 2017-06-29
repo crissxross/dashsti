@@ -9,8 +9,11 @@ import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax } from 'gsap';
 
 @Component({
-  selector: 'app-emoviz4',
+  selector: 'app-emovizy',
   template: `
+    <p>
+      emovizy Works!
+    </p>
     <div class="viz-container">
 
       <svg>
@@ -38,15 +41,14 @@ import { TweenMax, TimelineMax } from 'gsap';
             <li>{{pNote}}</li>
             <li>{{aNote}}</li>
             <li>{{dNote}}</li>
-            <li>{{miscNote}}</li>
           </ul>
         </div>
 
     </div>
   `,
-  styleUrls: ['../emoviz.css', './emoviz4.component.css']
+  styleUrls: ['../emoviz.css', './emovizy.component.css']
 })
-export class Emoviz4Component implements OnInit, OnDestroy {
+export class EmovizyComponent implements OnInit, OnDestroy {
 // svg elements
   @ViewChild('bg') bg: ElementRef;
   @ViewChild('poly6') poly6: ElementRef;
@@ -62,7 +64,6 @@ export class Emoviz4Component implements OnInit, OnDestroy {
   pNote: string;
   aNote: string;
   dNote: string;
-  miscNote: string;
 
   constructor(private store: Store<fromRoot.State>) {
     this.pValue$ = store.select(state => state.pad.P);
@@ -140,7 +141,6 @@ export class Emoviz4Component implements OnInit, OnDestroy {
     this.pNote = 'P: jump to timeline position';
     this.aNote = 'A: jump to timeline position';
     this.dNote = 'D: jump to timeline position';
-    this.miscNote = 'CHANGE THIS !!!!';
 
   }
 

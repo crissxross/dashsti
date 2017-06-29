@@ -1,0 +1,21 @@
+/* originally COPIED from emoviz, which was copied from actorviz */
+
+rect {
+  transition:
+    x 300ms,
+    y 300ms,
+    width 300ms,
+    height 300ms,
+    fill 300ms;
+}
+
+text {
+  fill: grey;
+}
+
+/* polygon styles - adapted from Illustrator */
+.cls-1 {
+        fill: hsla(0, 100%, 100%, 0.5);
+        /*stroke: #fff;
+        stroke-miterlimit: 10;*/
+      }

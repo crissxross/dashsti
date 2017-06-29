@@ -4,8 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { Emoviz1Component } from './emoviz1/emoviz1.component';
 import { Emoviz2Component } from './emoviz2/emoviz2.component';
+import { Emoviz2aComponent } from './emoviz2a/emoviz2a.component';
 import { Emoviz3Component } from './emoviz3/emoviz3.component';
 import { Emoviz4Component } from './emoviz4/emoviz4.component';
+import { EmovizxComponent } from './emovizx/emovizx.component';
+import { EmovizyComponent } from './emovizy/emovizy.component';
 
 const routes: Routes = [
   {
@@ -18,10 +21,19 @@ const routes: Routes = [
         path: 'emoviz2', component: Emoviz2Component
       },
       {
+        path: 'emoviz2a', component: Emoviz2aComponent
+      },
+      {
         path: 'emoviz3', component: Emoviz3Component
       },
       {
         path: 'emoviz4', component: Emoviz4Component
+      },
+      {
+        path: 'emovizx', component: EmovizxComponent
+      },
+      {
+        path: 'emovizy', component: EmovizyComponent
       }
     ]
   },

@@ -9,17 +9,17 @@ import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax, Power0 } from 'gsap';
 
 @Component({
-  selector: 'app-emoviz2',
+  selector: 'app-emoviz2a',
   template: `
     <div class="viz-container">
       <svg>
         <svg:rect #bg class="bg" width="400" height="333"/>
-        <svg:ellipse #gP cx="100" cy="60" rx="100" ry="60"/>
-        <svg:ellipse #gA cx="100" cy="60" rx="100" ry="60"/>
-        <svg:ellipse #gD cx="100" cy="60" rx="100" ry="60"/>
-        <svg:ellipse #rP cx="300" cy="60" rx="100" ry="60"/>
-        <svg:ellipse #rA cx="300" cy="60" rx="100" ry="60"/>
-        <svg:ellipse #rD cx="300" cy="60" rx="100" ry="60"/>
+        <svg:ellipse #gP cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #gA cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #gD cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #rP cx="300" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #rA cx="300" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #rD cx="300" cy="80" rx="100" ry="80"/>
         <!-- NOTE: transforms & opacity are the most performant things to animate
         GSAP shorthand for the transform properties: x, y, z, scale, rotation -->
       </svg>
@@ -33,9 +33,9 @@ import { TweenMax, TimelineMax, Power0 } from 'gsap';
       </div>
     </div>
   `,
-  styleUrls: ['../emoviz.css'] // ['../emoviz.css', './emoviz2.component.css']
+  styleUrls: ['../emoviz.css', './emoviz2a.component.css']
 })
-export class Emoviz2Component implements OnInit, OnDestroy {
+export class Emoviz2aComponent implements OnInit, OnDestroy {
 // svg elements
   @ViewChild('bg') bg: ElementRef;
   @ViewChild('gP') gP: ElementRef;
@@ -73,12 +73,12 @@ export class Emoviz2Component implements OnInit, OnDestroy {
     const rD = this.rD.nativeElement;
     // set default PAD 000 values of SVG elements to animate
     TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
-    TweenMax.set(gP, { fill: 'hsl(137, 50%, 50%)', opacity: 0.75, y: 0 });
-    TweenMax.set(gA, { fill: 'hsl(137, 50%, 50%)', opacity: 0.75, y: 105 });
-    TweenMax.set(gD, { fill: 'hsl(137, 50%, 50%)', opacity: 0.75, y: 210 });
-    TweenMax.set(rP, { fill: 'hsl(0, 50%, 50%)', opacity: 0.75, y: 0 });
-    TweenMax.set(rA, { fill: 'hsl(0, 50%, 50%)', opacity: 0.75, y: 105 });
-    TweenMax.set(rD, { fill: 'hsl(0, 50%, 50%)', opacity: 0.75, y: 210 });
+    TweenMax.set(gP, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5, x: 110, y: 0 });
+    TweenMax.set(gA, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5, x: 90, y: 30 });
+    TweenMax.set(gD, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5, x: 110, y: 60 });
+    TweenMax.set(rP, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: -20, y: 0 });
+    TweenMax.set(rA, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: -0, y: 30 });
+    TweenMax.set(rD, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: -20, y: 60 });
     // Note: GSAP shorthand for transform properties: x, y, z, scale, rotation
 
 //  P: joint positive function of saturation & brightness (brightness has stronger influence)
@@ -125,7 +125,7 @@ export class Emoviz2Component implements OnInit, OnDestroy {
     // because arousal increases with more saturation
     this.dNote = 'D increases: + saturation, -- brightness (hsl) ';
     // because "dominance decreases sharply with increases in colour brightness"
-    this.miscNote = 'Opacity 0.75 all ellipses';
+    this.miscNote = 'Opacity 0.5 all ellipses';
   }
   // Quotes from 'Effects of Color on Emotions' (Valdez and Mehrabian, 1994)
 
