@@ -1,0 +1,31 @@
+<div class="viz-container">
+      <svg>
+        <svg:rect #bg class="bg" width="400" height="333"/>
+        <svg:ellipse #gP cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #gA cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #gD cx="100" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #rP cx="300" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #rA cx="300" cy="80" rx="100" ry="80"/>
+        <svg:ellipse #rD cx="300" cy="80" rx="100" ry="80"/>
+        <!-- NOTE: transforms & opacity are the most performant things to animate
+        GSAP shorthand for the transform properties: x, y, z, scale, rotation -->
+        <!-- TEMPORARY BELOW -->
+        <!--<svg:g id="polygroup">
+          <svg:polygon #poly6 class="cls-1"
+            points="60.5 52.5 30.5 69.9 0.5 52.5 0.5 17.9 30.5 0.6 60.5 17.9 60.5 52.5"/>
+          <svg:polygon #poly8 class="cls-1"
+            points="42.9 0.5 18.1 0.5 0.5 18.1 0.5 42.9 18.1 60.5 42.9 60.5 60.5 42.9 60.5 18.1 42.9 0.5"/>
+          <polygon #triangle class="cls-1"
+            points="35.5 1 0.9 61 70.1 61 35.5 1"/>
+        </svg:g>-->
+        <!-- TEMPORARY END -->
+      </svg>
+      <div class="notes">Notes<br>
+        <ul>
+          <li>{{pNote}}</li>
+          <li>{{aNote}}</li>
+          <li>{{dNote}}</li>
+          <li>{{miscNote}}</li>
+        </ul>
+      </div>
+    </div>
