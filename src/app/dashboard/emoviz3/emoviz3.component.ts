@@ -9,6 +9,7 @@ import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax, Power0 } from 'gsap';
 import * as CustomEase from 'gsap/CustomEase';
 import * as CustomWiggle from 'gsap/CustomWiggle';
+import * as MorphSVG from 'gsap/MorphSVGPlugin';
 
 @Component({
   selector: 'app-emoviz3',
@@ -59,14 +60,17 @@ export class Emoviz3Component implements OnInit, OnDestroy {
     const rP = this.rP.nativeElement;
     const rA = this.rA.nativeElement;
     const rD = this.rD.nativeElement;
+
     // set default PAD 000 values of SVG elements to animate
     TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
+
+    // basic ellipses (w: 200px, h: 160px)
     TweenMax.set(gP, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5, x: 110, y: 0 });
     TweenMax.set(gA, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5, x: 90, y: 30 });
     TweenMax.set(gD, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5, x: 110, y: 60 });
-    TweenMax.set(rP, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: -20, y: 0 });
-    TweenMax.set(rA, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: -0, y: 30 });
-    TweenMax.set(rD, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: -20, y: 60 });
+    TweenMax.set(rP, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: 180, y: 0 });
+    TweenMax.set(rA, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: 200, y: 30 });
+    TweenMax.set(rD, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5, x: 180, y: 60 });
     // Note: GSAP shorthand for transform properties: x, y, z, scale, rotation
 
 // temporary
@@ -81,7 +85,7 @@ export class Emoviz3Component implements OnInit, OnDestroy {
 
     // just testing
     CustomWiggle.create('wiggle', { wiggles: 5, type: 'easeInOut' });
-    TweenMax.staggerTo([gA, rA], 4, { rotation: 15, ease: 'wiggle', transformOrigin: '50% 50%' }, 0.5);
+    // TweenMax.staggerTo([gA, rA], 4, { rotation: 15, ease: 'wiggle', transformOrigin: '50% 50%' }, 0.5);
 
 //  P: joint positive function of saturation & brightness (brightness has stronger influence)
     this.pProgress = this.pValue$

@@ -15,7 +15,6 @@ text {
 
 /* polygon styles - adapted from Illustrator */
 .cls-1 {
-        fill: hsla(0, 100%, 100%, 0.5);
-        /*stroke: #fff;
-        stroke-miterlimit: 10;*/
+        fill: hsla(0, 100%, 100%, 0.25);
+        /*visibility: hidden;*/
       }
