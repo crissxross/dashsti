@@ -1,21 +1,29 @@
-/* originally COPIED from actorviz */
+.bg {
+  fill: hsl(137, 30%, 10%);
+}
 
-rect {
-  transition:
-    x 300ms,
-    y 300ms,
-    width 300ms,
-    height 300ms,
-    fill 300ms;
+/* styles - adapted from Illustrator */
+.cls-1 {
+  fill: none;
+  stroke: hsl(0, 90%, 40%);
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+}
+
+.cls-2 {
+  fill: none;
+  stroke: hsl(137, 50%, 40%);
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+}
+
+.cls-3 {
+  fill: hsla(0, 100%, 100%, 0.5);
+  stroke: #fff;
+  stroke-miterlimit: 10;
 }
 
 text {
   fill: grey;
 }
 
-/* polygon styles - adapted from Illustrator */
-.cls-1 {
-        fill: hsla(0, 100%, 100%, 0.5);
-        stroke: #fff;
-        stroke-miterlimit: 10;
-      }

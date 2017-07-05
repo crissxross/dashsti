@@ -1,20 +1,28 @@
-/* originally COPIED from emoviz, which was copied from actorviz */
-
-rect {
-  transition:
-    x 300ms,
-    y 300ms,
-    width 300ms,
-    height 300ms,
-    fill 300ms;
+.bg {
+  fill: hsl(137, 30%, 10%);
 }
 
 text {
   fill: grey;
 }
 
-/* polygon styles - adapted from Illustrator */
+/* styles - adapted from Illustrator */
 .cls-1 {
-        fill: hsla(0, 100%, 100%, 0.25);
-        /*visibility: hidden;*/
+  fill: none;
+  stroke: red;
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+}
+
+
+/*.cls-1 {
+        fill: hsl(0, 80%, 50%);
+        opacity: 0.3;
+        visibility: hidden;
       }
+
+.cls-2 {
+  fill: none;
+  stroke: red;
+  stroke-miterlimit: 10;
+}*/

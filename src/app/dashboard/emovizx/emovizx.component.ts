@@ -13,9 +13,6 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
 @Component({
   selector: 'app-emovizx',
   template: `
-    <p>
-      emovizx Works!
-    </p>
     <div class="viz-container">
       <svg>
         <svg:rect #bg x="0" y="0" width="400" height="333" fill="#201818" />
