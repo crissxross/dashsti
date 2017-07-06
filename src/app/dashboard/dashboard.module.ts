@@ -12,6 +12,7 @@ import { Emoviz4Component } from './emoviz4/emoviz4.component';
 import { EmovizxComponent } from './emovizx/emovizx.component';
 import { EmovizyComponent } from './emovizy/emovizy.component';
 import { EmovizzComponent } from './emovizz/emovizz.component';
+import { Emoviz3aComponent } from './emoviz3a/emoviz3a.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { EmovizzComponent } from './emovizz/emovizz.component';
     Emoviz4Component,
     EmovizxComponent,
     EmovizyComponent,
-    EmovizzComponent
+    EmovizzComponent,
+    Emoviz3aComponent
   ]
 })
 export class DashboardModule { }

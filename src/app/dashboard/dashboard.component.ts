@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit {
   dValue$: Observable<number>;
   bg = '#303030'; // matches main bg color
   BGCOLORS = ['hsl(0, 30%, 10%)', 'hsl(137, 20%, 10%)', '#303030'];
-  navIds = ['1', '2', '2a', '3', '4', 'x', 'y', 'z'];
+  navIds = ['1', '2', '2a', '3', '3a', '4', 'x', 'y', 'z'];
   showSliders = true;
   showText = false;
 
