@@ -20,7 +20,8 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
   // svg elements
   @ViewChild('bg') bg: ElementRef;
   @ViewChild('emoLine') emoLine: ElementRef;
-  @ViewChild('guide') guide: ElementRef;
+  @ViewChild('emoZZ') emoZZ: ElementRef;
+  // @ViewChild('guide') guide: ElementRef;
   // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;
@@ -41,12 +42,14 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const bg = this.bg.nativeElement;
     const emoLine = this.emoLine.nativeElement;
-    const guide = this.guide.nativeElement;
+    const emoZZ = this.emoZZ.nativeElement;
+    // const guide = this.guide.nativeElement;
 
     // set default PAD 000 values of SVG elements to animate
     TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
-    TweenMax.set(emoLine, { stroke: 'hsl(0, 50%, 50%)', strokeWidth: 2, fill: 'none' });
-    TweenMax.set(guide, { stroke: 'hsl(137, 10%, 70%)', fill: 'none', opacity: 0.5, });
+    TweenMax.set(emoLine, { x: '-=25', stroke: 'hsl(0, 50%, 50%)', strokeWidth: 2, fill: 'none' });
+    TweenMax.set(emoZZ, { x: '-=25', y: '+=20', stroke: 'hsl(0, 50%, 50%)', strokeWidth: 2, fill: 'none', opacity: 0.9});
+    // TweenMax.set(guide, { stroke: 'hsl(137, 10%, 70%)', fill: 'none', opacity: 0.5 });
     // Note: GSAP shorthand for transform properties: x, y, z, scale, rotation
 
     // PAD
@@ -59,17 +62,22 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
         console.log('Latest PAD values P:', pad.P, ' A:', pad.A, ' D:', pad.D);
         // console.log('Latest PAD:', pad);
         const P_S = 50 + pad.P * 50; // range from 0 to 100
-        const Pdx1 = 25;
-        const Pdx2 = 25;
+        const P_L = 50 + pad.P * 25; // ranges from 25 to 75
+        const dx = 50;
+        const Pdx1 = 10; // 25;
+        const Pdx2 = 40; // 25;
+        const PposOpacity = pad.P + 0.2;
+        const PnegOpacity = -pad.P + 0.2;
         const Ady1 = Math.round((pad.A + 1) * 30); // range from 0 to 60;
         const Ady2 = Math.round((pad.A + 1) * 30); // range from 0 to 60;
+        const Azzy = Math.round((pad.A + 1) * 40); // 15;
         const DstrokeW = 11 + pad.D * 10; // range from 1 to 21
-        const Dopacity = (1.5 + pad.D) / 2; // range from 0 to 1
         const Dscale = (1 + pad.D); // range from 0 to 2
+        // const Dopacity = (1.5 + pad.D) / 2; // range from 0 to 1
 
         TweenMax.to(emoLine, 0.5, {
           attr: {
-            d: `M -10 100
+            d: `M 0 100
               c ${Pdx1} -${Ady1}, ${Pdx2} -${Ady2}, 50 0
               c ${Pdx1} ${Ady1}, ${Pdx2} ${Ady2}, 50 0
               c ${Pdx1} -${Ady1}, ${Pdx2} -${Ady2}, 50 0
@@ -104,20 +112,53 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
               c ${Pdx1} ${Ady1}, ${Pdx2} ${Ady2}, 50 0
             ` },
           strokeWidth: DstrokeW,
-          stroke: `hsl(0, ${P_S}%, 50%)`,
-          opacity: Dopacity,
+          stroke: `hsl(0, ${P_S}%, ${P_L}%)`,
+          opacity: PposOpacity,
           scale: Dscale,
           ease:  Power1.easeInOut
         });
 
-        console.log(' Ady1:', Ady1, ' Ady2:', Ady2, ' DstrokeW:', DstrokeW, 'P_S:', P_S, 'Dopacity:', Dopacity, 'Dscale:', Dscale);
+        TweenMax.to(emoZZ, 0.5, {
+          attr: {
+            d: `M-25 107 l
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+              ${dx} -${Azzy}, ${dx} ${Azzy}
+          `},
+          strokeWidth: DstrokeW,
+          stroke: `hsl(0, ${P_S}%, ${P_L}%)`,
+          opacity: PnegOpacity,
+          scale: Dscale,
+          ease:  Power1.easeInOut
+        });
+
+        console.log(' Ady1:', Ady1, ' Ady2:', Ady2, ' Azzy:', Azzy,
+          ' DstrokeW:', DstrokeW, 'P_S:', P_S, ' P_L:', P_L, 'Dscale:', Dscale);
       });
 
     // NOTES
-    this.pNote = 'P: varies saturation of red line; varies saturation & brightness of green line.';
-    this.aNote = 'A: varies amplitude of both red & green lines.';
-    this.dNote = 'D: varies stroke width & opacity of red line; varies brightness/darkness & saturation of green line.';
-    this.miscNote = 'CHANGE THIS !!!! NEEDS UPDATING!!!!';
+    this.pNote = 'P: varies curvy/angular, saturation & brightness of line.';
+    this.aNote = 'A: varies amplitude of line.';
+    this.dNote = 'D: varies stroke width & scale of line.';
+    this.miscNote = '(P curvy/angular is a hack)';
   }
 
   ngOnDestroy() {
