@@ -30,6 +30,8 @@ https://greensock.com/forums/topic/13594-greensock-tweens-in-angular-2/#comment-
         <!--<svg:g #Plines id="Plines" class="cls-1">
           <svg:path #P_ id="flat" [attr.d]="P_path"/>
         </svg:g>-->
+  <!-- TESTING blob-morpher but NOT WORKING !!!!! -->
+        <svg:g blob-morpher></g>
       </svg>
     <!-- NOTES -->
       <div class="notes">Notes<br>

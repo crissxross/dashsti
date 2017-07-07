@@ -21,7 +21,6 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
   @ViewChild('bg') bg: ElementRef;
   @ViewChild('emoLine') emoLine: ElementRef;
   @ViewChild('emoZZ') emoZZ: ElementRef;
-  // @ViewChild('guide') guide: ElementRef;
   // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;
@@ -43,13 +42,11 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
     const bg = this.bg.nativeElement;
     const emoLine = this.emoLine.nativeElement;
     const emoZZ = this.emoZZ.nativeElement;
-    // const guide = this.guide.nativeElement;
 
     // set default PAD 000 values of SVG elements to animate
     TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
     TweenMax.set(emoLine, { x: '-=25', stroke: 'hsl(0, 50%, 50%)', strokeWidth: 2, fill: 'none' });
     TweenMax.set(emoZZ, { x: '-=25', y: '+=20', stroke: 'hsl(0, 50%, 50%)', strokeWidth: 2, fill: 'none', opacity: 0.9});
-    // TweenMax.set(guide, { stroke: 'hsl(137, 10%, 70%)', fill: 'none', opacity: 0.5 });
     // Note: GSAP shorthand for transform properties: x, y, z, scale, rotation
 
     // PAD
@@ -162,8 +159,8 @@ export class Emoviz3aComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.PADprogress.unsubscribe();
-    console.log('emoviz3a OnDestroy');
+    this.PADprogress.unsubscribe();
+    // console.log('emoviz3a OnDestroy');
   }
 
 }

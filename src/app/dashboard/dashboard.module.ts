@@ -13,6 +13,10 @@ import { EmovizxComponent } from './emovizx/emovizx.component';
 import { EmovizyComponent } from './emovizy/emovizy.component';
 import { EmovizzComponent } from './emovizz/emovizz.component';
 import { Emoviz3aComponent } from './emoviz3a/emoviz3a.component';
+import { BlobMorpherComponent } from './emoviz4/blob-morpher/blob-morpher.component';
+import { Emoviz5Component } from './emoviz5/emoviz5.component';
+import { EmoWavlineComponent } from './emobits/emo-wavline.component';
+import { EmoZZlineComponent } from './emobits/emo-zzline.component';
 
 @NgModule({
   imports: [
@@ -30,7 +34,11 @@ import { Emoviz3aComponent } from './emoviz3a/emoviz3a.component';
     EmovizxComponent,
     EmovizyComponent,
     EmovizzComponent,
-    Emoviz3aComponent
+    Emoviz3aComponent,
+    BlobMorpherComponent,
+    Emoviz5Component,
+    EmoWavlineComponent,
+    EmoZZlineComponent
   ]
 })
 export class DashboardModule { }

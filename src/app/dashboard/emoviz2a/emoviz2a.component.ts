@@ -133,7 +133,7 @@ export class Emoviz2aComponent implements OnInit, OnDestroy {
     this.pProgress.unsubscribe();
     this.aProgress.unsubscribe();
     this.dProgress.unsubscribe();
-    console.log('emoviz2 destroyed');
+    // console.log('emoviz2 destroyed');
   }
 
 
