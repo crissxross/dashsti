@@ -17,6 +17,7 @@ import { BlobMorpherComponent } from './emoviz4/blob-morpher/blob-morpher.compon
 import { Emoviz5Component } from './emoviz5/emoviz5.component';
 import { EmoWavlineComponent } from './emobits/emo-wavline.component';
 import { EmoZZlineComponent } from './emobits/emo-zzline.component';
+import { Emoviz3bComponent } from './emoviz3b/emoviz3b.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { EmoZZlineComponent } from './emobits/emo-zzline.component';
     BlobMorpherComponent,
     Emoviz5Component,
     EmoWavlineComponent,
-    EmoZZlineComponent
+    EmoZZlineComponent,
+    Emoviz3bComponent
   ]
 })
 export class DashboardModule { }
