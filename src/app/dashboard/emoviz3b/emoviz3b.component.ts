@@ -58,18 +58,23 @@ export class Emoviz3bComponent implements OnInit, OnDestroy {
         // console.log('Latest PAD values P:', pad.P, ' A:', pad.A, ' D:', pad.D);
         console.log('Latest PAD:', pad.P, pad.A, pad.D);
         // bezier control points and points of line
-        const x1_ = Math.round((pad.P + 1) * 12.5); // range from 0 to 25 //25;
-        const y1_ = 0;
-        const x2_ = Math.round(50 - (pad.P + 1) * 12.5); // range from 50 to 25 //25;
-        const y2_ = 50; // Math.round((pad.A + 1) * 25); // range from 0 to 50;
+        const x1_ = Math.round((pad.P + 1) * 12.5); // P range from 0 to 25 //OK-P;
+        const x1__ = Math.round(50 - (pad.P + 1) * 12.5); // P range from 50 to 25 //OK-P;
+        const y1_ = 0; // OK-P
+        // y1__ is affected by both P & A scales
+        // y1__ A should range from 0 to 50, but P is opposite !!!
+        // y1__ P range from 50 to 0
+        // ?? combine A value with P somehow, maybe by checking if A or P is neg/pos ?
+        const y1__ = (Math.round(50 - (pad.P + 1) * 25)); // P range from 50 to 0; //OK-P notOK-A
+        const x2_ = Math.round(50 - (pad.P + 1) * 12.5); // P range from 50 to 25 //OK-P;
+        const x2__ = Math.round(50 - (pad.P + 1) * 12.5); // P range from 50 to 25 //OK-P;
+        const y2_ = Math.round((pad.A + 1) * 25); // A range from 0 to 50; //OK-A
+        const y2__ = Math.round((pad.A + 1) * 25); // A range from 0 to 50; //OK-A
+        // x y positions
         const x_ = 50;
-        const y_ = 50; // A // Math.round((pad.A + 1) * 30); // range from 0 to 60;
-        const x1__ = Math.round(50 - (pad.P + 1) * 12.5); // range from 50 to 25 //25;
-        const x2__ = 25;
-        const y1__ = Math.round(50 - (pad.P + 1) * 25); // range from 50 to 25;
-        const y2__ = 50; // Math.round((pad.A + 1) * 30); // range from 0 to 60;
         const x__ = 50;
-        const y__ = 50; // A // Math.round((pad.A + 1) * 30); // range from 0 to 60;
+        const y_ = Math.round((pad.A + 1) * 25); // A range from 0 to 50; //OK-A
+        const y__ = Math.round((pad.A + 1) * 25); // A range from 0 to 50; //OK-A
 
         // other visual attributes of line
         const P_S = 50 + pad.P * 50; // range from 0 to 100
@@ -97,7 +102,7 @@ export class Emoviz3bComponent implements OnInit, OnDestroy {
           ease:  Power1.easeInOut
         });
 
-        console.log('x1_', x1_, '| x2_', x2_, '| x1__', x1__, '| y1__', y1__);
+        console.log('x1_', x1_, '| x1__', x1__, '| x2_', x2_, '| x2__', x2__, '| y1_', y1_, '| y1__', y1__, '| y2_', y2_, '| y2__', y2__);
 
         // console.log(' DstrokeW:', DstrokeW, 'P_S:', P_S, ' P_L:', P_L, 'Dscale:', Dscale);
       });
