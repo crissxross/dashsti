@@ -65,8 +65,8 @@ export class Emoviz7aComponent implements OnInit, OnDestroy {
         const rightTheta = Math.round(-50 + pad.A * -50); // 0 to -100
         const leftTheta = Math.round(50 + pad.A * 50); // 0 to 100
 
-        console.log('topTheta angle:', topTheta, 'rightTheta angle:', rightTheta, 'leftTheta angle:', leftTheta);
-        console.log('top:', topX, topY, 'right:', rightX, rightY, 'left:', leftX, leftY);
+        // console.log('topTheta angle:', topTheta, 'rightTheta angle:', rightTheta, 'leftTheta angle:', leftTheta);
+        // console.log('top:', topX, topY, 'right:', rightX, rightY, 'left:', leftX, leftY);
 
         const topCx1 = Math.round(topX + this.polarToCartesianX(topTheta, topRadius));
         const topCy1 = Math.round(topY + this.polarToCartesianY(topTheta, topRadius));
@@ -89,7 +89,14 @@ export class Emoviz7aComponent implements OnInit, OnDestroy {
           {x: leftCx2, y: leftCy2}, {x: topCx2, y: topCy2}, {x: topX, y: topY}
         ];
 
-        this.draw(ctx, points);
+        // HSL Saturation & Lightness values for red & green hues
+        const rS = 50 + Math.round(pad.P * 50);
+        const rL = 40 + Math.round(pad.A * 30);
+        const gS = 40 + Math.round(pad.D * 30);
+        const gL = 15 + Math.round(pad.D * -10);
+        console.log('rS:', rS, 'rL:', rL, 'gS:', gS, 'gL:', gL);
+
+        this.render(ctx, points, rS, rL, gS, gL);
       });
 
     // NOTES
@@ -106,17 +113,17 @@ export class Emoviz7aComponent implements OnInit, OnDestroy {
 
   // *************** CANVAS DRAWING methods & UTILITIES **************
 
-  // DRAW all canvas
-  draw(ctx, points) {
-    ctx.globalAlpha = 0.8;
-    ctx.fillStyle = '#fff';
+  // RENDER all canvas
+  render(ctx, points, rS, rL, gS, gL) {
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = `hsl(137, ${gS}%, ${gL}%)`;
     ctx.fillRect(0, 0, 300, 300);
     // this.drawControlPoints(ctx, points);
-    this.drawTriShape(ctx, points);
+    this.drawTriShape(ctx, points, rS, rL);
   }
 
-  // Draw BEZIER CURVE shape *****************
-  drawTriShape(ctx, points) {
+  // DRAW BEZIER CURVE shape *****************
+  drawTriShape(ctx, points, rS, rL) {
   ctx.globalAlpha = 1;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
@@ -125,10 +132,11 @@ export class Emoviz7aComponent implements OnInit, OnDestroy {
                           points[i + 1].x, points[i + 1].y,
                           points[i + 2].x, points[i + 2].y);
     }
+    ctx.fillStyle = `hsla(0, ${rS}%, ${rL}%, 0.2)`;
+    ctx.fill();
     ctx.lineWidth = 2;
-    ctx.strokeStyle = 'black';
-    ctx.stroke();
-    // console.log('points', points);
+    // ctx.strokeStyle = 'black';
+    // ctx.stroke();
   }
 
   drawControlPoints(ctx, points) {
