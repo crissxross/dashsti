@@ -12,12 +12,12 @@ import * as CustomEase from 'gsap/CustomEase';
 import * as CustomWiggle from 'gsap/CustomWiggle';
 
 @Component({
-  selector: 'app-emoviz7',
-  templateUrl: './emoviz7.component.html',
-  styleUrls: ['../emoviz.css', './emoviz7.component.css']
+  selector: 'app-emoviz7a',
+  templateUrl: './emoviz7a.component.html',
+  styleUrls: ['../emoviz.css', './emoviz7a.component.css']
 })
-export class Emoviz7Component implements OnInit, OnDestroy {
-  @ViewChild('canvas') canvasRef: ElementRef;
+export class Emoviz7aComponent implements OnInit, OnDestroy {
+@ViewChild('canvas') canvasRef: ElementRef;
 
   // PAD properties
   pValue$: Observable<number>;
@@ -111,7 +111,7 @@ export class Emoviz7Component implements OnInit, OnDestroy {
     ctx.globalAlpha = 0.8;
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, 300, 300);
-    this.drawControlPoints(ctx, points);
+    // this.drawControlPoints(ctx, points);
     this.drawTriShape(ctx, points);
   }
 

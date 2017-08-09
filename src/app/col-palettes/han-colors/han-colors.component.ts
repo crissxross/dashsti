@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./han-colors.component.css']
 })
 export class HanColorsComponent implements OnInit {
+  // format based on Material Design
 
   constructor() { }
 
