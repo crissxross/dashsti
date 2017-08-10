@@ -1,0 +1,9 @@
+/* canvas is 300 x 300  */
+canvas {
+  /* border: 1px solid black; */
+  background-color: hsl(137, 40%, 10%);
+}
+/* to centre canvas in viz-container (w: 400px) */
+.canvas-container {
+  margin: 10px 50px;
+}

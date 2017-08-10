@@ -11,12 +11,13 @@ import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
 import * as CustomEase from 'gsap/CustomEase';
 import * as CustomWiggle from 'gsap/CustomWiggle';
 
+
 @Component({
-  selector: 'app-emoviz7a',
-  templateUrl: './emoviz7a.component.html',
-  styleUrls: ['../emoviz.css', './emoviz7a.component.css']
+  selector: 'app-emoviz7b',
+  templateUrl: './emoviz7b.component.html',
+  styleUrls: ['../emoviz.css', './emoviz7b.component.css']
 })
-export class Emoviz7aComponent implements OnInit, OnDestroy {
+export class Emoviz7bComponent implements OnInit, OnDestroy {
 @ViewChild('canvas') canvasRef: ElementRef;
 
   // PAD properties
@@ -39,9 +40,6 @@ export class Emoviz7aComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
-
-    // TweenMax.ticker.addEventListener('tick', this.render); // ticker throws an ERROR here !!!!!!!
-    // NOTE re. ERROR: should ticker by in ngOnChanges ? or run outside Angular Zone ???
 
     this.PADprogress = Observable.combineLatest(
       this.pValue$, this.aValue$, this.dValue$,
@@ -111,7 +109,6 @@ export class Emoviz7aComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
-    // TweenMax.ticker.removeEventListener('tick', this.render); // ticker ERROR, see above !!!!
     console.log('emoviz7a OnDestroy');
   }
 
