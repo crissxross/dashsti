@@ -7,10 +7,9 @@ import 'rxjs/add/observable/combineLatest';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
+import { TweenMax, TimelineMax, Power1, Back, ticker } from 'gsap';
 import * as CustomEase from 'gsap/CustomEase';
 import * as CustomWiggle from 'gsap/CustomWiggle';
-
 
 @Component({
   selector: 'app-emoviz7b',
@@ -18,7 +17,8 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
   styleUrls: ['../emoviz.css', './emoviz7b.component.css']
 })
 export class Emoviz7bComponent implements OnInit, OnDestroy {
-@ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;
+  private running: boolean;
 
   // PAD properties
   pValue$: Observable<number>;
@@ -26,7 +26,39 @@ export class Emoviz7bComponent implements OnInit, OnDestroy {
   dValue$: Observable<number>;
   PADprogress: Subscription;
 
-  // Notes
+// CANVAS shape/drawing properties
+  topX: number;
+  topY: number;
+  rightX: number;
+  rightY: number;
+  leftX: number;
+  leftY: number;
+  topRadius: number;
+  rightRadius: number;
+  leftRadius: number;
+  topTheta: number;
+  rightTheta: number;
+  leftTheta: number;
+  topCx1: number;
+  topCy1: number;
+  topCx2: number;
+  topCy2: number;
+  rightCx1: number;
+  rightCy1: number;
+  rightCx2: number;
+  rightCy2: number;
+  leftCx1: number;
+  leftCy1: number;
+  leftCx2: number;
+  leftCy2: number;
+  points;
+  rS: number;
+  rL: number;
+  gS: number;
+  gL: number;
+  spot = {x: 200, y: 50, radius: 10}; // for TESTING
+
+// Notes
   pNote: string;
   aNote: string;
   dNote: string;
@@ -39,7 +71,9 @@ export class Emoviz7bComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
+    // only animate if running is true
+    this.running = true;
+    console.log('running:', this.running);
 
     this.PADprogress = Observable.combineLatest(
       this.pValue$, this.aValue$, this.dValue$,
@@ -47,58 +81,64 @@ export class Emoviz7bComponent implements OnInit, OnDestroy {
     )
       .subscribe(pad => {
         // console.log('Latest PAD values P:', pad.P, ' A:', pad.A, ' D:', pad.D);
-        console.log('Latest PAD:', pad.P, pad.A, pad.D);
+        // console.log('Latest PAD:', pad.P, pad.A, pad.D);
 
       // CANVAS (300x300) drawing properties
-        const topX = 150 + Math.round(pad.A * 10 ); // 140 to 160
-        const topY = 90 + Math.round(pad.A * -50 ); // 140 to 40
-        const rightX = 230 + Math.round(pad.D * 20 ); // 210 to 250
-        const rightY = 180 + Math.round(pad.D * 50 ); // 130 to 230
-        const leftX = 70 + Math.round(pad.D * -20 ); // 90 to 50
-        const leftY = 180 + Math.round(pad.D * 50 ); // 130 to 230
+        this.topX = 150 + Math.round(pad.A * 10 ); // 140 to 160
+        this.topY = 90 + Math.round(pad.A * -50 ); // 140 to 40
+        this.rightX = 230 + Math.round(pad.D * 20 ); // 210 to 250
+        this.rightY = 180 + Math.round(pad.D * 50 ); // 130 to 230
+        this.leftX = 70 + Math.round(pad.D * -20 ); // 90 to 50
+        this.leftY = 180 + Math.round(pad.D * 50 ); // 130 to 230
 
-        const topRadius = Math.round(50 + pad.P * 50); // 0 to 100
-        const rightRadius = Math.round(45 + pad.P * 45); // 0 to 90
-        const leftRadius = Math.round(45 + pad.P * 45); // 0 to 90
+        this.topRadius = Math.round(50 + pad.P * 50); // 0 to 100
+        this.rightRadius = Math.round(45 + pad.P * 45); // 0 to 90
+        this.leftRadius = Math.round(45 + pad.P * 45); // 0 to 90
 
-        // theta (angle) in degrees is converted to radians in polarToCartesianX/Y functions later
-        const topTheta = Math.round(50 + pad.A * 50); // 0 to 100
-        const rightTheta = Math.round(-50 + pad.A * -50); // 0 to -100
-        const leftTheta = Math.round(50 + pad.A * 50); // 0 to 100
+        // theta (angle) in degrees is converted to radians in polarToCartesianX/Y later
+        this.topTheta = Math.round(50 + pad.A * 50); // 0 to 100
+        this.rightTheta = Math.round(-50 + pad.A * -50); // 0 to -100
+        this.leftTheta = Math.round(50 + pad.A * 50); // 0 to 100
 
         // console.log('topTheta angle:', topTheta, 'rightTheta angle:', rightTheta, 'leftTheta angle:', leftTheta);
         // console.log('top:', topX, topY, 'right:', rightX, rightY, 'left:', leftX, leftY);
 
-        const topCx1 = Math.round(topX + this.polarToCartesianX(topTheta, topRadius));
-        const topCy1 = Math.round(topY + this.polarToCartesianY(topTheta, topRadius));
-        const topCx2 = Math.round(topX - this.polarToCartesianX(topTheta, topRadius));
-        const topCy2 = Math.round(topY - this.polarToCartesianY(topTheta, topRadius));
-        const rightCx1 = Math.round(rightX + this.polarToCartesianX(rightTheta, rightRadius));
-        const rightCy1 = Math.round(rightY + this.polarToCartesianY(rightTheta, rightRadius));
-        const rightCx2 = Math.round(rightX - this.polarToCartesianX(rightTheta, rightRadius));
-        const rightCy2 = Math.round(rightY - this.polarToCartesianY(rightTheta, rightRadius));
-        const leftCx1 = Math.round(leftX + this.polarToCartesianX(leftTheta, leftRadius));
-        const leftCy1 = Math.round(leftY + this.polarToCartesianY(leftTheta, leftRadius));
-        const leftCx2 = Math.round(leftX - this.polarToCartesianX(leftTheta, leftRadius));
-        const leftCy2 = Math.round(leftY - this.polarToCartesianY(leftTheta, leftRadius));
+        this.topCx1 = Math.round(this.topX + this.polarToCartesianX(this.topTheta, this.topRadius));
+        this.topCy1 = Math.round(this.topY + this.polarToCartesianY(this.topTheta, this.topRadius));
+        this.topCx2 = Math.round(this.topX - this.polarToCartesianX(this.topTheta, this.topRadius));
+        this.topCy2 = Math.round(this.topY - this.polarToCartesianY(this.topTheta, this.topRadius));
+        this.rightCx1 = Math.round(this.rightX + this.polarToCartesianX(this.rightTheta, this.rightRadius));
+        this.rightCy1 = Math.round(this.rightY + this.polarToCartesianY(this.rightTheta, this.rightRadius));
+        this.rightCx2 = Math.round(this.rightX - this.polarToCartesianX(this.rightTheta, this.rightRadius));
+        this.rightCy2 = Math.round(this.rightY - this.polarToCartesianY(this.rightTheta, this.rightRadius));
+        this.leftCx1 = Math.round(this.leftX + this.polarToCartesianX(this.leftTheta, this.leftRadius));
+        this.leftCy1 = Math.round(this.leftY + this.polarToCartesianY(this.leftTheta, this.leftRadius));
+        this.leftCx2 = Math.round(this.leftX - this.polarToCartesianX(this.leftTheta, this.leftRadius));
+        this.leftCy2 = Math.round(this.leftY - this.polarToCartesianY(this.leftTheta, this.leftRadius));
 
         // points for drawing bezier curved shape, clockwise starting from top vertex (spot)
-        const points = [
-          {x: topX, y: topY},
-          {x: topCx1, y: topCy1}, {x: rightCx1, y: rightCy1}, {x: rightX, y: rightY},
-          {x: rightCx2, y: rightCy2}, {x: leftCx1, y: leftCy1}, {x: leftX, y: leftY},
-          {x: leftCx2, y: leftCy2}, {x: topCx2, y: topCy2}, {x: topX, y: topY}
+        this.points = [
+          {x: this.topX, y: this.topY},
+          {x: this.topCx1, y: this.topCy1}, {x: this.rightCx1, y: this.rightCy1}, {x: this.rightX, y: this.rightY},
+          {x: this.rightCx2, y: this.rightCy2}, {x: this.leftCx1, y: this.leftCy1}, {x: this.leftX, y: this.leftY},
+          {x: this.leftCx2, y: this.leftCy2}, {x: this.topCx2, y: this.topCy2}, {x: this.topX, y: this.topY}
         ];
 
         // HSL Saturation & Lightness values for red & green hues
-        const rS = 50 + Math.round(pad.P * 50);
-        const rL = 40 + Math.round(pad.A * 30);
-        const gS = 40 + Math.round(pad.D * 30);
-        const gL = 15 + Math.round(pad.D * -10);
-        console.log('rS:', rS, 'rL:', rL, 'gS:', gS, 'gL:', gL);
+        this.rS = 50 + Math.round(pad.P * 50);
+        this.rL = 40 + Math.round(pad.A * 30);
+        this.gS = 40 + Math.round(pad.D * 30);
+        this.gL = 15 + Math.round(pad.D * -10);
+        // console.log('rS:', this.rS, 'rL:', this.rL, 'gS:', this.gS, 'gL:', this.gL);
 
-        this.render(ctx, points, rS, rL, gS, gL);
       });
+
+    // tween spot for TESTING
+    TweenMax.to(this.spot, 2, { x: 250, y: 100, radius: 20, repeat: -1, yoyo: true });
+
+    // start the rendering loop (for animation)
+    this.render();
+    // TweenMax.ticker.addEventListener('tick', this.render);
 
     // NOTES
     this.pNote = 'P: radius length for each point';
@@ -109,23 +149,38 @@ export class Emoviz7bComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
-    console.log('emoviz7a OnDestroy');
+    this.running = false;
+    console.log('emoviz7a OnDestroy, running:', this.running);
   }
 
-  // *************** CANVAS DRAWING methods & UTILITIES **************
+// ******** RENDER LOOP for animation *******************
 
-  // RENDER all canvas
-  render(ctx, points, rS, rL, gS, gL) {
-    ctx.globalAlpha = 0.2;
-    ctx.fillStyle = `hsl(137, ${gS}%, ${gL}%)`;
+  private render() {
+    // check whether still running
+    if (!this.running) {
+      return;
+    }
+
+    // render current frame
+    const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
+
+    ctx.globalAlpha = 0.1;
+    ctx.fillStyle = `hsl(137, ${this.gS}%, ${this.gL}%)`;
     ctx.fillRect(0, 0, 300, 300);
-    // this.drawControlPoints(ctx, points);
-    this.drawTriShape(ctx, points, rS, rL);
+    // this.drawControlPoints(ctx, this.points);
+    this.drawTriShape(ctx, this.points, this.rS, this.rL);
+    this.drawSpot(ctx, this.spot.x, this.spot.y, this.spot.radius); // for TESTING
+
+    // schedule next
+    requestAnimationFrame(() => this.render());
+
   }
+
+  // ******** CANVAS DRAWING methods & UTILITIES **************
 
   // DRAW BEZIER CURVE shape *****************
-  drawTriShape(ctx, points, rS, rL) {
-  ctx.globalAlpha = 1;
+  drawTriShape(ctx: CanvasRenderingContext2D, points, rS: number, rL: number) {
+    ctx.globalAlpha = 1;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
     for (let i = 1; i < 9; i += 3) {
@@ -140,10 +195,10 @@ export class Emoviz7bComponent implements OnInit, OnDestroy {
     // ctx.stroke();
   }
 
-  drawControlPoints(ctx, points) {
-  ctx.globalAlpha = 0.2;
-  ctx.lineWidth = 1;
-  ctx.strokeStyle = '#880000';
+  drawControlPoints(ctx: CanvasRenderingContext2D, points) {
+    ctx.globalAlpha = 0.2;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#880000';
     for (let i = 0; i < 9; i++) { // draw guide line strokes
       if (i % 3 !== 1) {
         ctx.beginPath();
@@ -163,7 +218,7 @@ export class Emoviz7bComponent implements OnInit, OnDestroy {
     }
   }
 
-  drawSpot( ctx, x, y, radius ) {
+  drawSpot(ctx: CanvasRenderingContext2D, x, y, radius ) {
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
