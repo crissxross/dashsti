@@ -51,7 +51,7 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
   // points: Point[];
   points = [
     { x: 150, y: 90 },
-    { x: 182, y: 128 }, { x: 259, y: 146 }, { x: 0, y: 0 },
+    { x: 182, y: 128 }, { x: 259, y: 146 }, { x: 230, y: 180 },
     { x: 201, y: 214 }, { x: 99, y: 214 }, { x: 70, y: 180 },
     { x: 41, y: 146 }, { x: 118, y: 52 }, { x: 150, y: 90 }
   ];
@@ -147,8 +147,8 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
         this.leftTheta = Math.round(50 + pad.A * 50); // 0 to 100
         TweenMax.to(this.angles, 1, { top: this.topTheta, right: this.rightTheta, left: this.leftTheta });
 
-        console.log('topTheta angle:', this.topTheta, 'rightTheta angle:', this.rightTheta, 'leftTheta angle:', this.leftTheta);
-        console.log('top:', this.topX, this.topY, 'right:', this.rightX, this.rightY, 'left:', this.leftX, this.leftY);
+        // console.log('topTheta angle:', this.topTheta, 'rightTheta angle:', this.rightTheta, 'leftTheta angle:', this.leftTheta);
+        // console.log('top:', this.topX, this.topY, 'right:', this.rightX, this.rightY, 'left:', this.leftX, this.leftY);
 
         // HSL Saturation & Lightness values for red & green hues
         this.rS = 50 + Math.round(pad.P * 50);
