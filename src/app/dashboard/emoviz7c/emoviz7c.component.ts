@@ -10,6 +10,9 @@ import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax, Power1, Back, ticker } from 'gsap';
 import * as CustomEase from 'gsap/CustomEase';
 import * as CustomWiggle from 'gsap/CustomWiggle';
+import { Point } from '../point';
+
+// NOTE !!! - inconsistent behaviour of animation/canvas shape in response to PAD values !!!
 
 @Component({
   selector: 'app-emoviz7c',
@@ -26,19 +29,13 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
   dValue$: Observable<number>;
   PADprogress: Subscription;
 
-// CANVAS shape/drawing properties - MAKE INTO AN OPTIONS OBJECT ?????
+// CANVAS shape/drawing properties - MAKE INTO AN OPTIONS OBJECT ??
   topX: number;
   topY: number;
   rightX: number;
   rightY: number;
   leftX: number;
   leftY: number;
-  topRadius: number;
-  rightRadius: number;
-  leftRadius: number;
-  topTheta: number;
-  rightTheta: number;
-  leftTheta: number;
   topCx1: number;
   topCy1: number;
   topCx2: number;
@@ -51,12 +48,28 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
   leftCy1: number;
   leftCx2: number;
   leftCy2: number;
-  points;
+  // points: Point[];
+  points = [
+    { x: 150, y: 90 },
+    { x: 182, y: 128 }, { x: 259, y: 146 }, { x: 0, y: 0 },
+    { x: 201, y: 214 }, { x: 99, y: 214 }, { x: 70, y: 180 },
+    { x: 41, y: 146 }, { x: 118, y: 52 }, { x: 150, y: 90 }
+  ];
+  controlRs = { top: 10, right: 10, left: 10 };
+  topRadius: number;
+  rightRadius: number;
+  leftRadius: number;
+  angles = { top: 45, right: -40, left: 45 };
+  topTheta: number;
+  rightTheta: number;
+  leftTheta: number;
+  red = { S: 0, L: 0 };
+  grn = { S: 0, L: 0 };
   rS: number;
   rL: number;
   gS: number;
   gL: number;
-  spot = {x: 290, y: 10, radius: 10}; // for TESTING
+  spot = { x: 290, y: 10, radius: 10 }; // for TESTING
 
 // Notes
   pNote: string;
@@ -80,29 +93,17 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
       (p, a, d) => ({ P: p, A: a, D: d })
     )
       .subscribe(pad => {
-        // console.log('Latest PAD values P:', pad.P, ' A:', pad.A, ' D:', pad.D);
-        // console.log('Latest PAD:', pad.P, pad.A, pad.D);
+        console.log('Latest PAD:', pad.P, pad.A, pad.D);
 
-      // CANVAS (300x300) drawing properties
+        // CANVAS (300x300) drawing properties ***********************
+        // vertex points
         this.topX = 150 + Math.round(pad.A * 10 ); // 140 to 160
         this.topY = 90 + Math.round(pad.A * -50 ); // 140 to 40
         this.rightX = 230 + Math.round(pad.D * 20 ); // 210 to 250
         this.rightY = 180 + Math.round(pad.D * 50 ); // 130 to 230
         this.leftX = 70 + Math.round(pad.D * -20 ); // 90 to 50
         this.leftY = 180 + Math.round(pad.D * 50 ); // 130 to 230
-
-        this.topRadius = Math.round(50 + pad.P * 50); // 0 to 100
-        this.rightRadius = Math.round(45 + pad.P * 45); // 0 to 90
-        this.leftRadius = Math.round(45 + pad.P * 45); // 0 to 90
-
-        // theta (angle) in degrees is converted to radians in polarToCartesianX/Y later
-        this.topTheta = Math.round(50 + pad.A * 50); // 0 to 100
-        this.rightTheta = Math.round(-50 + pad.A * -50); // 0 to -100
-        this.leftTheta = Math.round(50 + pad.A * 50); // 0 to 100
-
-        // console.log('topTheta angle:', topTheta, 'rightTheta angle:', rightTheta, 'leftTheta angle:', leftTheta);
-        // console.log('top:', topX, topY, 'right:', rightX, rightY, 'left:', leftX, leftY);
-
+        // control points
         this.topCx1 = Math.round(this.topX + this.polarToCartesianX(this.topTheta, this.topRadius));
         this.topCy1 = Math.round(this.topY + this.polarToCartesianY(this.topTheta, this.topRadius));
         this.topCx2 = Math.round(this.topX - this.polarToCartesianX(this.topTheta, this.topRadius));
@@ -117,12 +118,37 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
         this.leftCy2 = Math.round(this.leftY - this.polarToCartesianY(this.leftTheta, this.leftRadius));
 
         // points for drawing bezier curved shape, clockwise starting from top vertex (spot)
-        this.points = [
-          {x: this.topX, y: this.topY},
-          {x: this.topCx1, y: this.topCy1}, {x: this.rightCx1, y: this.rightCy1}, {x: this.rightX, y: this.rightY},
-          {x: this.rightCx2, y: this.rightCy2}, {x: this.leftCx1, y: this.leftCy1}, {x: this.leftX, y: this.leftY},
-          {x: this.leftCx2, y: this.leftCy2}, {x: this.topCx2, y: this.topCy2}, {x: this.topX, y: this.topY}
-        ];
+        // this.points = [
+        //   {x: this.topX, y: this.topY},
+        //   {x: this.topCx1, y: this.topCy1}, {x: this.rightCx1, y: this.rightCy1}, {x: this.rightX, y: this.rightY},
+        //   {x: this.rightCx2, y: this.rightCy2}, {x: this.leftCx1, y: this.leftCy1}, {x: this.leftX, y: this.leftY},
+        //   {x: this.leftCx2, y: this.leftCy2}, {x: this.topCx2, y: this.topCy2}, {x: this.topX, y: this.topY}
+        // ];
+
+        TweenMax.to(this.points[0], 1, {x: this.topX, y: this.topY });
+        TweenMax.to(this.points[1], 1, {x: this.topCx1, y: this.topCy1 });
+        TweenMax.to(this.points[2], 1, {x: this.rightCx1, y: this.rightCy1});
+        TweenMax.to(this.points[3], 1, {x: this.rightX, y: this.rightY});
+        TweenMax.to(this.points[4], 1, {x: this.rightCx2, y: this.rightCy2});
+        TweenMax.to(this.points[5], 1, {x: this.leftCx1, y: this.leftCy1});
+        TweenMax.to(this.points[6], 1, {x: this.leftX, y: this.leftY});
+        TweenMax.to(this.points[7], 1, {x: this.leftCx2, y: this.leftCy2});
+        TweenMax.to(this.points[8], 1, {x: this.topCx2, y: this.topCy2});
+        TweenMax.to(this.points[9], 1, {x: this.topX, y: this.topY });
+
+        this.topRadius = Math.round(50 + pad.P * 50); // 0 to 100
+        this.rightRadius = Math.round(45 + pad.P * 45); // 0 to 90
+        this.leftRadius = Math.round(45 + pad.P * 45); // 0 to 90
+        TweenMax.to(this.controlRs, 1, {top: this.topRadius, right: this.rightRadius, left: this.leftRadius });
+
+        // theta (angle) in degrees is converted to radians in polarToCartesianX/Y later
+        this.topTheta = Math.round(50 + pad.A * 50); // 0 to 100
+        this.rightTheta = Math.round(-50 + pad.A * -50); // 0 to -100
+        this.leftTheta = Math.round(50 + pad.A * 50); // 0 to 100
+        TweenMax.to(this.angles, 1, { top: this.topTheta, right: this.rightTheta, left: this.leftTheta });
+
+        console.log('topTheta angle:', this.topTheta, 'rightTheta angle:', this.rightTheta, 'leftTheta angle:', this.leftTheta);
+        console.log('top:', this.topX, this.topY, 'right:', this.rightX, this.rightY, 'left:', this.leftX, this.leftY);
 
         // HSL Saturation & Lightness values for red & green hues
         this.rS = 50 + Math.round(pad.P * 50);
@@ -130,22 +156,27 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
         this.gS = 40 + Math.round(pad.D * 30);
         this.gL = 15 + Math.round(pad.D * -10);
         // console.log('rS:', this.rS, 'rL:', this.rL, 'gS:', this.gS, 'gL:', this.gL);
+        TweenMax.to(this.red, 1, { S: this.rS, L: this.rL });
+        TweenMax.to(this.grn, 1, { S: this.gS, L: this.gL });
+        // TweenMax.to(this.red, 1, {S: 50 + Math.round(pad.P * 50), L: 40 + Math.round(pad.A * 30)});
+        // TweenMax.to(this.grn, 1, {S: 40 + Math.round(pad.D * 30), L: 15 + Math.round(pad.D * -10)});
 
-      });
+      }); // END subscribe
 
     // tween spot for TESTING
     TweenMax.to(this.spot, 2, { x: 230, y: 100, radius: 20, repeat: -1, yoyo: true });
 
+    // TweenMax.ticker.addEventListener('tick', this.render); // does NOT WORK ?!!!
+
     // start the rendering loop (for animation)
     this.render();
-    // TweenMax.ticker.addEventListener('tick', this.render);
 
     // NOTES
     this.pNote = 'P: radius length for each point';
     this.aNote = 'A: top vertex position & angle of control points';
     this.dNote = 'D: right & left vertex positions';
-    this.miscNote = 'This uses CANVAS';
-  }
+    this.miscNote = 'CANVAS but inconsistent behaviour !!!';
+  } // END ngOnInit
 
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
@@ -164,12 +195,17 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
     // render current frame
     const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
 
-    ctx.globalAlpha = 0.1;
-    ctx.fillStyle = `hsl(137, ${this.gS}%, ${this.gL}%)`;
+    // WARNING re. globalAlpha:
+    // visually interferes with smoothness of GSAP tweening, makes tween appear janky
+    // ctx.globalAlpha = 0.2;
+
+    // ctx.fillStyle = `hsl(137, ${this.gS}%, ${this.gL}%)`;
+    ctx.fillStyle = `hsl(137, ${this.grn.S}%, ${this.grn.L}%)`;
     ctx.fillRect(0, 0, 300, 300);
     // this.drawControlPoints(ctx, this.points);
-    this.drawTriShape(ctx, this.points, this.rS, this.rL);
-    this.drawSpot(ctx, this.spot.x, this.spot.y, this.spot.radius); // for TESTING
+    this.drawTriShape(ctx, this.points, this.red.S, this.red.L);
+    // this.drawTriShape(ctx, this.points, this.rS, this.rL);
+    // this.drawSpot(ctx, this.spot.x, this.spot.y, this.spot.radius); // for TESTING
 
     // schedule next
     requestAnimationFrame(() => this.render());
@@ -179,7 +215,7 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
   // ******** CANVAS DRAWING methods & UTILITIES **************
 
   // DRAW BEZIER CURVE shape *****************
-  drawTriShape(ctx: CanvasRenderingContext2D, points, rS: number, rL: number) {
+  drawTriShape(ctx: CanvasRenderingContext2D, points: Point[], rS: number, rL: number) {
     ctx.globalAlpha = 1;
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
@@ -188,14 +224,14 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
                           points[i + 1].x, points[i + 1].y,
                           points[i + 2].x, points[i + 2].y);
     }
-    ctx.fillStyle = `hsla(0, ${rS}%, ${rL}%, 0.2)`;
+    ctx.fillStyle = `hsla(0, ${rS}%, ${rL}%, 0.8)`;
     ctx.fill();
     ctx.lineWidth = 2;
     // ctx.strokeStyle = 'black';
     // ctx.stroke();
   }
 
-  drawControlPoints(ctx: CanvasRenderingContext2D, points) {
+  drawControlPoints(ctx: CanvasRenderingContext2D, points: Point[]) {
     ctx.globalAlpha = 0.2;
     ctx.lineWidth = 1;
     ctx.strokeStyle = '#880000';
@@ -243,6 +279,5 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
   degreesToRadians(angleInDegrees) {
     return (Math.PI * angleInDegrees) / 180;
   }
-
 
 }
