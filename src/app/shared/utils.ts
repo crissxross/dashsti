@@ -1,4 +1,4 @@
-// ********** UTILITY functions ********
+// ********** UTILITY functions for emoviz components ********
 
 // converts control point x from polar (cosine) to Cartesian x coordinate
 export function polarToCartesianX(theta, r) {

@@ -1,0 +1,4 @@
+/* to centre svg in viz-container (w: 400px) */
+svg {
+  margin: 10px 50px;
+}
