@@ -10,6 +10,7 @@ import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
 import * as CustomEase from 'gsap/CustomEase';
 import * as CustomWiggle from 'gsap/CustomWiggle';
+import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 
 @Component({
   selector: 'app-emoviz8',
@@ -18,8 +19,8 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
 })
 export class Emoviz8Component implements OnInit, OnDestroy {
   // svg elements
-  @ViewChild('bg') bg: ElementRef;
-  @ViewChild('emoTriShape') emoShape: ElementRef;
+  @ViewChild('boundingBox') boundingBox: ElementRef;
+  @ViewChild('emoShape') emoShape: ElementRef;
 
   // PAD properties
   pValue$: Observable<number>;
@@ -39,11 +40,11 @@ export class Emoviz8Component implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    const bg = this.bg.nativeElement;
+    const boundingBox = this.boundingBox.nativeElement;
     const emoShape = this.emoShape.nativeElement;
 
     // set default PAD 000 values of SVG elements to animate
-    TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
+    TweenMax.set(boundingBox, { fill: 'hsl(137, 30%, 80%)' });
     TweenMax.set(emoShape, { fill: 'hsl(0, 50%, 50%)' });
     // TweenMax.set(emoShape, { stroke: 'hsl(0, 80%, 70%)', strokeWidth: 2, fill: 'hsl(0, 50%, 50%)' });
 
@@ -75,25 +76,25 @@ export class Emoviz8Component implements OnInit, OnDestroy {
         // console.log('topTheta angle:', topTheta, 'rightTheta angle:', rightTheta, 'leftTheta angle:', leftTheta);
         // console.log('top:', topX, topY, 'right:', rightX, rightY, 'left:', leftX, leftY);
 
-        const topCx1 = Math.round(topX + this.polarToCartesianX(topTheta, topRadius));
-        const topCy1 = Math.round(topY + this.polarToCartesianY(topTheta, topRadius));
-        const topCx2 = Math.round(topX - this.polarToCartesianX(topTheta, topRadius));
-        const topCy2 = Math.round(topY - this.polarToCartesianY(topTheta, topRadius));
-        const rightCx1 = Math.round(rightX + this.polarToCartesianX(rightTheta, rightRadius));
-        const rightCy1 = Math.round(rightY + this.polarToCartesianY(rightTheta, rightRadius));
-        const rightCx2 = Math.round(rightX - this.polarToCartesianX(rightTheta, rightRadius));
-        const rightCy2 = Math.round(rightY - this.polarToCartesianY(rightTheta, rightRadius));
-        const leftCx1 = Math.round(leftX + this.polarToCartesianX(leftTheta, leftRadius));
-        const leftCy1 = Math.round(leftY + this.polarToCartesianY(leftTheta, leftRadius));
-        const leftCx2 = Math.round(leftX - this.polarToCartesianX(leftTheta, leftRadius));
-        const leftCy2 = Math.round(leftY - this.polarToCartesianY(leftTheta, leftRadius));
+        const topCx1 = Math.round(topX + polarToCartesianX(topTheta, topRadius));
+        const topCy1 = Math.round(topY + polarToCartesianY(topTheta, topRadius));
+        const topCx2 = Math.round(topX - polarToCartesianX(topTheta, topRadius));
+        const topCy2 = Math.round(topY - polarToCartesianY(topTheta, topRadius));
+        const rightCx1 = Math.round(rightX + polarToCartesianX(rightTheta, rightRadius));
+        const rightCy1 = Math.round(rightY + polarToCartesianY(rightTheta, rightRadius));
+        const rightCx2 = Math.round(rightX - polarToCartesianX(rightTheta, rightRadius));
+        const rightCy2 = Math.round(rightY - polarToCartesianY(rightTheta, rightRadius));
+        const leftCx1 = Math.round(leftX + polarToCartesianX(leftTheta, leftRadius));
+        const leftCy1 = Math.round(leftY + polarToCartesianY(leftTheta, leftRadius));
+        const leftCx2 = Math.round(leftX - polarToCartesianX(leftTheta, leftRadius));
+        const leftCy2 = Math.round(leftY - polarToCartesianY(leftTheta, leftRadius));
 
         // HSL Saturation & Lightness values for red & green hues
         const rS = 50 + Math.round(pad.P * 50);
         const rL = 40 + Math.round(pad.A * 30);
         const gS = 40 + Math.round(pad.D * 30);
-        const gL = 40 + Math.round(pad.D * 30);
-        // const gL = 15 + Math.round(pad.D * -10);
+        // const gL = 40 + Math.round(pad.D * 30);
+        const gL = 15 + Math.round(pad.D * -10);
         console.log('rS:', rS, 'rL:', rL, 'gS:', gS, 'gL:', gL);
 
         TweenMax.to(emoShape, 0.5, {
@@ -106,11 +107,9 @@ export class Emoviz8Component implements OnInit, OnDestroy {
             fill: `hsl(0, ${rS}%, ${rL}%)`,
             ease: Power1.easeInOut
         });
-        // WHY IS THIS HAVING NO EFFECT ON BACKGROUND GREEN?
-        TweenMax.to(bg, 0.5, {
-          attr: {
+
+        TweenMax.to(boundingBox, 0.5, {
             fill: `hsl(137, ${gS}%, ${gL}%)`
-          }
         });
 
       });
@@ -125,26 +124,6 @@ export class Emoviz8Component implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
     console.log('emoviz8 OnDestroy');
-  }
-
-    // ********** UTILITY methods ********
-
-  // converts control point x from polar to Cartesian x coordinate
-  polarToCartesianX(theta, r) {
-    const x = r * Math.cos(this.degreesToRadians(theta));
-    // console.log('polarToCartesianX: ', x);
-    return x;
-  }
-
-  // converts control point y from polar to Cartesian y coordinate
-  polarToCartesianY(theta, r) {
-    const y = r * Math.sin(this.degreesToRadians(theta));
-    // console.log('polarToCartesianY: ', y);
-    return y;
-  }
-
-  degreesToRadians(angleInDegrees) {
-    return (Math.PI * angleInDegrees) / 180;
   }
 
 }
