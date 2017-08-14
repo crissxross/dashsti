@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, ViewC
 import { Particle } from '../particle';
 
 @Component({
-  selector: 'app-viz10',
+  selector: 'app-viz10a',
   template: `
     <canvas #canvas width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Viz10Component implements OnChanges {
+export class Viz10aComponent implements OnChanges {
   @Input() particles: Particle[];
   @Input() P: number;
   @Input() A: number;
@@ -51,6 +51,5 @@ export class Viz10Component implements OnChanges {
     }
     ctx.fill();
   }
-
 
 }

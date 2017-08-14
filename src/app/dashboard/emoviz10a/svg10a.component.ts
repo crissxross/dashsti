@@ -13,23 +13,23 @@ import * as CustomWiggle from 'gsap/CustomWiggle';
 import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 
 @Component({
-  selector: 'app-svg10',
+  selector: 'app-svg10a',
   template: `
     <svg width="300" height="300">
-      <svg:rect #boundingBox class="bg" width="300" height="300"/>
+    <svg:rect #boundingBox class="bg" width="300" height="300"/>
 
-      <svg:path #emoShape d="
-        M 150 90 C
-        182 128, 259 146, 230 180
-        201 214, 99 214, 70 180
-        41 146, 118 52, 150 90
-      "/>
+    <svg:path #emoShape d="
+      M 150 90 C
+      182 128, 259 146, 230 180
+      201 214, 99 214, 70 180
+      41 146, 118 52, 150 90
+    "/>
 
-    </svg>
+  </svg>
   `,
   styles: []
 })
-export class Svg10Component implements OnInit, OnDestroy {
+export class Svg10aComponent implements OnInit, OnDestroy {
   @ViewChild('boundingBox') boundingBox: ElementRef;
   @ViewChild('emoShape') emoShape: ElementRef;
 
@@ -51,7 +51,7 @@ export class Svg10Component implements OnInit, OnDestroy {
 
     // set default PAD 000 values of SVG elements to animate
     TweenMax.set(boundingBox, { fill: 'none' });
-    TweenMax.set(emoShape, { fill: 'hsl(137, 50%, 50%)', opacity: 0.5 }); // 137 green
+    TweenMax.set(emoShape, { fill: 'hsl(0, 50%, 50%)', opacity: 0.5 }); // 137 green
 
     // PAD
     // combineLatest takes an optional mapping function (last) after input Observables
@@ -109,7 +109,7 @@ export class Svg10Component implements OnInit, OnDestroy {
             ${rightCx2} ${rightCy2}, ${leftCx1} ${leftCy1}, ${leftX} ${leftY},
             ${leftCx2} ${leftCy2}, ${topCx2} ${topCy2}, ${topX} ${topY}
             `},
-            fill: `hsl(137, ${rS}%, ${rL}%)`,
+            fill: `hsl(0, ${rS}%, ${rL}%)`,
             ease: Power1.easeInOut
         });
 
