@@ -26,6 +26,9 @@ import { Emoviz7cComponent } from './emoviz7c/emoviz7c.component';
 import { Emoviz8Component } from './emoviz8/emoviz8.component';
 import { Emoviz9Component } from './emoviz9/emoviz9.component';
 import { Viz9Component } from './emoviz9/viz9.component';
+import { Emoviz10Component } from './emoviz10/emoviz10.component';
+import { Viz10Component } from './emoviz10/viz10.component';
+import { Svg10Component } from './emoviz10/svg10.component';
 
 @NgModule({
   imports: [
@@ -56,7 +59,10 @@ import { Viz9Component } from './emoviz9/viz9.component';
     Emoviz7cComponent,
     Emoviz8Component,
     Emoviz9Component,
-    Viz9Component
+    Viz9Component,
+    Emoviz10Component,
+    Viz10Component,
+    Svg10Component
   ]
 })
 export class DashboardModule { }

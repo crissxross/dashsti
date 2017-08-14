@@ -13,11 +13,11 @@ import * as fromRoot from '../../reducers';
 import { Particle } from '../particle';
 
 @Component({
-  selector: 'app-emoviz9',
-  templateUrl: './emoviz9.component.html',
-  styleUrls: ['../emoviz.css', './emoviz9.component.css']
+  selector: 'app-emoviz10',
+  templateUrl: './emoviz10.component.html',
+  styleUrls: ['./emoviz10.component.css']
 })
-export class Emoviz9Component implements OnInit, OnDestroy {
+export class Emoviz10Component implements OnInit, OnDestroy {
   particles: Particle[] = [];
   private intervalId: any;
 
@@ -42,35 +42,35 @@ export class Emoviz9Component implements OnInit, OnDestroy {
   dNote: string;
   miscNote: string;
 
-    constructor(private store: Store<fromRoot.State>) {
-      this.pValue$ = store.select(state => state.pad.P);
-      this.aValue$ = store.select(state => state.pad.A);
-      this.dValue$ = store.select(state => state.pad.D);
-   }
+  constructor(private store: Store<fromRoot.State>) {
+    this.pValue$ = store.select(state => state.pad.P);
+    this.aValue$ = store.select(state => state.pad.A);
+    this.dValue$ = store.select(state => state.pad.D);
+ }
 
-  ngOnInit() {
-    this.updateParticles();
-    this.intervalId = setInterval(() => this.updateParticles(), 100);
+ngOnInit() {
+  this.updateParticles();
+  this.intervalId = setInterval(() => this.updateParticles(), 100);
 
-    this.PADprogress = Observable.combineLatest(
-      this.pValue$, this.aValue$, this.dValue$,
-      (p, a, d) => ({ P: p, A: a, D: d })
-    )
-      .subscribe(pad => {
-        console.log('Latest PAD:', pad.P, pad.A, pad.D);
-        this.P = pad.P;
-        this.A = pad.A;
-        this.D = pad.D;
-        this.particleWidth = 12 + Math.round(this.P * 10); // 2 to 22
-        this.particleHeight = 10 + Math.round(this.A * 10); // 0 to 20
-        // console.log('particle width & height:', this.particleWidth, this.particleHeight);
-      });
+  this.PADprogress = Observable.combineLatest(
+    this.pValue$, this.aValue$, this.dValue$,
+    (p, a, d) => ({ P: p, A: a, D: d })
+  )
+    .subscribe(pad => {
+      console.log('Latest PAD:', pad.P, pad.A, pad.D);
+      this.P = pad.P;
+      this.A = pad.A;
+      this.D = pad.D;
+      this.particleWidth = 12 + Math.round(this.P * 10); // 2 to 22
+      this.particleHeight = 10 + Math.round(this.A * 10); // 0 to 20
+      // console.log('particle width & height:', this.particleWidth, this.particleHeight);
+    });
 
-    // NOTES
-    this.pNote = 'P: ';
-    this.aNote = 'A: ';
-    this.dNote = 'D: ';
-    this.miscNote = 'CANVAS & viz9 with random particles';
+  // NOTES
+  this.pNote = 'P: ';
+  this.aNote = 'A: ';
+  this.dNote = 'D: ';
+  this.miscNote = 'CANVAS & SVG';
   }
 
   ngOnDestroy() {
