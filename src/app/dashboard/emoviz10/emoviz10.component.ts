@@ -49,7 +49,6 @@ export class Emoviz10Component implements OnInit, OnDestroy {
  }
 
 ngOnInit() {
-  this.updateParticles();
   this.intervalId = setInterval(() => this.updateParticles(), 100);
 
   this.PADprogress = Observable.combineLatest(
@@ -67,16 +66,16 @@ ngOnInit() {
     });
 
   // NOTES
-  this.pNote = 'P: ';
-  this.aNote = 'A: ';
-  this.dNote = 'D: ';
+  this.pNote = 'P: particle width + SVG';
+  this.aNote = 'A: particle height + SVG';
+  this.dNote = 'D: S & L of particles & fill, + SVG';
   this.miscNote = 'CANVAS & SVG';
   }
 
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
     clearInterval(this.intervalId);
-    console.log('emoviz9 OnDestroy');
+    console.log('emoviz10 OnDestroy');
   }
 
   private updateParticles() {

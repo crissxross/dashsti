@@ -67,9 +67,9 @@ export class Emoviz9Component implements OnInit, OnDestroy {
       });
 
     // NOTES
-    this.pNote = 'P: ';
-    this.aNote = 'A: ';
-    this.dNote = 'D: ';
+    this.pNote = 'P: particle width';
+    this.aNote = 'A: particle height';
+    this.dNote = 'D: saturation & lightness of particles & fill';
     this.miscNote = 'CANVAS & viz9 with random particles';
   }
 

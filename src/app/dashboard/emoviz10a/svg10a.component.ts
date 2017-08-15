@@ -60,7 +60,7 @@ export class Svg10aComponent implements OnInit, OnDestroy {
       (p, a, d) => ({ P: p, A: a, D: d })
     )
       .subscribe(pad => {
-        console.log('Latest PAD:', pad.P, pad.A, pad.D);
+        // console.log('Latest PAD:', pad.P, pad.A, pad.D);
 
         const topX = 150 + Math.round(pad.A * 10 ); // 140 to 160
         const topY = 90 + Math.round(pad.A * -50 ); // 140 to 40
@@ -100,7 +100,7 @@ export class Svg10aComponent implements OnInit, OnDestroy {
         const gS = 40 + Math.round(pad.D * 30);
         // const gL = 40 + Math.round(pad.D * 30);
         const gL = 15 + Math.round(pad.D * -10);
-        console.log('rS:', rS, 'rL:', rL, 'gS:', gS, 'gL:', gL);
+        // console.log('rS:', rS, 'rL:', rL, 'gS:', gS, 'gL:', gL);
 
         TweenMax.to(emoShape, 0.5, {
           attr: {
@@ -122,7 +122,7 @@ export class Svg10aComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
-    console.log('svg10 OnDestroy');
+    console.log('svg10a OnDestroy');
   }
 
 }
