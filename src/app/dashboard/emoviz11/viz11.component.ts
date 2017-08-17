@@ -25,8 +25,18 @@ export class Viz11Component implements OnChanges {
   sFill: number;
   lFill: number;
   radius: number;
-  startAngle: number;
-  endAngle: number;
+  // startAngles = [260, 247, 234, 221, 208, 195, 182, 169, 156, 143, 130, 117, 104,  91,  78,  65,  52,  39,  26,  13,   0];
+  // endAngles =   [270, 274, 278, 282, 286, 300, 304, 308, 312, 316, 320, 324, 328, 332, 336, 340, 344, 348, 352, 356, 360];
+  angleId: number;
+  // array of pairs of start & end angles - SOME ANGLES IN POS SCALE MAY STILL NEED ADJUSTING but almost there !!!!
+  angles = [
+    // -1 to -0.1
+    [290, 300], [280, 300], [280, 310], [280, 320], [280, 330], [275, 335], [270, 340], [265, 345], [260, 350], [255, 355],
+    // 0
+    [270, 20],
+    // 0.1 to 1
+    [280, 40], [290, 60], [300, 90], [310, 130], [320, 150], [330, 170], [340, 200], [350, 240], [355, 300], [0, 360]
+  ];
   // spotX = 0; // < just for testing
 
   constructor() { }
@@ -37,14 +47,15 @@ export class Viz11Component implements OnChanges {
     // this.spotX++; // < just for testing
 
     // console.log('P A D:', this.P, this.A, this.D);
-    this.endAngle = 115 + Math.round(this.P * 100); // 15 to 215
     this.radius = 22 + Math.round(this.A * 20); // 5 to 45
+    this.angleId = 10 + Math.round(this.P * 10); // 0 to 20
     this.S = 50 + Math.round(this.D * 40); // 10 to 90
     this.L = 50 - Math.round(this.D * 40); // 90 to 10
     this.sFill = 30 + Math.round(this.D * 20); // 10 to 50
     this.lFill = 15 - Math.round(this.D * 10); // 25 to 5
     // console.log('S:', this.S, 'L:', this.L, 'sFill:', this.sFill, 'lFill:', this.lFill);
-    // console.log('endAngle:', this.endAngle);
+    // console.log('angles:', this.angles[this.angleId][0], this.angles[this.angleId][1]);
+    // console.log(this.angleId);
 
     ctx.globalAlpha = 0.1;
     ctx.fillStyle = `hsl(137, ${this.sFill}%, ${this.lFill}%)`; // 137 green
@@ -56,14 +67,14 @@ export class Viz11Component implements OnChanges {
     ctx.fillStyle = `hsl(0, ${this.S}%, ${this.L}%)`;
     for (const {x, y} of this.emotes) {
       ctx.moveTo(x, y);
-      this.drawArc(ctx, x, y, this.radius, 0, this.endAngle);
+      this.drawArc(ctx, x, y, this.radius, this.angles[this.angleId][0], this.angles[this.angleId][1]);
     }
     // ctx.arc(this.spotX, 20, 10, 0, Math.PI * 2); // < just for testing
     ctx.fill();
   }
 
-  drawArc(ctx, x, y, radius, startingAngle, endingAngle) {
-    ctx.arc(x, y, radius, degreesToRadians(startingAngle), degreesToRadians(endingAngle));
+  drawArc(ctx, x, y, radius, startAngle, endAngle) {
+    ctx.arc(x, y, radius, degreesToRadians(startAngle), degreesToRadians(endAngle));
   }
 
 }
