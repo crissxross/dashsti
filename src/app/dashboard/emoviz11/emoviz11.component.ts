@@ -64,10 +64,10 @@ export class Emoviz11Component implements OnInit, OnDestroy {
         });
 
       // NOTES
-      this.pNote = 'P: ';
-      this.aNote = 'A: ';
-      this.dNote = 'D: ';
-      this.miscNote = 'CANVAS';
+      this.pNote = 'P: start & end angles of arc';
+      this.aNote = 'A: radius of arc';
+      this.dNote = 'D: HSL saturation & lightness';
+      this.miscNote = 'Container subscribes to PAD & passes values as inputs to viz11 child/display component';
     }
 
     ngOnDestroy() {
