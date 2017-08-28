@@ -40,7 +40,8 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardModule,
     SceneModule,
     ColPalettesModule,
-    StoreModule.provideStore(reducers),
+    // StoreModule.provideStore(reducers),
+    StoreModule.forRoot(reducers),
     AppRoutingModule
   ],
   providers: [],
