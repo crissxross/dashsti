@@ -53,7 +53,7 @@ export class Viz11Component implements OnChanges {
     this.L = 40 - Math.round(this.D * 20); // 60 to 20
     this.sFill = 30 + Math.round(this.D * 20); // 10 to 50 : fillRect
     this.lFill = 15 - Math.round(this.D * 10); // 25 to 5 : fillRect
-    console.log('S:', this.S, 'L:', this.L, 'sFill:', this.sFill, 'lFill:', this.lFill);
+    // console.log('S:', this.S, 'L:', this.L, 'sFill:', this.sFill, 'lFill:', this.lFill);
     // console.log('angles:', this.angles[this.angleId][0], this.angles[this.angleId][1]);
     // console.log(this.angleId);
 
