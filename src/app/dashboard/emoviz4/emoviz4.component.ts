@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
@@ -47,7 +47,7 @@ https://greensock.com/forums/topic/13594-greensock-tweens-in-angular-2/#comment-
   // templateUrl: './emoviz4.component.html',
   styleUrls: ['../emoviz.css', './emoviz4.component.css']
 })
-export class Emoviz4Component implements OnInit, OnDestroy {
+export class Emoviz4Component implements OnInit, OnDestroy, AfterViewInit {
   // svg elements
   @ViewChild('bg') bg: ElementRef;
   // @ViewChild('Plines') Plines: ElementRef;
@@ -75,7 +75,9 @@ export class Emoviz4Component implements OnInit, OnDestroy {
     this.dValue$ = store.select(state => state.pad.D);
   }
 
-  ngOnInit() {
+  // tried with AfterViewInit but still does not work
+  // ngOnInit() {
+  ngAfterViewInit() {
     const bg = this.bg.nativeElement;
     // const Plines = this.Plines.nativeElement;
     const P_ = this.P_.nativeElement;
@@ -108,11 +110,21 @@ export class Emoviz4Component implements OnInit, OnDestroy {
       });
 
     // NOTES
+    // this.pNote = 'P: timeline position -- ??';
+    // this.aNote = 'A: timeline position -- ??';
+    // this.dNote = 'D: timeline position -- ??';
+    // this.miscNote = 'CHANGE THIS !!!!';
+
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit called');
+
+    // NOTES
     this.pNote = 'P: timeline position -- ??';
     this.aNote = 'A: timeline position -- ??';
     this.dNote = 'D: timeline position -- ??';
     this.miscNote = 'CHANGE THIS !!!!';
-
   }
 
   ngOnDestroy() {

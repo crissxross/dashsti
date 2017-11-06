@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
 import { TweenMax, TimelineMax, Back, Power4 } from 'gsap';
 import * as MorphSVG from 'gsap/MorphSVGPlugin';
@@ -10,7 +10,7 @@ import * as MorphSVG from 'gsap/MorphSVGPlugin';
   `,
   styles: []
 })
-export class BlobMorpherComponent implements OnInit {
+export class BlobMorpherComponent implements AfterViewInit {
   @ViewChild('blob') blob: ElementRef;
 
   fill = '#1a1a1a';
@@ -21,7 +21,8 @@ export class BlobMorpherComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  // previously used ngOnInit() {} but that didn't work either
+  ngAfterViewInit() {
 
     // const path = this.elementRef.nativeElement.firstChild;
     const blob = this.blob.nativeElement;
