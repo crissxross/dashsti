@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+// import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
@@ -23,9 +24,9 @@ import * as fromRoot from '../../reducers';
           <li>D</li>
         </ul>
         <ul>
-          <li><small>{{pValue$ | async | number}}</small></li>
-          <li><small>{{aValue$ | async | number}}</small></li>
-          <li><small>{{dValue$ | async | number}}</small></li>
+          <li><small>{{pValue$ | async | number: '1.0-1'}}</small></li>
+          <li><small>{{aValue$ | async | number: '1.0-1'}}</small></li>
+          <li><small>{{dValue$ | async | number: '1.0-1'}}</small></li>
         </ul>
       </div>
     </div>

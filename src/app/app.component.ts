@@ -3,19 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <md-sidenav-container>
+    <mat-sidenav-container>
 
       <!-- sidenav content -->
-      <md-sidenav #sidenav>
+      <mat-sidenav #sidenav>
         <app-nav (click)="sidenav.close()"></app-nav>
-      </md-sidenav>
+      </mat-sidenav>
 
-      <md-toolbar>
-        <button md-icon-button (click)="sidenav.toggle()">
-          <md-icon>menu</md-icon>
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
         </button>
         {{title}}
-      </md-toolbar>
+      </mat-toolbar>
 
       <!-- primary content -->
       <div class="main-container">
@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
         </main>
       </div>
 
-  </md-sidenav-container>
+  </mat-sidenav-container>
   `,
   styleUrls: ['./app.component.css']
 })

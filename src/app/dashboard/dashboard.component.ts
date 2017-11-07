@@ -14,14 +14,14 @@ import * as fromRoot from '../reducers';
         <div class="section">
           <small class="muted">Dashboard for experiments</small>
         </div>
-        <md-divider></md-divider>
-        <md-nav-list>
-          <a md-list-item *ngFor="let id of navIds"
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+          <a mat-list-item *ngFor="let id of navIds"
             [routerLink]="['/dashboard/emoviz'+id]"
             routerLinkActive="active">
             emo-viz {{id}}
           </a>
-        </md-nav-list>
+        </mat-nav-list>
       </div>
 
       <div class="main-content-container">
@@ -49,17 +49,17 @@ import * as fromRoot from '../reducers';
             </div>
             <div class="ui-section">
               <!-- Specific emotional states -->
-              <md-button-toggle-group vertical>
-                <md-button-toggle (click)="angry()">Angry -++</md-button-toggle>
-                <md-button-toggle (click)="fear()">Fearful -+-</md-button-toggle>
-                <md-button-toggle (click)="comfortable()">Comfortable +-+</md-button-toggle>
-                <md-button-toggle (click)="elated()" >Elated +++</md-button-toggle>
-                <md-button-toggle (click)="bored()">Bored ---</md-button-toggle>
-                <md-button-toggle (click)="impressed()">Impressed ++-</md-button-toggle>
-                <md-button-toggle (click)="uncaring()">Uncaring --+</md-button-toggle>
-                <md-button-toggle (click)="sleepy()">( sleepy +-- )</md-button-toggle>
-                <md-button-toggle (click)="resetPAD()">Reset to 0</md-button-toggle>
-              </md-button-toggle-group>
+              <mat-button-toggle-group vertical>
+                <mat-button-toggle (click)="angry()">Angry -++</mat-button-toggle>
+                <mat-button-toggle (click)="fear()">Fearful -+-</mat-button-toggle>
+                <mat-button-toggle (click)="comfortable()">Comfortable +-+</mat-button-toggle>
+                <mat-button-toggle (click)="elated()" >Elated +++</mat-button-toggle>
+                <mat-button-toggle (click)="bored()">Bored ---</mat-button-toggle>
+                <mat-button-toggle (click)="impressed()">Impressed ++-</mat-button-toggle>
+                <mat-button-toggle (click)="uncaring()">Uncaring --+</mat-button-toggle>
+                <mat-button-toggle (click)="sleepy()">( sleepy +-- )</mat-button-toggle>
+                <mat-button-toggle (click)="resetPAD()">Reset to 0</mat-button-toggle>
+              </mat-button-toggle-group>
             </div>
           </div>
         </div>
@@ -84,8 +84,8 @@ import * as fromRoot from '../reducers';
           </tr>
         </table>
         </div>
-        <button md-raised-button (click)="toggleText()">Toggle text</button>
-        <button md-raised-button (click)="toggleBG()">Toggle bg</button>
+        <button mat-raised-button (click)="toggleText()">Toggle text</button>
+        <button mat-raised-button (click)="toggleBG()">Toggle bg</button>
         <p class="citations">Specific emotional state PAD ratings from:
           <cite>
             <a href="http://psycnet.apa.org/journals/xge/123/4/394/">

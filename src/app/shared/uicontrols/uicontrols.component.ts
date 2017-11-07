@@ -7,27 +7,27 @@ import * as fromRoot from '../../reducers';
 @Component({
   selector: 'app-uicontrols',
   template: `
-    <button md-raised-button (click)="showAndReset()">
+    <button mat-raised-button (click)="showAndReset()">
       {{show ? 'Reset & hide sliders' : 'Show PAD sliders'}}
     </button>
     <div class="pad-slider-container" *ngIf="show">
       <div>P
-        <md-slider #P min=-1 max=1 value=0 step=0.1 tickInterval=1
+        <mat-slider #P min=-1 max=1 value=0 step=0.1 tickInterval=1
         (change)="onPleasureChange($event)"
-        ></md-slider>
-        {{P.value | number}}
+        ></mat-slider>
+        {{P.value | number: '1.0-1'}}
       </div>
       <div>A
-        <md-slider #A min=-1 max=1 value=0 step=0.1 tickInterval=1
+        <mat-slider #A min=-1 max=1 value=0 step=0.1 tickInterval=1
         (change)="onArousalChange($event)"
-        ></md-slider>
-        {{A.value | number}}
+        ></mat-slider>
+        {{A.value | number: '1.0-1'}}
       </div>
       <div>D
-        <md-slider #D min=-1 max=1 value=0 step=0.1 tickInterval=1
+        <mat-slider #D min=-1 max=1 value=0 step=0.1 tickInterval=1
         (change)="onDominanceChange($event)"
-        ></md-slider>
-        {{D.value | number}}
+        ></mat-slider>
+        {{D.value | number: '1.0-1'}}
       </div>
     </div>
   `,

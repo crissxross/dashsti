@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 
       <div class="sidepanel-container muted">
         <p>Colour Palettes</p>
-        <md-nav-list>
-          <a md-list-item [routerLink]="['/hannah-cols']" routerLinkActive="active">Hannah colors SVG</a>
-          <a md-list-item [routerLink]="['/joel-cols']" routerLinkActive="active">Joel colors SVG</a>
-          <a md-list-item [routerLink]="['/sarah-cols']" routerLinkActive="active">Sarah colors SVG</a>
-          <a md-list-item [routerLink]="['/han-colors']" routerLinkActive="active">Hannah colors (MD)</a>
-        </md-nav-list>
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="['/hannah-cols']" routerLinkActive="active">Hannah colors SVG</a>
+          <a mat-list-item [routerLink]="['/joel-cols']" routerLinkActive="active">Joel colors SVG</a>
+          <a mat-list-item [routerLink]="['/sarah-cols']" routerLinkActive="active">Sarah colors SVG</a>
+          <a mat-list-item [routerLink]="['/han-colors']" routerLinkActive="active">Hannah colors (MD)</a>
+        </mat-nav-list>
       </div>
 
       <div class="main-content-container">

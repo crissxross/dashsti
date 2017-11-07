@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nav',
   template: `
-    <md-nav-list>
-      <a md-list-item [routerLink]="['/dashboard']">Dashboard</a>
-      <a md-list-item [routerLink]="['/col-palettes']">Colour palettes</a>
-      <a md-list-item [routerLink]="['/dash-scene']">Dash: scene layout</a>
-    </md-nav-list>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/dashboard']">Dashboard</a>
+      <a mat-list-item [routerLink]="['/col-palettes']">Colour palettes</a>
+      <a mat-list-item [routerLink]="['/dash-scene']">Dash: scene layout</a>
+    </mat-nav-list>
   `,
   styleUrls: ['./nav.component.css']
 })

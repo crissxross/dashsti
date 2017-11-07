@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/combineLatest';
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/observable/combineLatest';
+import { map, combineLatest } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
