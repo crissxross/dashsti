@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -85,7 +84,7 @@ export class Emoviz2Component implements OnInit, OnDestroy {
 //  P: joint positive function of saturation & brightness (brightness has stronger influence)
     this.pProgress = this.pValue$
       // returns an integer from -100 to 100 (in steps of 10)
-      .map(v => Math.round(v * 100))
+      .pipe(map(v => Math.round(v * 100)))
       .subscribe(v => {
         const S = 50 + v / 2.5; // ranges from 10 to 90
         const L = 50 + v / 2.1; // ranges from 2.38 to 97.62
@@ -97,7 +96,7 @@ export class Emoviz2Component implements OnInit, OnDestroy {
 //  A: as Arousal increases, saturation increases strongly & brightness decreases
     this.aProgress = this.aValue$
       // returns an integer from -100 to 100 (in steps of 10)
-      .map(v => Math.round(v * 100))
+      .pipe(map(v => Math.round(v * 100)))
       .subscribe(v => {
         const S = 50 + v / 2; // ranges from 0 to 100
         const L = 50 - v / 3; // ranges from 83.333 to 16.666
@@ -109,7 +108,7 @@ export class Emoviz2Component implements OnInit, OnDestroy {
 //  D: as Dominance increases, saturation increases & brightness decreases strongly
     this.dProgress = this.dValue$
       // returns an integer from -100 to 100 (in steps of 10)
-      .map(v => Math.round(v * 100))
+      .pipe(map(v => Math.round(v * 100)))
       .subscribe(v => {
         const S = 50 + v / 2.5; // ranges from 10 to 90
         const L = 50 - v / 2.1; // ranges from 97.62 to 2.38

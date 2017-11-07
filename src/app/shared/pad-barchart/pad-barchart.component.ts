@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
@@ -56,17 +55,17 @@ export class PadBarchartComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.pY$ = this.pValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
-    this.aY$ = this.aValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
-    this.dY$ = this.dValue$.map(v => (v >= 0) ? 100 - (v * 100) : 100);
+    this.pY$ = this.pValue$.pipe(map(v => (v >= 0) ? 100 - (v * 100) : 100));
+    this.aY$ = this.aValue$.pipe(map(v => (v >= 0) ? 100 - (v * 100) : 100));
+    this.dY$ = this.dValue$.pipe(map(v => (v >= 0) ? 100 - (v * 100) : 100));
 
-    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
-    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
-    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) * 100 : v * 100);
+    this.pHeight$ = this.pValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 : v * 100));
+    this.aHeight$ = this.aValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 : v * 100));
+    this.dHeight$ = this.dValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 : v * 100));
 
-    this.pFill$ = this.pValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
-    this.aFill$ = this.aValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
-    this.dFill$ = this.dValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
+    this.pFill$ = this.pValue$.pipe(map(v => (v >= 0) ? this.fillPos : this.fillNeg));
+    this.aFill$ = this.aValue$.pipe(map(v => (v >= 0) ? this.fillPos : this.fillNeg));
+    this.dFill$ = this.dValue$.pipe(map(v => (v >= 0) ? this.fillPos : this.fillNeg));
   }
 
 }

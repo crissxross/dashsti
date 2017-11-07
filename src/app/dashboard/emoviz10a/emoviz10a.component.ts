@@ -1,16 +1,11 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer, ViewChild } from '@angular/core'; // check version of Renderer !!!!!!!!!
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/observable/combineLatest';
 import { combineLatest } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-// import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
-// import * as CustomEase from 'gsap/CustomEase';
-// import * as CustomWiggle from 'gsap/CustomWiggle';
 import { Particle } from '../particle';
 
 @Component({
@@ -52,6 +47,7 @@ export class Emoviz10aComponent implements OnInit, OnDestroy {
 ngOnInit() {
   this.intervalId = setInterval(() => this.updateParticles(), 100);
 
+  // NOTE: combineLatest is used here as a static method of Observable class
   this.PADprogress = Observable.combineLatest(
     this.pValue$, this.aValue$, this.dValue$,
     (p, a, d) => ({ P: p, A: a, D: d })

@@ -1,7 +1,6 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer, ViewChild } from '@angular/core'; // check version of Renderer !!!!!!!!!
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/observable/combineLatest';
 import { combineLatest } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -49,6 +48,7 @@ export class Emoviz11Component implements OnInit, OnDestroy {
     ngOnInit() {
       this.intervalId = setInterval(() => this.updateEmotes(), 100);
 
+      // NOTE: combineLatest is used here as a static method of Observable class
       this.PADprogress = Observable.combineLatest(
         this.pValue$, this.aValue$, this.dValue$,
         (p, a, d) => ({ P: p, A: a, D: d })

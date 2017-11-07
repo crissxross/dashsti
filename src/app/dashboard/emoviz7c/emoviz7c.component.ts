@@ -1,9 +1,8 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer, ViewChild } from '@angular/core'; // check version of Renderer !!!!!!!!!
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/map';
 // import 'rxjs/add/observable/combineLatest';
-import { map, combineLatest } from 'rxjs/operators';
+import { combineLatest } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
@@ -89,6 +88,7 @@ export class Emoviz7cComponent implements OnInit, OnDestroy {
     this.running = true;
     console.log('running:', this.running);
 
+// NOTE: combineLatest is used here as a static method of Observable class
     this.PADprogress = Observable.combineLatest(
       this.pValue$, this.aValue$, this.dValue$,
       (p, a, d) => ({ P: p, A: a, D: d })

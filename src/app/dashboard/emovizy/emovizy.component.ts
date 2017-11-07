@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -91,7 +90,7 @@ export class EmovizyComponent implements OnInit, OnDestroy {
 
     this.pProgressSub = this.pValue$
       // map bipolar scale to unipolar of only positive values
-      .map(v => (v + 1) / 2)
+      .pipe(map(v => (v + 1) / 2))
       .subscribe(v => {
       pTl.progress(v).play();
       // console.log('pProgressSub v: ', v);
@@ -115,7 +114,7 @@ export class EmovizyComponent implements OnInit, OnDestroy {
     const aTl = new TimelineMax({ paused: true });
 
     this.aProgressSub = this.aValue$
-      .map(v => (v + 1) / 2)
+      .pipe(map(v => (v + 1) / 2))
       .subscribe(v => {
         aTl.progress(v).play();
         // console.log('a v: ', v);
@@ -131,8 +130,8 @@ export class EmovizyComponent implements OnInit, OnDestroy {
 
 // D
     this.dProgressSub = this.dValue$
-      // .map(v => ((v + 1) / 2) * 2)
-      .map(v => (v + 1.1) * 1.5)
+      // .pipe(map(v => ((v + 1) / 2) * 2))
+      .pipe(map(v => (v + 1.1) * 1.5))
       .subscribe(v => {
         // console.log('d v: ', v);
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);

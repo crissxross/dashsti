@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-// import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -86,7 +85,7 @@ export class EmovizxComponent implements OnInit, OnDestroy {
 // P
     this.pProgress = this.pValue$
       // returns a positive integer in steps of 5 from 0 to 100
-      .map(v => Math.round((v + 1) * 50))
+      .pipe(map(v => Math.round((v + 1) * 50)))
       .subscribe(v => {
         console.log('P v: ', v);
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 1, {
@@ -97,7 +96,7 @@ export class EmovizxComponent implements OnInit, OnDestroy {
 // A
     this.aProgress = this.aValue$
       // returns a positive integer from 0 to 20
-      .map(v => Math.round((v + 1) * 10))
+      .pipe(map(v => Math.round((v + 1) * 10)))
       .subscribe(v => {
         console.log('A v: ', v);
         CustomWiggle.create('wiggle', { wiggles: v, type: 'easeInOut' });
@@ -110,8 +109,8 @@ export class EmovizxComponent implements OnInit, OnDestroy {
 
 // D
     this.dProgress = this.dValue$
-      // .map(v => ((v + 1) / 2) * 2)
-      .map(v => (v + 1.1) * 1.5)
+      // .pipe(map(v => ((v + 1) / 2) * 2))
+      .pipe(map(v => (v + 1.1) * 1.5))
       .subscribe(v => {
         console.log('D v: ', v);
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, { scale: v }, 0.2);

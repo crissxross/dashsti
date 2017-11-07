@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-// import { map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
@@ -94,30 +93,30 @@ export class Emoviz1Component implements OnInit {
     this.dNote = 'D: width varies';
 
 // P
-    this.pX$ = this.pValue$.map(v => (v >= 0) ? 60 + v : 60); // minimal change
-    this.pY$ = this.pValue$.map(v => (v >= 0) ? 150 - (v * 100) : 150);
-    this.pWidth$ = this.pValue$.map(v => (v >= 0) ? 50 + v : 50); // minimal change
-    this.pHeight$ = this.pValue$.map(v => (v < 0) ? Math.abs(v) * 100 + 10 : v * 100 + 10);
+    this.pX$ = this.pValue$.pipe(map(v => (v >= 0) ? 60 + v : 60)); // minimal change
+    this.pY$ = this.pValue$.pipe(map(v => (v >= 0) ? 150 - (v * 100) : 150));
+    this.pWidth$ = this.pValue$.pipe(map(v => (v >= 0) ? 50 + v : 50)); // minimal change
+    this.pHeight$ = this.pValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 + 10 : v * 100 + 10));
     // note: using opacity to govern saturation, 0.55 so opacity is never 0
-    this.pOpacity$ = this.pValue$.map(v => (v > 0) ? 0.55 + (v / 2) : 0.55 - (Math.abs(v) / 2));
-    // this.pFill$ = this.pValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
+    this.pOpacity$ = this.pValue$.pipe(map(v => (v > 0) ? 0.55 + (v / 2) : 0.55 - (Math.abs(v) / 2)));
+    // this.pFill$ = this.pValue$.pipe(map(v => (v >= 0) ? this.fillPos : this.fillNeg));
 
 // A
-    this.aX$ = this.aValue$.map(v => (v >= 0) ? 170 + v : 170); // minimal change
-    this.aY$ = this.aValue$.map(v => (v >= 0) ? 150 - (v * 100) : 150);
-    this.aWidth$ = this.aValue$.map(v => (v >= 0) ? 50 + v : 50); // minimal change
-    this.aHeight$ = this.aValue$.map(v => (v < 0) ? Math.abs(v) * 100 + 10 : v * 100 + 10);
+    this.aX$ = this.aValue$.pipe(map(v => (v >= 0) ? 170 + v : 170)); // minimal change
+    this.aY$ = this.aValue$.pipe(map(v => (v >= 0) ? 150 - (v * 100) : 150));
+    this.aWidth$ = this.aValue$.pipe(map(v => (v >= 0) ? 50 + v : 50)); // minimal change
+    this.aHeight$ = this.aValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 + 10 : v * 100 + 10));
     // note: using opacity to govern lightness (not ideal)
-    this.aOpacity$ = this.aValue$.map(v => (v > 0) ? 0.55 + (v / 2) : 0.55 - (Math.abs(v) / 2));
-    // this.aFill$ = this.aValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
+    this.aOpacity$ = this.aValue$.pipe(map(v => (v > 0) ? 0.55 + (v / 2) : 0.55 - (Math.abs(v) / 2)));
+    // this.aFill$ = this.aValue$.pipe(map(v => (v >= 0) ? this.fillPos : this.fillNeg));
 
 // D
-    this.dX$ = this.dValue$.map(v => (v >= 0) ? 280 + v : 280); // minimal change
-    this.dY$ = this.dValue$.map(v => (v >= 0) ? 150 - (v * 100) : 150);
-    this.dWidth$ = this.dValue$.map(v => (v > 0) ? 50 + (v * 45) : 50 - Math.abs(v) * 45);
-    this.dHeight$ = this.dValue$.map(v => (v < 0) ? Math.abs(v) * 100 + 10 : v * 100 + 10);
-    this.dOpacity$ = this.dValue$.map(v => (v > 0) ? 0.8 + (v / 10) : 0.8 - (Math.abs(v) / 10)); // minimal change
-    // this.dFill$ = this.dValue$.map(v => (v >= 0) ? this.fillPos : this.fillNeg);
+    this.dX$ = this.dValue$.pipe(map(v => (v >= 0) ? 280 + v : 280)); // minimal change
+    this.dY$ = this.dValue$.pipe(map(v => (v >= 0) ? 150 - (v * 100) : 150));
+    this.dWidth$ = this.dValue$.pipe(map(v => (v > 0) ? 50 + (v * 45) : 50 - Math.abs(v) * 45));
+    this.dHeight$ = this.dValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 + 10 : v * 100 + 10));
+    this.dOpacity$ = this.dValue$.pipe(map(v => (v > 0) ? 0.8 + (v / 10) : 0.8 - (Math.abs(v) / 10))); // minimal change
+    // this.dFill$ = this.dValue$.pipe(map(v => (v >= 0) ? this.fillPos : this.fillNeg));
 
     // Note: roughly centred the rects above within the svg space
   }
