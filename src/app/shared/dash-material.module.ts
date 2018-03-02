@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatButtonToggleModule,
@@ -12,7 +12,7 @@ import {
 
 @NgModule({
   imports: [
-    CommonModule,
+    // CommonModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatIconModule,
