@@ -1,7 +1,5 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer, ViewChild } from '@angular/core'; // check version of Renderer !!!!!!!!!
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import { combineLatest } from 'rxjs/operators';
+import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
@@ -49,7 +47,7 @@ export class Emoviz9Component implements OnInit, OnDestroy {
     this.intervalId = setInterval(() => this.updateParticles(), 100);
 
     // NOTE: combineLatest is used here as a static method of Observable class
-    this.PADprogress = Observable.combineLatest(
+    this.PADprogress = combineLatest(
       this.pValue$, this.aValue$, this.dValue$,
       (p, a, d) => ({ P: p, A: a, D: d })
     )

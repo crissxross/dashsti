@@ -1,15 +1,9 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer, ViewChild } from '@angular/core'; // check version of Renderer !!!!!!!!!
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/combineLatest';
-// import { combineLatest } from 'rxjs/operators'; // WHY does this NOT WORK here but does in emoviz3b ???
+import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
-import * as CustomEase from 'gsap/CustomEase';
-import * as CustomWiggle from 'gsap/CustomWiggle';
 
 @Component({
   selector: 'app-emoviz7',
@@ -40,7 +34,7 @@ export class Emoviz7Component implements OnInit, OnDestroy {
   ngOnInit() {
     const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
 
-    this.PADprogress = Observable.combineLatest(
+    this.PADprogress = combineLatest(
       this.pValue$, this.aValue$, this.dValue$,
       (p, a, d) => ({ P: p, A: a, D: d })
     )

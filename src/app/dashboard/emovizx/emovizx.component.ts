@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -80,7 +79,7 @@ export class EmovizxComponent implements OnInit, OnDestroy {
     // like Material Design uses
 
     CustomWiggle.create('wiggle', { wiggles: 5 });
-    TweenMax.to(trianEl, 4, {x: 250, ease: 'wiggle' });
+    TweenMax.to(trianEl, 4, {x: 250, Ease: 'wiggle' });
 
 // P
     this.pProgress = this.pValue$

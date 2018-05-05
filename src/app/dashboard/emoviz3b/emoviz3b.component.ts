@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import { combineLatest } from 'rxjs/operators';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
@@ -50,7 +48,7 @@ export class Emoviz3bComponent implements OnInit, OnDestroy {
     // PAD
     // combineLatest takes an optional mapping function (last) after input Observables
     // NOTE: combineLatest is used here as a static method of Observable class
-    this.PADprogress = Observable.combineLatest(
+    this.PADprogress = combineLatest(
       this.pValue$, this.aValue$, this.dValue$,
       (p, a, d) => ({ P: p, A: a, D: d })
     )
