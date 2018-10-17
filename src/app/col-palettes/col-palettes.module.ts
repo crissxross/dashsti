@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 // import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-
-import { ColPalettesRoutingModule } from './col-palettes-routing.module';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './col-palettes.routes';
 
 import { ColPaletteComponent } from './col-palette.component';
 import { HanColorsComponent } from './han-colors/han-colors.component';
@@ -14,7 +14,7 @@ import { SarahColsComponent } from './sarah-cols/sarah-cols.component';
   imports: [
     // CommonModule,
     SharedModule,
-    ColPalettesRoutingModule
+    RouterModule.forChild(ROUTES)
   ],
   declarations: [
     ColPaletteComponent,

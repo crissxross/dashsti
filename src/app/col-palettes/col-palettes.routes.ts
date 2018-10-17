@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { ColPaletteComponent } from './col-palette.component';
-import { HanColorsComponent } from './han-colors/han-colors.component';
 import { HannahColsComponent } from './hannah-cols/hannah-cols.component';
 import { JoelColsComponent } from './joel-cols/joel-cols.component';
 import { SarahColsComponent } from './sarah-cols/sarah-cols.component';
+import { HanColorsComponent } from './han-colors/han-colors.component';
 
-const routes: Routes = [
+
+export const ROUTES: Routes = [
   {
     path: '', component: ColPaletteComponent,
     children: [
@@ -26,9 +26,3 @@ const routes: Routes = [
     ]
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class ColPalettesRoutingModule { }
