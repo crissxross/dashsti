@@ -1,0 +1,125 @@
+p {
+  padding: 8px;
+  color: var(--hanR-100);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-gap: 1px; */
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-gap: 1px; */
+}
+
+li {
+  /* color alpha 0.8 */
+  color: var(--txt-dark);
+  padding: 8px;
+  min-width: var(--swatch-min-width);
+}
+
+/* HANNAH RED 0 similar to Material red */
+.hanR-50 {
+  background-color: var(--hanR-50);
+}
+.hanR-100 {
+  background-color: var(--hanR-100);
+}
+.hanR-200 {
+  background-color: var(--hanR-200);
+}
+.hanR-300 {
+  background-color: var(--hanR-300);
+}
+.hanR-400 {
+  background-color: var(--hanR-400);
+  color: var(--txt-light);
+}
+.hanR-500 {
+  background-color: var(--hanR-500);
+  color: var(--txt-light);
+}
+.hanR-600 {
+  background-color: var(--hanR-600);
+  color: var(--txt-light);
+}
+.hanR-700 {
+  background-color: var(--hanR-700);
+  color: var(--txt-light);
+}
+.hanR-800 {
+  background-color: var(--hanR-800);
+  color: var(--txt-light);
+}
+.hanR-900 {
+  background-color: var(--hanR-900);
+  color: var(--txt-light);
+}
+.hanR-A100 {
+  background-color: var(--hanR-A100);
+}
+.hanR-A200 {
+  background-color: var(--hanR-A200);
+  color: var(--txt-light);
+}
+.hanR-A400 {
+  background-color: var(--hanR-A400);
+  color: var(--txt-light);
+}
+.hanR-A700 {
+  background-color: var(--hanR-A700);
+  color: var(--txt-light);
+}
+
+/* HANNAH GREEN 0 similar to Material green */
+.hanG-50 {
+  background-color: var(--hanG-50);
+}
+.hanG-100 {
+  background-color: var(--hanG-100);
+}
+.hanG-200 {
+  background-color: var(--hanG-200);
+}
+.hanG-300 {
+  background-color: var(--hanG-300);
+}
+.hanG-400 {
+  background-color: var(--hanG-400);
+}
+.hanG-500 {
+  background-color: var(--hanG-500);
+}
+.hanG-600 {
+  background-color: var(--hanG-600);
+  color: var(--txt-light);
+}
+.hanG-700 {
+  background-color: var(--hanG-700);
+  color: var(--txt-light);
+}
+.hanG-800 {
+  background-color: var(--hanG-800);
+  color: var(--txt-light);
+}
+.hanG-900 {
+  background-color: var(--hanG-900);
+  color: var(--txt-light);
+}
+.hanG-A100 {
+  background-color: var(--hanG-A100);
+}
+.hanG-A200 {
+  background-color: var(--hanG-A200);
+}
+.hanG-A400 {
+  background-color: var(--hanG-A400);
+}
+.hanG-A700 {
+  background-color: var(--hanG-A700);
+}
+

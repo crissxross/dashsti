@@ -1,0 +1,123 @@
+p {
+  padding: 8px;
+  color: var(--joeY-200);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-gap: 1px; */
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-gap: 1px; */
+}
+
+li {
+  /* color alpha 0.8 */
+  color: var(--txt-dark);
+  padding: 8px;
+  min-width: var(--swatch-min-width);
+}
+
+/* JOEL YELLOW similar to Material lime */
+.joeY-50 {
+  background-color: var(--joeY-50);
+}
+.joeY-100 {
+  background-color: var(--joeY-100);
+}
+.joeY-200 {
+  background-color: var(--joeY-200);
+}
+.joeY-300 {
+  background-color: var(--joeY-300);
+}
+.joeY-400 {
+  background-color: var(--joeY-400);
+}
+.joeY-500 {
+  background-color: var(--joeY-500);
+}
+.joeY-600 {
+  background-color: var(--joeY-600);
+}
+.joeY-700 {
+  background-color: var(--joeY-700);
+}
+.joeY-800 {
+  background-color: var(--joeY-800);
+}
+.joeY-900 {
+  background-color: var(--joeY-900);
+  color: var(--txt-light);
+}
+.joeY-A100 {
+  background-color: var(--joeY-A100);
+}
+.joeY-A200 {
+  background-color: var(--joeY-A200);
+}
+.joeY-A400 {
+  background-color: var(--joeY-A400);
+}
+.joeY-A700 {
+  background-color: var(--joeY-A700);
+}
+
+/* JOEL PURPLE 259 similar to Material deep purple */
+.joeP-50 {
+  background-color: var(--joeP-50);
+}
+.joeP-100 {
+  background-color: var(--joeP-100);
+}
+.joeP-200 {
+  background-color: var(--joeP-200);
+}
+.joeP-300 {
+  background-color: var(--joeP-300);
+  color: var(--txt-light);
+}
+.joeP-400 {
+  background-color: var(--joeP-400);
+  color: var(--txt-light);
+}
+.joeP-500 {
+  background-color: var(--joeP-500);
+  color: var(--txt-light);
+}
+.joeP-600 {
+  background-color: var(--joeP-600);
+  color: var(--txt-light);
+}
+.joeP-700 {
+  background-color: var(--joeP-700);
+  color: var(--txt-light);
+}
+.joeP-800 {
+  background-color: var(--joeP-800);
+  color: var(--txt-light);
+}
+.joeP-900 {
+  background-color: var(--joeP-900);
+  color: var(--txt-light);
+}
+.joeP-A100 {
+  background-color: var(--joeP-A100);
+}
+.joeP-A200 {
+  background-color: var(--joeP-A200);
+  color: var(--txt-light);
+}
+.joeP-A400 {
+  background-color: var(--joeP-A400);
+  color: var(--txt-light);
+}
+.joeP-A700 {
+  background-color: var(--joeP-A700);
+  color: var(--txt-light);
+}
+

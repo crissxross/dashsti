@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HanColorsComponent } from './han-colors.component';
+import { HanSvgColsComponent } from './han-svg-cols.component';
 
-describe('HanColorsComponent', () => {
-  let component: HanColorsComponent;
-  let fixture: ComponentFixture<HanColorsComponent>;
+describe('HanSvgColsComponent', () => {
+  let component: HanSvgColsComponent;
+  let fixture: ComponentFixture<HanSvgColsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HanColorsComponent ]
+      declarations: [ HanSvgColsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HanColorsComponent);
+    fixture = TestBed.createComponent(HanSvgColsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

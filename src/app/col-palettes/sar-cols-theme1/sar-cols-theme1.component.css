@@ -1,0 +1,118 @@
+p {
+  padding: 8px;
+  color: var(--sarB-200);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-gap: 1px; */
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-gap: 1px; */
+}
+
+li {
+  /* color alpha 0.8? */
+  color: var(--txt-dark);
+  padding: 8px;
+  min-width: var(--swatch-min-width);
+}
+
+/* SARAH BLUE 200 similar to Material light blue */
+.sarB-50 {
+  background-color: var(--sarB-50);
+}
+.sarB-100 {
+  background-color: var(--sarB-100);
+}
+.sarB-200 {
+  background-color: var(--sarB-200);
+}
+.sarB-300 {
+  background-color: var(--sarB-300);
+}
+.sarB-400 {
+  background-color: var(--sarB-400);
+}
+.sarB-500 {
+  background-color: var(--sarB-500);
+}
+.sarB-600 {
+  background-color: var(--sarB-600);
+}
+.sarB-700 {
+  background-color: var(--sarB-700);
+  color: var(--txt-light);
+}
+.sarB-800 {
+  background-color: var(--sarB-800);
+  color: var(--txt-light);
+}
+.sarB-900 {
+  background-color: var(--sarB-900);
+  color: var(--txt-light);
+}
+.sarB-A100 {
+  background-color: var(--sarB-A100);
+}
+.sarB-A200 {
+  background-color: var(--sarB-A200);
+}
+.sarB-A400 {
+  background-color: var(--sarB-A400);
+}
+.sarB-A700 {
+  background-color: var(--sarB-A700);
+  color: var(--txt-light);
+}
+
+/* SARAH ORANGE 33 similar to Material orange */
+.sarO-50 {
+  background-color: var(--sarO-50);
+}
+.sarO-100 {
+  background-color: var(--sarO-100);
+}
+.sarO-200 {
+  background-color: var(--sarO-200);
+}
+.sarO-300 {
+  background-color: var(--sarO-300);
+}
+.sarO-400 {
+  background-color: var(--sarO-400);
+}
+.sarO-500 {
+  background-color: var(--sarO-500);
+}
+.sarO-600 {
+  background-color: var(--sarO-600);
+}
+.sarO-700 {
+  background-color: var(--sarO-700);
+}
+.sarO-800 {
+  background-color: var(--sarO-800);
+  color: var(--txt-light);
+}
+.sarO-900 {
+  background-color: var(--sarO-900);
+  color: var(--txt-light);
+}
+.sarO-A100 {
+  background-color: var(--sarO-A100);
+}
+.sarO-A200 {
+  background-color: var(--sarO-A200);
+}
+.sarO-A400 {
+  background-color: var(--sarO-A400);
+}
+.sarO-A700 {
+  background-color: var(--sarO-A700);
+}
+

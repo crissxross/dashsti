@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+}
+
+h3 {
+  text-align: center;
+  padding: 8px;
+}

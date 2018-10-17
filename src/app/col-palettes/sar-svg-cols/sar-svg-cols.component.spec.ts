@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoelColsComponent } from './joel-cols.component';
+import { SarSvgColsComponent } from './sar-svg-cols.component';
 
-describe('JoelColsComponent', () => {
-  let component: JoelColsComponent;
-  let fixture: ComponentFixture<JoelColsComponent>;
+describe('SarSvgColsComponent', () => {
+  let component: SarSvgColsComponent;
+  let fixture: ComponentFixture<SarSvgColsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoelColsComponent ]
+      declarations: [ SarSvgColsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoelColsComponent);
+    fixture = TestBed.createComponent(SarSvgColsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

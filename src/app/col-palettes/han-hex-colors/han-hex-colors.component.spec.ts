@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SarahColsComponent } from './sarah-cols.component';
+import { HanHexColorsComponent } from './han-hex-colors.component';
 
-describe('SarahColsComponent', () => {
-  let component: SarahColsComponent;
-  let fixture: ComponentFixture<SarahColsComponent>;
+describe('HanHexColorsComponent', () => {
+  let component: HanHexColorsComponent;
+  let fixture: ComponentFixture<HanHexColorsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SarahColsComponent ]
+      declarations: [ HanHexColorsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SarahColsComponent);
+    fixture = TestBed.createComponent(HanHexColorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

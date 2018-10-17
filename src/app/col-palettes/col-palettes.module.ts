@@ -5,10 +5,14 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './col-palettes.routes';
 
 import { ColPaletteComponent } from './col-palette.component';
-import { HanColorsComponent } from './han-colors/han-colors.component';
-import { HannahColsComponent } from './hannah-cols/hannah-cols.component';
-import { JoelColsComponent } from './joel-cols/joel-cols.component';
-import { SarahColsComponent } from './sarah-cols/sarah-cols.component';
+import { HanHexColorsComponent } from './han-hex-colors/han-hex-colors.component';
+import { HanSvgColsComponent } from './han-svg-cols/han-svg-cols.component';
+import { JoeSvgColsComponent } from './joe-svg-cols/joe-svg-cols.component';
+import { SarSvgColsComponent } from './sar-svg-cols/sar-svg-cols.component';
+import { HanColsTheme1Component } from './han-cols-theme1/han-cols-theme1.component';
+import { ActorsColsComponent } from './actors-cols/actors-cols.component';
+import { SarColsTheme1Component } from './sar-cols-theme1/sar-cols-theme1.component';
+import { JoeColsTheme1Component } from './joe-cols-theme1/joe-cols-theme1.component';
 
 @NgModule({
   imports: [
@@ -18,10 +22,14 @@ import { SarahColsComponent } from './sarah-cols/sarah-cols.component';
   ],
   declarations: [
     ColPaletteComponent,
-    HanColorsComponent,
-    HannahColsComponent,
-    JoelColsComponent,
-    SarahColsComponent
+    HanHexColorsComponent,
+    HanSvgColsComponent,
+    JoeSvgColsComponent,
+    SarSvgColsComponent,
+    HanColsTheme1Component,
+    ActorsColsComponent,
+    SarColsTheme1Component,
+    JoeColsTheme1Component
   ]
 })
 export class ColPalettesModule { }
