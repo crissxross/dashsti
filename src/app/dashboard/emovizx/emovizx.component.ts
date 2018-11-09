@@ -3,11 +3,11 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+// import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power0 } from 'gsap';
-import * as CustomEase from 'gsap/CustomEase';
-import * as CustomWiggle from 'gsap/CustomWiggle';
+import { TweenMax, TimelineMax, Power0 } from 'gsap/TweenMax';
+// import * as CustomEase from 'gsap/CustomEase';
+// import * as CustomWiggle from 'gsap/CustomWiggle';
 
 @Component({
   selector: 'app-emovizx',
@@ -78,7 +78,7 @@ export class EmovizxComponent implements OnInit, OnDestroy {
     // I might have to change to an array (or object map) of hex colours
     // like Material Design uses
 
-    CustomWiggle.create('wiggle', { wiggles: 5 });
+    // CustomWiggle.create('wiggle', { wiggles: 5 });
     TweenMax.to(trianEl, 4, {x: 250, Ease: 'wiggle' });
 
 // P
@@ -98,7 +98,7 @@ export class EmovizxComponent implements OnInit, OnDestroy {
       .pipe(map(v => Math.round((v + 1) * 10)))
       .subscribe(v => {
         console.log('A v: ', v);
-        CustomWiggle.create('wiggle', { wiggles: v, type: 'easeInOut' });
+        // CustomWiggle.create('wiggle', { wiggles: v, type: 'easeInOut' });
         TweenMax.staggerTo([poly6El, poly8El, trianEl], 2, {
           x: `+=${v}`, y: `+=${v}`,
           rotation: `+=${v}`, transformOrigin: '50% 50%',

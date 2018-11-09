@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
-import { TweenMax, TimelineMax, Back, Power4 } from 'gsap';
-import * as MorphSVG from 'gsap/MorphSVGPlugin';
+import { TweenMax, TimelineMax, Back, Power4 } from 'gsap/TweenMax';
+// import * as MorphSVG from 'gsap/MorphSVGPlugin';
 
 @Component({
   selector: '[blob-morpher]',

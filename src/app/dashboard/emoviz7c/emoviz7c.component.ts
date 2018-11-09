@@ -12,7 +12,7 @@ import { Observable, Subscription, combineLatest } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax } from 'gsap';
+import { TweenMax } from 'gsap/TweenMax';
 import { Point } from '../point';
 
 // NOTE !!! - inconsistent behaviour of animation/canvas shape in response to PAD values !!!

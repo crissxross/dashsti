@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax } from 'gsap';
+import { TweenMax } from 'gsap/TweenMax';
 
 @Component({
   selector: 'app-emoviz2a',

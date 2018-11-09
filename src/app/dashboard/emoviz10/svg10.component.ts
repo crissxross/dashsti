@@ -4,7 +4,7 @@ import { Observable, Subscription, combineLatest } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, Power1 } from 'gsap';
+import { TweenMax, Power1 } from 'gsap/TweenMax';
 import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 
 @Component({

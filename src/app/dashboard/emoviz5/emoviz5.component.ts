@@ -1,12 +1,10 @@
-import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+// import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
-import * as CustomEase from 'gsap/CustomEase';
-import * as CustomWiggle from 'gsap/CustomWiggle';
+import { TweenMax } from 'gsap/TweenMax';
 
 @Component({
   selector: 'app-emoviz5',
@@ -37,8 +35,6 @@ export class Emoviz5Component implements OnInit, OnDestroy {
 
   ngOnInit() {
     const bg = this.bg.nativeElement;
-    const emoZZ = this.emoZZ.nativeElement;
-    const emoWav = this.emoWav.nativeElement;
 
     // set default PAD 000 values of SVG elements to animate
     TweenMax.set(bg, { fill: 'hsl(137, 30%, 10%)' });
@@ -69,7 +65,7 @@ export class Emoviz5Component implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('emoviz5 destroyed')
+    console.log('emoviz5 destroyed');
   }
 
 }

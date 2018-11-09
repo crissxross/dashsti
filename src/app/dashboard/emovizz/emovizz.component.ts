@@ -3,12 +3,12 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+// import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power0 } from 'gsap';
-import * as CustomEase from 'gsap/CustomEase';
-import * as CustomWiggle from 'gsap/CustomWiggle';
-import * as MorphSVG from 'gsap/MorphSVGPlugin';
+import { TweenMax, TimelineMax, Power0 } from 'gsap/TweenMax';
+// import * as CustomEase from 'gsap/CustomEase';
+// import * as CustomWiggle from 'gsap/CustomWiggle';
+// import * as MorphSVG from 'gsap/MorphSVGPlugin';
 
 @Component({
   selector: 'app-emovizz',
@@ -83,7 +83,7 @@ export class EmovizzComponent implements OnInit, OnDestroy {
     // above is temporary
 
     // just testing
-    CustomWiggle.create('wiggle', { wiggles: 5, type: 'easeInOut' });
+    // CustomWiggle.create('wiggle', { wiggles: 5, type: 'easeInOut' });
     // TweenMax.staggerTo([gA, rA], 4, { rotation: 15, ease: 'wiggle', transformOrigin: '50% 50%' }, 0.5);
 
 //  P: joint positive function of saturation & brightness (brightness has stronger influence)

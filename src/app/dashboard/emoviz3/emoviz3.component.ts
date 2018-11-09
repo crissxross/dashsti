@@ -1,14 +1,10 @@
-import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Observable, Subscription, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power0 } from 'gsap';
-import * as CustomEase from 'gsap/CustomEase';
-import * as CustomWiggle from 'gsap/CustomWiggle';
-import * as MorphSVG from 'gsap/MorphSVGPlugin';
+import { TweenMax } from 'gsap/TweenMax';
 
 @Component({
   selector: 'app-emoviz3',

@@ -1,12 +1,9 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+// import * as PadActions from '../../pad-actions';
 import * as fromRoot from '../../reducers';
-import { TweenMax, TimelineMax, Power1, Back } from 'gsap';
-import * as CustomEase from 'gsap/CustomEase';
-import * as CustomWiggle from 'gsap/CustomWiggle';
 
 @Component({
   selector: 'app-emoviz6',
