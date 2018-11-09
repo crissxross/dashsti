@@ -49,6 +49,8 @@ button {
   color: white;
 }
 
+/* TODO: MAYBE ALSO TRY USING MATERIAL COLOR PALETTES AS IS FOR THE ACTORS ??? */
+
 :host {
   --txt-dark: hsla(0, 0%, 0%, 0.8);
   --txt-light: hsla(0, 0%, 100%, 0.9);
