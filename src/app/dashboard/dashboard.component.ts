@@ -107,9 +107,7 @@ export class DashboardComponent implements OnInit {
   bg = '#303030'; // matches main bg color
   BGCOLORS = ['hsl(0, 30%, 10%)', 'hsl(137, 20%, 10%)', '#303030'];
   // navIds just for the useful/workable emoviz components:
-  navIds = ['2a', '7', '7a', '7b', '7c', '8', '9', '10', '10a', '11'];
-  // note: 3a & 3b were causing GSAP errors after upgrade to Angular 6 - see myNOTES.todo
-  // navIds = ['2a', '3a', '3b', '7', '7a', '7b', '7c', '8', '9', '10', '10a', '11'];
+  navIds = ['1', '2', '2a', '3a', '3b', '7', '7a', '7b', '7c', '8', '9', '10', '10a', '11', 'x', 'y'];
   // navIds = ['1', '2', '2a', '3', '3a', '3b', '4', '5', '6', '7', '7a', '7b', '7c', '8', '9', '10', '10a', '11', 'x', 'y', 'z'];
   // navIds = ['1', '2', '2a', '3', '3a']; // links for public demo MIX & ELO
   showSliders = true;
