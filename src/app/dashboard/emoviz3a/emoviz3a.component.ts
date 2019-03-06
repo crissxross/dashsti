@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnDestroy, ElementRef, ViewChild } from '@ang
 import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+import * as PadActions from '../../actions/pad.actions';
 import * as fromRoot from '../../reducers';
 import { TweenMax, TimelineMax, Power1, Back } from 'gsap/TweenMax';
 

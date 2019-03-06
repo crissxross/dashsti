@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer2, ViewChild }
 import { Observable, Subscription, combineLatest } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+import * as PadActions from '../../actions/pad.actions';
 import * as fromRoot from '../../reducers';
 
 @Component({

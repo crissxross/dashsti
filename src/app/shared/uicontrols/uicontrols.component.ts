@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+import * as PadActions from '../../actions/pad.actions';
 import * as fromRoot from '../../reducers';
 
 @Component({

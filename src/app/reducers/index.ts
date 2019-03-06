@@ -1,4 +1,4 @@
-import * as fromPad from './pad-reducer';
+import * as fromPad from './pad.reducer';
 
 export interface State {
   pad: fromPad.State;

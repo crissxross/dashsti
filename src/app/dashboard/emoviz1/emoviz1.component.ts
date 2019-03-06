@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import * as PadActions from '../../pad-actions';
+import * as PadActions from '../../actions/pad.actions';
 import * as fromRoot from '../../reducers';
 
 @Component({

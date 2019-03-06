@@ -1,4 +1,4 @@
-import * as PadActions from './pad-actions';
+import * as PadActions from '../actions/pad.actions';
 
 export interface State {
   P: number;
