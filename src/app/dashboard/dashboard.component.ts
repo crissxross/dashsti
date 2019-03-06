@@ -6,7 +6,7 @@ import * as PadActions from '../pad-actions';
 import * as fromRoot from '../reducers';
 
 @Component({
-  // selector: 'app-dashboard',
+  selector: 'app-dashboard',
   template: `
     <div class="dashboard">
 
