@@ -1,9 +1,9 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { Observable, Subscription, combineLatest } from 'rxjs';
 
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as PadActions from '../../actions/pad.actions';
-import * as fromRoot from '../../reducers';
+import * as fromPad from '../../reducers';
 import { Particle } from '../particle';
 
 @Component({
@@ -36,11 +36,11 @@ export class Emoviz9Component implements OnInit, OnDestroy {
   dNote: string;
   miscNote: string;
 
-    constructor(private store: Store<fromRoot.State>) {
-      this.pValue$ = store.select(state => state.pad.P);
-      this.aValue$ = store.select(state => state.pad.A);
-      this.dValue$ = store.select(state => state.pad.D);
-   }
+  constructor(private store: Store<fromPad.State>) {
+    this.pValue$ = store.pipe(select(fromPad.getP));
+    this.aValue$ = store.pipe(select(fromPad.getA));
+    this.dValue$ = store.pipe(select(fromPad.getD));
+  }
 
   ngOnInit() {
     this.updateParticles();

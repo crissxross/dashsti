@@ -7,7 +7,9 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { reducers, metaReducers } from './reducers';
 
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -31,9 +33,13 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
     SharedModule,
     DashboardModule,
     SceneModule,
-    // StoreModule.provideStore(reducers),
-    StoreModule.forRoot(reducers),
-    RouterModule.forRoot(ROUTES)
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    RouterModule.forRoot(ROUTES),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

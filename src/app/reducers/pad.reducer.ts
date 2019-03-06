@@ -1,4 +1,5 @@
-import * as PadActions from '../actions/pad.actions';
+// import * as PadActions from '../actions/pad.actions';
+import { PadActions, PadActionTypes } from '../actions/pad.actions';
 
 export interface State {
   P: number;
@@ -15,9 +16,10 @@ const initialState: State = {
   isEmoting: false
 };
 
-export function reducer(state = initialState, action: PadActions.All): State {
+export function reducer(state = initialState, action: PadActions): State {
   switch (action.type) {
-    case PadActions.CHANGE_P: {
+
+    case PadActionTypes.ChangeP: {
       return {
         ...state,
         P: action.payload,
@@ -25,7 +27,7 @@ export function reducer(state = initialState, action: PadActions.All): State {
       };
     }
 
-    case PadActions.CHANGE_A: {
+    case PadActionTypes.ChangeA: {
       return {
         ...state,
         A: action.payload,
@@ -33,7 +35,7 @@ export function reducer(state = initialState, action: PadActions.All): State {
       };
     }
 
-  case PadActions.CHANGE_D: {
+  case PadActionTypes.ChangeD: {
       return {
         ...state,
         D: action.payload,
@@ -41,7 +43,7 @@ export function reducer(state = initialState, action: PadActions.All): State {
       };
     }
 
-    case PadActions.RESET: {
+    case PadActionTypes.Reset: {
       return {
         ...state,
         P: 0,
@@ -51,9 +53,12 @@ export function reducer(state = initialState, action: PadActions.All): State {
       };
     }
 
-    default: {
+    default:
       return state;
-    }
-
   }
 }
+
+export const getP = (state: State) => state.P;
+export const getA = (state: State) => state.A;
+export const getD = (state: State) => state.D;
+export const getIsEmoting = (state: State) => state.isEmoting;

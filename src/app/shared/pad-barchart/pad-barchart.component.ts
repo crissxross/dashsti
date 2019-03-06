@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as PadActions from '../../actions/pad.actions';
-import * as fromRoot from '../../reducers';
+import * as fromPad from '../../reducers';
 
 @Component({
   selector: 'app-pad-barchart',
@@ -48,10 +48,10 @@ export class PadBarchartComponent implements OnInit {
   fillPos = '#c0c0c0';
   fillNeg = '#7f7f7f';
 
-  constructor(private store: Store<fromRoot.State>) {
-    this.pValue$ = store.select(state => state.pad.P);
-    this.aValue$ = store.select(state => state.pad.A);
-    this.dValue$ = store.select(state => state.pad.D);
+  constructor(private store: Store<fromPad.State>) {
+    this.pValue$ = store.pipe(select(fromPad.getP));
+    this.aValue$ = store.pipe(select(fromPad.getA));
+    this.dValue$ = store.pipe(select(fromPad.getD));
    }
 
   ngOnInit() {
