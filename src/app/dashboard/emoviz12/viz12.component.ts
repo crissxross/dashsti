@@ -14,7 +14,7 @@ import { frames } from './pPos1radial';
   `,
   styles: ['canvas {border: 1px dashed grey;}']
 })
-export class Viz12Component implements OnChanges, OnInit, OnDestroy, AfterViewInit {
+export class Viz12Component implements OnChanges, OnInit, OnDestroy {
   @Input() P: number;
   @Input() A: number;
   @Input() D: number;
@@ -28,9 +28,10 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy, AfterViewIn
   cx = this.canvasWidth / 2;
   cy = this.canvasHeight / 2;
   frameSrcSize = 80;
-  private running: boolean;
   sprite = new Image();
   imageLoc = '../../../assets/pPos1radial.png';
+  private running: boolean;
+  // private emoteP: any;
 
   emoteP = {
     // if animating rotation
@@ -41,7 +42,14 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy, AfterViewIn
     y: -this.frameSrcSize / 2
   };
 
-  constructor(private ngZone: NgZone) { }
+  constructor(private ngZone: NgZone) {
+    // this.emoteP = {
+    //   rotation: 0,
+    //   frame: 0,
+    //   x: -this.frameSrcSize / 2,
+    //   y: -this.frameSrcSize / 2
+    // };
+   }
 
   ngOnInit() {
     this.running = true;
@@ -49,7 +57,7 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy, AfterViewIn
     TweenLite.defaultEase = Linear.easeNone;
     this.sprite.src = this.imageLoc;
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
-    // this.sprite.onload = () => this.initTimeline();
+    this.sprite.onload = () => this.initTimeline();
     // this.sprite.onload = this.ngZone.runOutsideAngular(() => this.initTimeline());
     // this.sprite.onload = () => {
     //   const tl = new TimelineMax({ onUpdate: this.update });
@@ -64,9 +72,9 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy, AfterViewIn
     // );
   }
 
-  ngAfterViewInit() {
-    this.sprite.onload = () => this.initTimeline();
-  }
+  // ngAfterViewInit() {
+  //   this.sprite.onload = () => this.initTimeline();
+  // }
 
   initTimeline() {
     console.log('sprite.onload so init timeline!', 'frames.length is', frames.length);
