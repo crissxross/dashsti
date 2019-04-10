@@ -71,7 +71,7 @@ export class Emoviz11Component implements OnInit, OnDestroy {
     ngOnDestroy() {
       this.PADprogress.unsubscribe();
       clearInterval(this.intervalId);
-      console.log('emoviz10a OnDestroy');
+      console.log('emoviz11 OnDestroy');
     }
 
     private updateEmotes() {

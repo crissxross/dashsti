@@ -1,10 +1,5 @@
 import { Action } from '@ngrx/store';
 
-// export const CHANGE_P = '[PAD] Change P';
-// export const CHANGE_A = '[PAD] Change A';
-// export const CHANGE_D = '[PAD] Change D';
-// export const RESET = '[PAD] Reset';
-
 export enum PadActionTypes {
   ChangeP = '[PAD emoviz] Change P',
   ChangeA = '[PAD emoviz] Change A',

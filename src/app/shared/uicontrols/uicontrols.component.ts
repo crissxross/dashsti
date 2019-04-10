@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import * as PadActions from '../../actions/pad.actions';
-import * as fromRoot from '../../reducers';
+import * as fromPad from '../../reducers';
 
 @Component({
   selector: 'app-uicontrols',
@@ -39,7 +39,7 @@ export class UicontrolsComponent {
   @Output() Dominance = new EventEmitter();
   @Input() show: boolean;
 
-  constructor(private store: Store<fromRoot.State>) {}
+  constructor(private store: Store<fromPad.State>) {}
 
   onPleasureChange(event) {
     this.Pleasure.emit(event.value);
