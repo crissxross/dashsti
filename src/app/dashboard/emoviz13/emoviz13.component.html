@@ -1,20 +1,9 @@
-<p>
-  emoviz13 works!
-</p>
+
+<p>emoviz 13</p>
 <div class="viz-container">
 
   <div class="canvas-container">
-    <!-- <app-viz11
-      [P]=P
-      [A]=A
-      [D]=D
-      [particles]=particles
-      [particleWidth]=particleWidth
-      [particleHeight]=particleHeight
-      [canvasWidth]=canvasWidth
-      [canvasHeight]=canvasHeight
-    ></app-viz11> -->
-      <app-viz13
+      <app-viz13 class="emote" *ngFor="let sprite of sizeArray; let i = index"
         [P]=P
         [A]=A
         [D]=D

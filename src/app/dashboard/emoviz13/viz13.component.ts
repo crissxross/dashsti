@@ -1,16 +1,15 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy, NgZone } from '@angular/core';
 
-import { frames } from './pPos1radial';
+// import { frames } from './pPos1radial';
+import { frames } from './pPos0.9';
+import { getRandomInt } from '../../shared/utils';
 
 @Component({
   selector: 'app-viz13',
   template: `
-    <p>
-      viz13 works!
-    </p>
     <canvas #canvas width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
   `,
-  styles: ['canvas {border: 1px dashed grey;}']
+  styles: []
 })
 export class Viz13Component implements OnInit, OnDestroy {
   @Input() P: number;
@@ -20,15 +19,19 @@ export class Viz13Component implements OnInit, OnDestroy {
   // @Input() canvasHeight: number;
   @ViewChild('canvas') canvasRef: ElementRef;
   ctx: CanvasRenderingContext2D;
-  canvasWidth = 100;
-  canvasHeight = 100;
+  frameSrcSize = 80; // TODO: input
+  canvasWidth = this.frameSrcSize;
+  canvasHeight = this.frameSrcSize;
   // center
   cx = this.canvasWidth / 2;
   cy = this.canvasHeight / 2;
-  frameSrcSize = 80;
   sprite = new Image();
-  imageLoc = '../../../assets/pPos1radial.png';
-  private running: boolean;
+  // imageUrl = '../../../assets/pPos1radial.png';
+  imageUrl = '../../../assets/pPos0.9.png';
+  tickCount = 0;
+  ticksPerFrame = 1; // TODO: input
+  numberOfFrames = frames.length;
+  animating = false;
 
   emoteP = {
     frame: 0,
@@ -40,42 +43,49 @@ export class Viz13Component implements OnInit, OnDestroy {
   constructor(private ngZone: NgZone) { }
 
   ngOnInit() {
-    this.running = true;
-    // this.running = false;
-    this.sprite.src = this.imageLoc;
+    // start animating sprite at a random frame
+    this.emoteP.frame = getRandomInt(0, this.numberOfFrames);
+    this.animating = true;
+    this.sprite.src = this.imageUrl;
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
     this.sprite.onload = () => this.ngZone.runOutsideAngular(() => this.animLoop());
 
     // TEMPORARY so that it doesn't run too long while testing
-    setTimeout(() => this.running = false, 500);
+    // setTimeout(() => this.animating = false, 60000);
+    console.log('numberOfFrames:', this.numberOfFrames);
   }
 
   animLoop() {
-    console.log('animation loop running:', this.running);
-
-    // rough idea of methods needed:
+    // console.log('animation loop animating:', this.animating);
     this.update();
     this.render();
-    // but maybe update calls render, passing it the updated frame index?
 
-    if (this.running) {
+    if (this.animating) {
       requestAnimationFrame(() => this.animLoop());
     }
   }
 
-  // ROUGH IDEA of what's needed - see above
   update() {
-    console.log('update the frame number to draw next sprite');
-    // NOTE: see sprite-animation-demo for use of'ticksPerFrame' to govern animation speed - see article:
+    this.tickCount++;
+
+    if (this.tickCount > this.ticksPerFrame) {
+      this.tickCount = 0;
+
+      if (this.emoteP.frame < this.numberOfFrames - 1) {
+        // go to next frame
+        return this.emoteP.frame++;
+      } else {
+        return this.emoteP.frame = 0;
+      }
+    }
+    // console.log('UPDATE the frame number:', this.emoteP.frame);
+    // NOTE: 'ticksPerFrame' to govern animation speed based on sprite-animation-demo - see article:
     // http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/
   }
 
   render() {
-    console.log('render the sprite frame');
-    // NOTE - I'm not yet sure whether all this goes in render - should some be in update?
-    // Or should update call render and pass it the updated frame index?
     const frame = frames[this.emoteP.frame];
-    console.log('frames.length:', frames.length, 'this.emoteP.frame:', this.emoteP.frame, 'frame:', frame);
+    // console.log('RENDER sprite, this.emoteP.frame:', this.emoteP.frame, 'frame:', frame);
 
     const f = frame.frame;
     const source = frame.spriteSourceSize;
@@ -92,8 +102,8 @@ export class Viz13Component implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.running = false;
-    console.log('viz13 component destroyed! Running:', this.running);
+    this.animating = false;
+    console.log('viz13 component destroyed! Animating:', this.animating);
   }
 
 }

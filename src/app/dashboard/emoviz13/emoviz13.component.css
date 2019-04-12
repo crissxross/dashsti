@@ -1,32 +1,23 @@
-/* should i use flex-layout? */
 
-/* .viz-container needs to be inside a display: flex container */
 .viz-container {
   position: relative;
-  /*flex: 1;*/
-  /*padding: 10px;*/
   width: 400px;
   height: 100%;
-  /*background-color: grey;*/
-  /*border: 1px dashed yellow;*/
+  background-color: hsla(137, 30%, 17%, 0.5);
+  /* TEMPORARY */
+  /* border: 1px dashed hsl(137, 0%, 3%); */
 }
 
-svg {
-  /* width: 100%;
-  height: 100%; */
-  width: 300px;
-  height: 300px;
-  /* border: 1px solid black; */
-  /*border: 2px solid turquoise;*/
-  /*background-color: grey;*/
+.canvas-container {
+  position: relative;
+  /* TEMPORARY */
+  /* border: 1px dotted palevioletred; */
 }
 
-.svg-container {
+.emote {
   position: absolute;
-  top: 0px;
-  left: 100px;
-  /* height: 100%; */
-  /* border: 1px solid black; */
+  /* TEMPORARY */
+  /* border: 1px dashed grey; */
 }
 
 .notes {
@@ -40,3 +31,7 @@ svg {
   width: 250px;
 }
 
+p {
+  color: grey;
+  font-size: .8em;
+}

@@ -3,5 +3,17 @@
   "vsicons.presets.angular": true,
 
   // Controls if the minimap is shown
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "workbench.colorCustomizations": {
+    "peekViewEditor.matchHighlightBackground": "#475735",
+    "editor.lineHighlightBackground": "#363941",
+    "activityBar.background": "#4c2673",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#905f30",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#663399",
+    "statusBarItem.hoverBackground": "#7f40bf",
+    "statusBar.foreground": "#e7e7e7"
+  }
 }
