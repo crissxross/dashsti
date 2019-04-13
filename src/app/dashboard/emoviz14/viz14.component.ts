@@ -19,7 +19,7 @@ export class Viz14Component implements OnInit, OnDestroy {
   frameSrcSize = 82;
   // @Input() canvasWidth: number;
   // @Input() canvasHeight: number;
-  @ViewChild('canvas') canvasRef: ElementRef;s
+  @ViewChild('canvas') canvasRef: ElementRef;
   ctx: CanvasRenderingContext2D;
   canvasWidth = this.frameSrcSize;
   canvasHeight = this.frameSrcSize;
