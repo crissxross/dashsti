@@ -1,0 +1,37 @@
+
+.viz-container {
+  position: relative;
+  width: 400px;
+  height: 100%;
+  background-color: hsla(137, 30%, 17%, 0.5);
+  /* TEMPORARY */
+  /* border: 1px dashed hsl(137, 0%, 3%); */
+}
+
+.canvas-container {
+  position: relative;
+  /* TEMPORARY */
+  /* border: 1px dotted palevioletred; */
+}
+
+.emote {
+  position: absolute;
+  /* TEMPORARY */
+  /* border: 1px dashed yellow; */
+}
+
+.notes {
+  color: #777;
+  font-size: .75em;
+  line-height: 1.2em;
+  position: absolute;
+  top: 175%;
+  /* top: 85%;
+  left: 25%; */
+  width: 250px;
+}
+
+p {
+  color: grey;
+  font-size: .8em;
+}
