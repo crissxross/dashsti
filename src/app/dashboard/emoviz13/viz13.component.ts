@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy, NgZone } from '@angular/core';
 
-// import { frames } from './pPos1radial';
-import { frames } from './pPos0.9';
+// import { frames } from '../spritesheet-data/pPos1radial';
+import { frames } from '../spritesheet-data/pPos0.9';
 import { getRandomInt } from '../../shared/utils';
 
 @Component({
@@ -17,7 +17,7 @@ export class Viz13Component implements OnInit, OnDestroy {
   @Input() D: number;
   // @Input() canvasWidth: number;
   // @Input() canvasHeight: number;
-  @ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;s
   ctx: CanvasRenderingContext2D;
   frameSrcSize = 80; // TODO: input
   canvasWidth = this.frameSrcSize;

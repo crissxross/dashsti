@@ -2,7 +2,7 @@ import { Component, AfterViewInit, OnInit, Input, ViewChild, ElementRef, OnChang
 import { TweenLite, TweenMax, TimelineMax } from 'gsap';
 import { Linear } from 'gsap';
 
-import { frames } from './pPos1radial';
+import { frames } from '../spritesheet-data/pPos1radial';
 
 @Component({
   selector: 'app-viz12',
