@@ -4,53 +4,56 @@ import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy, NgZone } fr
 import { frames } from '../spritesheet-data/pPos0.9';
 import { getRandomInt } from '../../shared/utils';
 
+interface Emote {
+  frame: number;
+  x: number;
+  y: number;
+}
+
 @Component({
   selector: 'app-viz14',
   template: `
     <canvas #canvas width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
   `,
-  styles: ['p {color: grey; font-size: 12px;} canvas {border: 1px dashed grey;}']
+  styles: ['canvas {border: 1px dashed indianred;}']
 })
 export class Viz14Component implements OnInit, OnDestroy {
   @Input() P: number;
   @Input() A: number;
   @Input() D: number;
-  // @Input() frameSrcSize: number; // TODO: input
-  frameSrcSize = 82;
-  // @Input() canvasWidth: number;
-  // @Input() canvasHeight: number;
+  @Input() spriteWidth: number;
+  @Input() spriteHeight: number;
+  @Input() ticksPerFrame: number;
+  @Input() imageUrl: string;
   @ViewChild('canvas') canvasRef: ElementRef;
   ctx: CanvasRenderingContext2D;
-  canvasWidth = this.frameSrcSize;
-  canvasHeight = this.frameSrcSize;
-  // center
-  cx = this.canvasWidth / 2;
-  cy = this.canvasHeight / 2;
-  sprite = new Image();
-  // imageUrl = '../../../assets/pPos1radial.png';
-  imageUrl = '../../../assets/pPos0.9.png';
-  tickCount = 0;
-  ticksPerFrame = 1; // TODO: input
+  canvasWidth: number;
+  canvasHeight: number;
+  cx: number; // center x
+  cy: number; // center y
   numberOfFrames = frames.length;
+  tickCount = 0;
   animating = false;
-
-  emoteP = {
-    frame: 0,
-    // half width & height of frame sourcesize
-    x: -this.frameSrcSize / 2,
-    y: -this.frameSrcSize / 2
-  };
+  sprite = new Image();
+  emoteP: Emote;
 
   constructor(private ngZone: NgZone) { }
 
   ngOnInit() {
-    // start animating sprite at a random frame
-    this.emoteP.frame = getRandomInt(0, this.numberOfFrames);
     this.animating = true;
-    this.sprite.src = this.imageUrl;
+    this.emoteP = {
+      // // start animating sprite at a random frame
+      frame: getRandomInt(0, this.numberOfFrames),
+      x: -this.spriteWidth / 2,
+      y: -this.spriteHeight / 2
+    };
+    this.canvasWidth = this.spriteWidth;
+    this.canvasHeight = this.spriteHeight;
+    this.cx = this.canvasWidth / 2;
+    this.cy = this.canvasHeight / 2;
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
+    this.sprite.src = this.imageUrl;
     this.sprite.onload = () => this.ngZone.runOutsideAngular(() => this.animLoop());
-
     // TEMPORARY so that it doesn't run too long while testing
     // setTimeout(() => this.animating = false, 60000);
     console.log('numberOfFrames:', this.numberOfFrames);

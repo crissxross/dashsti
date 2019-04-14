@@ -1,7 +1,7 @@
 
 .viz-container {
   position: relative;
-  width: 400px;
+  width: 420px;
   height: 100%;
   background-color: hsla(137, 30%, 17%, 0.5);
   /* TEMPORARY */
@@ -10,6 +10,7 @@
 
 .canvas-container {
   position: relative;
+  padding: 10px 0 0 10px;
   /* TEMPORARY */
   /* border: 1px dotted palevioletred; */
 }
