@@ -35,11 +35,10 @@ import { DashSceneComponent } from './dash-scene/dash-scene.component';
     SceneModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
-      maxAge: 25,
+      maxAge: 10, // 25
       logOnly: environment.production,
     }),
     RouterModule.forRoot(ROUTES),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

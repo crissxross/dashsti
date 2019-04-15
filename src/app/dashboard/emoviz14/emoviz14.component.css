@@ -10,7 +10,7 @@
 
 .canvas-container {
   position: relative;
-  padding: 10px 0 0 10px;
+  /* padding: 10px 0 0 10px; */
   /* TEMPORARY */
   /* border: 1px dotted palevioletred; */
 }
