@@ -42,7 +42,7 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('sprite') private _sprite: ElementRef;
   duration = 2; // TODO: @Input?
   animating = false;
-  tl: TimelineMax;
+  tl: TimelineMax; // need tl for ngOnDestroy
   roughEaseDefault = RoughEase.ease;
   roughEase1 = new RoughEase({
     clamp: false, // default false
@@ -73,21 +73,35 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
   }
 
   createSpriteTl() {
-    this.tl = new TimelineMax({delay: 2, repeat: -1, yoyo: true});
+    // this.tl = new TimelineMax({delay: 2, repeat: -1, yoyo: true});
+    this.tl = new TimelineMax({
+      onComplete: this.createSpriteTl,
+      callbackScope: this, // important, will not work without this
+    });
     this.tl.add(this.randomMove(), 'start');
     this.tl.add(this.randomOpacity(), 'start');
     this.tl.add(this.randomRotate(), 'start');
     this.tl.add(this.randomSkew(), 'start');
     this.tl.add(this.randomScale(), 'start');
-    for (let i = 0; i < 10; i++) {
-      this.tl.addLabel('i', '+=0' );
-      this.tl.add(this.randomMove(), 'i');
-      this.tl.add(this.randomOpacity(), 'i');
-      this.tl.add(this.randomRotate(), 'i');
-      this.tl.add(this.randomSkew(), 'i');
-      this.tl.add(this.randomScale(), 'i');
-    }
+    this.tl.addCallback(this.testCallback, 'start', ['START']);
+    // this.tl.call(this.testCallback, ['(start) finish call']);
+    // this.tl.addLabel('end', '+=0');
+    // NOTE: BELOW WAS TEMPORARY WORKAROUND UNTIL I FIXED WITH callbackScope
+    // for (let i = 0; i < 3; i++) {
+    //   this.tl.addLabel('i', '+=0' );
+    //   this.tl.add(this.randomMove(), 'i');
+    //   this.tl.add(this.randomOpacity(), 'i');
+    //   this.tl.add(this.randomRotate(), 'i');
+    //   this.tl.add(this.randomSkew(), 'i');
+    //   this.tl.add(this.randomScale(), 'i');
+    //   this.tl.addCallback(this.testCallback, 'i', ['addCallback at ' + i]);
+    //   // this.tl.call(this.testCallback, ['call finish of ' + i]);
+    // }
     return this.tl;
+  }
+
+  testCallback(label: any) {
+    console.log('testCallback label', label);
   }
 
   randomMove() {
@@ -97,17 +111,20 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
     const moveX = getRandomInt(-offsetX, offsetX);
     const moveY = getRandomInt(-offsetY, offsetY);
     // console.log('moveX', moveX, 'moveY', moveY);
-    return TweenMax.to(this.sprite, this.duration, {
-      // x: () => getRandomInt(0, 100),
-      // y: () => getRandomInt(0, 50),
-      x: `+=${moveX}`,
-      y: `+=${moveY}`,
+    const tween = new TweenMax(this.sprite, this.duration, {
+      x: () => getRandomInt(-50, 100),
+      y: () => getRandomInt(-20, 50),
+      // x: `+=${moveX}`,
+      // y: `+=${moveY}`,
       repeat: 1,
       yoyo: true,
-      // ease: Power1.easeInOut,
-      ease: this.roughEase1,
+      ease: Power1.easeInOut,
+      // ease: this.roughEase1,
       // ease: this.roughEaseDefault,
+      // onComplete: this.randomMove,
+      // callbackScope: this
     });
+    return tween;
   }
 
   randomRotate() {
@@ -131,6 +148,7 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
       skewX: () => getRandomInt(10, 30),
       ease: Power2.easeInOut,
       // onComplete: this.randomSkew,
+      // callbackScope: this
     });
   }
 
