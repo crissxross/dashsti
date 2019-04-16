@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy, NgZone, AfterViewInit } from '@angular/core';
-import { TweenMax, TimelineMax, Circ, Power1, Power2, Power3, Power4, RoughEase, Power0 } from 'gsap';
+import { TweenMax, TimelineMax, Circ, Power1, Power2, Power3, Power4, RoughEase, Power0, RoughEaseConfig } from 'gsap';
 
 // import { frames } from '../spritesheet-data/pPos1radial';
 import { frames } from '../spritesheet-data/pPos0.9';
@@ -44,13 +44,13 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
   animating = false;
   tl: TimelineMax;
   roughEaseDefault = RoughEase.ease;
-  roughEase1 = RoughEase.ease.config<any>({
-    template:  Power0.easeNone,
-    strength: 1,
-    points: 20,
-    taper: 'none',
-    randomize: true,
-    clamp: false
+  roughEase1 = new RoughEase({
+    clamp: false, // default false
+    points: 20, // default 20
+    randomize: true, // default true
+    strength: 1, // default 1
+    taper: 'none', // default none
+    template:  Power0.easeNone, // default Linear.easeNone
   });
 
   private get sprite(): HTMLElement {
