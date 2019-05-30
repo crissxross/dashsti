@@ -49,10 +49,10 @@ import { TweenMax, TimelineMax } from 'gsap/TweenMax';
 })
 export class EmovizyComponent implements OnInit, OnDestroy {
 // svg elements
-  @ViewChild('bg') bg: ElementRef;
-  @ViewChild('poly6') poly6: ElementRef;
-  @ViewChild('poly8') poly8: ElementRef;
-  @ViewChild('triangle') triangle: ElementRef;
+  @ViewChild('bg', {static: false}) bg: ElementRef;
+  @ViewChild('poly6', {static: false}) poly6: ElementRef;
+  @ViewChild('poly8', {static: false}) poly8: ElementRef;
+  @ViewChild('triangle', {static: false}) triangle: ElementRef;
 // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;

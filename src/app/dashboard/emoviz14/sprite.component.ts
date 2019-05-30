@@ -29,7 +29,7 @@ export class SpriteComponent implements OnInit, OnDestroy {
   @Input() ticksPerFrame: number;
   @Input() imageUrl: string;
   @Input() isAnimating: boolean;
-  @ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('canvas', {static: true}) canvasRef: ElementRef;
   ctx: CanvasRenderingContext2D;
   canvasWidth: number;
   canvasHeight: number;

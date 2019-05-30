@@ -39,7 +39,7 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
   @Input() ticksPerFrame: number;
   @Input() imageUrl: string;
   // @ViewChild(SpriteComponent) emote: SpriteComponent;
-  @ViewChild('sprite') private _sprite: ElementRef;
+  @ViewChild('sprite', {static: false}) private _sprite: ElementRef;
   duration = 2; // TODO: @Input?
   animating = false;
   tl: TimelineMax; // need tl for ngOnDestroy

@@ -17,7 +17,7 @@ export class Viz13Component implements OnInit, OnDestroy {
   @Input() D: number;
   // @Input() canvasWidth: number;
   // @Input() canvasHeight: number;
-  @ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('canvas', {static: true}) canvasRef: ElementRef;
   ctx: CanvasRenderingContext2D;
   frameSrcSize = 80; // TODO: input
   canvasWidth = this.frameSrcSize;

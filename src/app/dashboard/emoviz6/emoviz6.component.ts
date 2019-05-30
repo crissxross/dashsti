@@ -11,7 +11,7 @@ import * as fromPad from '../../reducers';
   styleUrls: ['../emoviz.css', './emoviz6.component.css']
 })
 export class Emoviz6Component implements OnInit, OnDestroy {
-  @ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('canvas', {static: true}) canvasRef: ElementRef;
 
   // PAD properties
   pValue$: Observable<number>;

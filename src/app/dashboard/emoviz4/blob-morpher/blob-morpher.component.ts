@@ -11,7 +11,7 @@ import { TweenMax, TimelineMax, Back, Power4 } from 'gsap/TweenMax';
   styles: []
 })
 export class BlobMorpherComponent implements AfterViewInit {
-  @ViewChild('blob') blob: ElementRef;
+  @ViewChild('blob', {static: false}) blob: ElementRef;
 
   fill = '#1a1a1a';
   path1 = 'M70.3,103.2c0,0-7.5-58.4,42.9-48.4s43.5,74.5,72,37.9s49.7-72,67.1-36s83.9,92.5,14.3,96.3c-69.6,3.7-82,18-88.8,44.1c-6.8,26.1-93.8,29.8-91.3-18S75.3,134.9,70.3,103.2z';

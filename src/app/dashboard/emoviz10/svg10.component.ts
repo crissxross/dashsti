@@ -25,8 +25,8 @@ import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
   styles: []
 })
 export class Svg10Component implements OnInit, OnDestroy {
-  @ViewChild('boundingBox') boundingBox: ElementRef;
-  @ViewChild('emoShape') emoShape: ElementRef;
+  @ViewChild('boundingBox', {static: true}) boundingBox: ElementRef;
+  @ViewChild('emoShape', {static: true}) emoShape: ElementRef;
 
   // PAD properties
   pValue$: Observable<number>;

@@ -18,7 +18,8 @@ export class Viz11Component implements OnChanges {
   // @Input() particleHeight: number;
   @Input() canvasWidth: number;
   @Input() canvasHeight: number;
-  @ViewChild('canvas') canvasRef: ElementRef;
+  // TODO: should this be {static: true} or {static: false} ?? I think true is correct because no errors now
+  @ViewChild('canvas', {static: true}) canvasRef: ElementRef;
 
   S: number;
   L: number;

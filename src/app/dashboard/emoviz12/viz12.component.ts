@@ -20,7 +20,7 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy {
   @Input() D: number;
   // @Input() canvasWidth: number;
   // @Input() canvasHeight: number;
-  @ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('canvas', {static: true}) canvasRef: ElementRef;
   ctx: CanvasRenderingContext2D;
   canvasWidth = 100;
   canvasHeight = 100;

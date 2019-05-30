@@ -14,8 +14,8 @@ import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 })
 export class Emoviz8Component implements OnInit, OnDestroy {
   // svg elements
-  @ViewChild('boundingBox') boundingBox: ElementRef;
-  @ViewChild('emoShape') emoShape: ElementRef;
+  @ViewChild('boundingBox', {static: true}) boundingBox: ElementRef;
+  @ViewChild('emoShape', {static: true}) emoShape: ElementRef;
 
   // PAD properties
   pValue$: Observable<number>;

@@ -36,13 +36,13 @@ import { TweenMax } from 'gsap/TweenMax';
 })
 export class Emoviz2aComponent implements OnInit, OnDestroy {
 // svg elements
-  @ViewChild('bg') bg: ElementRef;
-  @ViewChild('gP') gP: ElementRef;
-  @ViewChild('gA') gA: ElementRef;
-  @ViewChild('gD') gD: ElementRef;
-  @ViewChild('rP') rP: ElementRef;
-  @ViewChild('rA') rA: ElementRef;
-  @ViewChild('rD') rD: ElementRef;
+  @ViewChild('bg', {static: true}) bg: ElementRef;
+  @ViewChild('gP', {static: true}) gP: ElementRef;
+  @ViewChild('gA', {static: true}) gA: ElementRef;
+  @ViewChild('gD', {static: true}) gD: ElementRef;
+  @ViewChild('rP', {static: true}) rP: ElementRef;
+  @ViewChild('rA', {static: true}) rA: ElementRef;
+  @ViewChild('rD', {static: true}) rD: ElementRef;
 // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;
