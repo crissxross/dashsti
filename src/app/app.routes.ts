@@ -8,6 +8,6 @@ export const ROUTES: Routes = [
   { path: 'dash-scene', component: DashSceneComponent },
   {
     path: 'col-palettes',
-    loadChildren: './col-palettes/col-palettes.module#ColPalettesModule'
+    loadChildren: () => import('./col-palettes/col-palettes.module').then(m => m.ColPalettesModule)
   }
 ];
