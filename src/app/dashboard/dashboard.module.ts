@@ -41,6 +41,9 @@ import { Viz13Component } from './emoviz13/viz13.component';
 import { Emoviz14Component } from './emoviz14/emoviz14.component';
 import { Viz14Component } from './emoviz14/viz14.component';
 import { SpriteComponent } from './emoviz14/sprite.component';
+import { Emoviz15Component } from './emoviz15/emoviz15.component';
+import { EmoteComponent } from './emoviz15/emote.component';
+import { Sprite15Component } from './emoviz15/sprite15.component';
 
 @NgModule({
   imports: [
@@ -86,7 +89,10 @@ import { SpriteComponent } from './emoviz14/sprite.component';
     Viz13Component,
     Emoviz14Component,
     Viz14Component,
-    SpriteComponent
+    SpriteComponent,
+    Emoviz15Component,
+    EmoteComponent,
+    Sprite15Component
   ]
 })
 export class DashboardModule { }

@@ -2,9 +2,9 @@ import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy, NgZone, Aft
 import { TweenMax, TimelineMax, Circ, Power1, Power2, Power3, Power4, RoughEase, Power0, RoughEaseConfig } from 'gsap';
 
 // import { frames } from '../spritesheet-data/pPos1radial';
-import { frames } from '../spritesheet-data/pPos0.9';
+// import { frames } from '../spritesheet-data/pPos0.9';
 import { getRandomInt, getRandom } from '../../shared/utils';
-import { SpriteComponent } from './sprite.component';
+import { Sprite15Component } from './sprite15.component';
 
 interface Emote {
   frame: number;
@@ -13,24 +13,24 @@ interface Emote {
 }
 
 @Component({
-  selector: 'app-viz14',
+  selector: 'app-emote',
   template: `
-  <div #sprite>
-    <app-sprite
-      [P]=P
-      [A]=A
-      [D]=D
-      [spriteWidth]=spriteWidth
-      [spriteHeight]=spriteHeight
-      [ticksPerFrame]=ticksPerFrame
-      [imageUrl]=imageUrl
-      [isAnimating]=animating
-    ></app-sprite>
-  </div>
+    <div #sprite>
+      <app-sprite15
+        [P]=P
+        [A]=A
+        [D]=D
+        [spriteWidth]=spriteWidth
+        [spriteHeight]=spriteHeight
+        [ticksPerFrame]=ticksPerFrame
+        [imageUrl]=imageUrl
+        [isAnimating]=animating
+      ></app-sprite15>
+    </div>
   `,
-  styles: [':host {border: 1px dashed hsla(0, 0%, 0%, 0);}']
+  styles: [':host {border: 1px dashed hsla(0, 0%, 0%, 0.2);}']
 })
-export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
+export class EmoteComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() P: number;
   @Input() A: number;
   @Input() D: number;
@@ -149,8 +149,8 @@ export class Viz14Component implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.animating = false;
-    this.tl.kill();
-    console.log('viz14 component destroyed! animating:', this.animating);
+    // this.tl.kill(); // TODO:
+    console.log('emote in emoviz15 destroyed! animating:', this.animating);
   }
 
 }

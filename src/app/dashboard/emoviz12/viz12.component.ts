@@ -8,7 +8,7 @@ import { frames } from '../spritesheet-data/pPos1radial';
   selector: 'app-viz12',
   template: `
   <p>
-    viz12 - but gsap + canvas animation code doesn't work!!!
+    viz12 - gsap + canvas animation works!!!
   </p>
     <canvas #canvas width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
   `,
@@ -79,7 +79,7 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy {
   initTimeline() {
     console.log('sprite.onload so init timeline!', 'frames.length is', frames.length);
 
-    this.update(); // just proving image loads & shows
+    // this.update(); // just proving image loads & shows
 
     // this.ngZone.runOutsideAngular(() => {
     //   const tl = new TimelineMax({ onUpdate: this.update });
@@ -91,10 +91,10 @@ export class Viz12Component implements OnChanges, OnInit, OnDestroy {
 
 
 
-    // const tl = new TimelineMax({ onUpdate: this.update });
-    // tl.to(this.emoteP, 1, { frame: frames.length - 1, roundProps: 'frame', repeat: -1 }, 0);
+    const tl = new TimelineMax({ onUpdate: this.update, onUpdateScope: this });
+    tl.to(this.emoteP, 1, { frame: frames.length - 1, roundProps: 'frame', repeat: -1 }, 0);
 
-    // tl.timeScale(0.5);
+    tl.timeScale(0.5);
   //   NOTE: TESTING USE OF TIMESCALE
 
     // return tl;
