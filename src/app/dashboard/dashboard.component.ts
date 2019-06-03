@@ -124,22 +124,22 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {}
 
   changeP(event) {
-    this.store.dispatch(new PadActions.ChangeP(event));
+    this.store.dispatch(PadActions.changeP({pleasure: event}));
   }
 
   changeA(event) {
-    this.store.dispatch(new PadActions.ChangeA(event));
+    this.store.dispatch(PadActions.changeA({arousal: event}));
   }
 
   changeD(event) {
-    this.store.dispatch(new PadActions.ChangeD(event));
+    this.store.dispatch(PadActions.changeD({dominance: event}));
   }
   /**
    * Note: show/hide & reset UI slider controls functionality
    * does not keep all UI perfectly in sync but it will suffice.
    */
   resetPAD() {
-    this.store.dispatch(new PadActions.Reset());
+    this.store.dispatch(PadActions.reset());
     this.showSliders = !this.showSliders;
     // this.showSliders = true;
   }
@@ -153,58 +153,58 @@ export class DashboardComponent implements OnInit {
   }
   // hostile PAD mood octant -++
   angry() {
-    this.store.dispatch(new PadActions.ChangeP(-0.51));
-    this.store.dispatch(new PadActions.ChangeA(0.59));
-    this.store.dispatch(new PadActions.ChangeD(0.25));
+    this.store.dispatch(PadActions.changeP({pleasure: -0.51}));
+    this.store.dispatch(PadActions.changeA({arousal: 0.59}));
+    this.store.dispatch(PadActions.changeD({dominance: 0.25}));
     this.showSliders = false;
   }
   // anxious PAD mood octant -+-
   fear() {
-    this.store.dispatch(new PadActions.ChangeP(-0.64));
-    this.store.dispatch(new PadActions.ChangeA(0.6));
-    this.store.dispatch(new PadActions.ChangeD(-0.43));
+    this.store.dispatch(PadActions.changeP({pleasure: -0.64}));
+    this.store.dispatch(PadActions.changeA({arousal: 0.6}));
+    this.store.dispatch(PadActions.changeD({dominance: -0.43}));
     this.showSliders = false;
   }
   // relaxed PAD mood octant +-+
   comfortable() {
-    this.store.dispatch(new PadActions.ChangeP(0.85));
-    this.store.dispatch(new PadActions.ChangeA(-0.19));
-    this.store.dispatch(new PadActions.ChangeD(0.13));
+    this.store.dispatch(PadActions.changeP({pleasure: 0.85}));
+    this.store.dispatch(PadActions.changeA({arousal: -0.19}));
+    this.store.dispatch(PadActions.changeD({dominance: 0.13}));
     this.showSliders = false;
   }
   // exuberant PAD mood octant +++
   elated() {
-    this.store.dispatch(new PadActions.ChangeP(0.5));
-    this.store.dispatch(new PadActions.ChangeA(0.42));
-    this.store.dispatch(new PadActions.ChangeD(0.23));
+    this.store.dispatch(PadActions.changeP({pleasure: 0.5}));
+    this.store.dispatch(PadActions.changeA({arousal: 0.42}));
+    this.store.dispatch(PadActions.changeD({dominance: 0.23}));
     this.showSliders = false;
   }
   // bored PAD mood octant ---
     bored() {
-    this.store.dispatch(new PadActions.ChangeP(-0.65));
-    this.store.dispatch(new PadActions.ChangeA(-0.62));
-    this.store.dispatch(new PadActions.ChangeD(-0.33));
+    this.store.dispatch(PadActions.changeP({pleasure: -0.65}));
+    this.store.dispatch(PadActions.changeA({arousal: -0.62}));
+    this.store.dispatch(PadActions.changeD({dominance: -0.33}));
     this.showSliders = false;
     }
   // dependent PAD mood octant ++-
     impressed() {
-    this.store.dispatch(new PadActions.ChangeP(0.41));
-    this.store.dispatch(new PadActions.ChangeA(0.30));
-    this.store.dispatch(new PadActions.ChangeD(-0.32));
+    this.store.dispatch(PadActions.changeP({pleasure: 0.41}));
+    this.store.dispatch(PadActions.changeA({arousal: 0.30}));
+    this.store.dispatch(PadActions.changeD({dominance: -0.32}));
     this.showSliders = false;
     }
   // disdainful PAD mood octant --+
   uncaring() {
-    this.store.dispatch(new PadActions.ChangeP(-0.32));
-    this.store.dispatch(new PadActions.ChangeA(-0.12));
-    this.store.dispatch(new PadActions.ChangeD(0.28));
+    this.store.dispatch(PadActions.changeP({pleasure: -0.32}));
+    this.store.dispatch(PadActions.changeA({arousal: -0.12}));
+    this.store.dispatch(PadActions.changeD({dominance: 0.28}));
     this.showSliders = false;
   }
   // docile PAD mood octant +--
   sleepy() {
-    this.store.dispatch(new PadActions.ChangeP(0.2));
-    this.store.dispatch(new PadActions.ChangeA(-0.7));
-    this.store.dispatch(new PadActions.ChangeD(-0.44));
+    this.store.dispatch(PadActions.changeP({pleasure: 0.2}));
+    this.store.dispatch(PadActions.changeA({arousal: -0.7}));
+    this.store.dispatch(PadActions.changeD({dominance: -0.44}));
     this.showSliders = false;
   }
 

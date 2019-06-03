@@ -1,37 +1,58 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export enum PadActionTypes {
-  ChangeP = '[PAD emoviz] Change P',
-  ChangeA = '[PAD emoviz] Change A',
-  ChangeD = '[PAD emoviz] Change D',
-  Reset = '[PAD emoviz] Reset',
-}
+export const changeP = createAction(
+  '[PAD emoviz] Change Pleasure',
+  props<{pleasure: number}>()
+);
 
-export class ChangeP implements Action {
-  readonly type = PadActionTypes.ChangeP;
+export const changeA = createAction(
+  '[PAD emoviz] Change Arousal',
+  props<{arousal: number}>()
+);
 
-  constructor(public payload: number) {}
-}
+export const changeD = createAction(
+  '[PAD emoviz] Change Dominance',
+  props<{dominance: number}>()
+);
 
-export class ChangeA implements Action {
-  readonly type = PadActionTypes.ChangeA;
+export const reset = createAction(
+  '[PAD emoviz] Reset'
+);
 
-  constructor(public payload: number) {}
-}
+// TODO: Below is old NGRX way for TEMPORARY reference only
 
-export class ChangeD implements Action {
-  readonly type = PadActionTypes.ChangeD;
+// export enum PadActionTypes {
+//   ChangeP = '[PAD emoviz] Change P',
+//   ChangeA = '[PAD emoviz] Change A',
+//   ChangeD = '[PAD emoviz] Change D',
+//   Reset = '[PAD emoviz] Reset',
+// }
 
-  constructor(public payload: number) {}
-}
+// export class ChangeP implements Action {
+//   readonly type = PadActionTypes.ChangeP;
 
-export class Reset implements Action {
-  readonly type = PadActionTypes.Reset;
-}
+//   constructor(public payload: number) {}
+// }
 
-export type PadActions =
-  | ChangeP
-  | ChangeA
-  | ChangeD
-  | Reset
-  ;
+// export class ChangeA implements Action {
+//   readonly type = PadActionTypes.ChangeA;
+
+//   constructor(public payload: number) {}
+// }
+
+// export class ChangeD implements Action {
+//   readonly type = PadActionTypes.ChangeD;
+
+//   constructor(public payload: number) {}
+// }
+
+// export class Reset implements Action {
+//   readonly type = PadActionTypes.Reset;
+// }
+
+// export type PadActions =
+//   | ChangeP
+//   | ChangeA
+//   | ChangeD
+//   | Reset
+//   ;

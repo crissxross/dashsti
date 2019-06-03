@@ -55,7 +55,7 @@ export class UicontrolsComponent {
 
   showAndReset() {
     this.show = !this.show;
-    this.store.dispatch(new PadActions.Reset());
+    this.store.dispatch(PadActions.reset());
   }
 }
 /**
