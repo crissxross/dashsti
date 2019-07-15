@@ -1,22 +1,22 @@
 svg {
-  display: block;
+  /* display: block; */
   /* width: 100%;
   height: 100%; */
-  border: 1px solid grey;
+  border: 1px solid hsla(0, 0%, 80%, 0.1);
 }
 
 #emoShape {
   fill: hsla(0, 60%, 40%, 0.5);
-  stroke: red;
+  /* stroke: red; */
 }
 
 #emoShape-control-points {
-  fill: hsla(20, 60%, 40%, 0.5);
-  stroke: hsla(20, 60%, 40%, 0.5);
+  fill: hsla(200, 60%, 40%, 0.2);
+  stroke: hsla(200, 60%, 40%, 0.5);
 }
 
 #emoShape-control-points line {
-  stroke: hsla(200, 54%, 58%, 0.1);
+  stroke: hsla(200, 60%, 50%, 0.2);
 }
 
 #ellipse, #triangle {

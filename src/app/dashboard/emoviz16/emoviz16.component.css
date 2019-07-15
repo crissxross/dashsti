@@ -1,18 +1,8 @@
-/* svg {
-  border: 1px solid grey;
+div {
+  display: flex;
 }
 
-#emoShape {
-  fill: hsla(220, 60%, 40%, 0.5);
-  stroke: teal;
+.emosvg {
+  /* transform: scaleX(0.75) scaleY(1.2) skewX(-10deg); */
+  transform: scale(0.75);
 }
-
-#ellipse {
-  fill:transparent;
-  stroke: hsl(180, 8%, 47%);
-}
-
-#triangle {
-  fill: transparent;
-  stroke: grey;
-} */
