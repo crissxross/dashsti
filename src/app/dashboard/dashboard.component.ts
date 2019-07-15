@@ -109,7 +109,7 @@ export class DashboardComponent implements OnInit {
   // navIds just for the useful/workable emoviz components:
   // navIds = ['1', '2', '2a', '3a', '3b', '7', '7a', '7b', '7c', '8', '9', '10', '10a', '11', 'x', 'y'];
   // navIds for most useful for reference
-  navIds = ['1', '2', '2a', '3a', '3b', '8', '11', '12', '13', '14', '15'];
+  navIds = ['1', '2', '2a', '3a', '3b', '7', '8', '11', '12', '13', '14', '15', '16'];
   // navIds = ['1', '2', '2a', '3', '3a', '3b', '4', '5', '6', '7', '7a', '7b', '7c', '8', '9', '10', '10a', '11', 'x', 'y', 'z'];
   // navIds = ['1', '2', '2a', '3', '3a']; // links for public demo MIX & ELO
   showSliders = true;

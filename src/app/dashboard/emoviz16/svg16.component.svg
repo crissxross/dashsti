@@ -1,0 +1,42 @@
+<svg [attr.width]="viewportWidth" [attr.height]="viewportHeight">
+
+  <path #emoShape id="emoShape" d="
+      M 100 100
+      C 125, 65, 175, 65, 200 100
+      C 230, 150, 200, 200, 150 200
+      C 100, 200, 70, 150, 100 100
+      "/>
+
+  <g #cps id="emoShape-control-points">
+    <!--   Top curve   -->
+    <circle [attr.cx]="cLRx1" [attr.cy]="cLRy1" r="2" />
+    <line [attr.x1]="leftX" [attr.y1]="leftY" [attr.x2]="cLRx1" [attr.y2]="cLRy1" />
+    <circle [attr.cx]="cLRx2" [attr.cy]="cLRy2" r="2" />
+    <line [attr.x1]="rightX" [attr.y1]="rightY" [attr.x2]="cLRx2" [attr.y2]="cLRy2" />
+    <!--   Right curve  -->
+    <circle [attr.cx]="cRMx1" [attr.cy]="cRMy1" r="2" />
+    <line [attr.x1]="rightX" [attr.y1]="rightY" [attr.x2]="cRMx1" [attr.y2]="cRMy1" />
+    <circle [attr.cx]="cRMx2" [attr.cy]="cRMy2" r="2" />
+    <line [attr.x1]="midX" [attr.y1]="midY" [attr.x2]="cRMx2" [attr.y2]="cRMy2" />
+    <!--   Left curve  -->
+    <circle [attr.cx]="cMLx1" [attr.cy]="cMLy1" r="2" />
+    <line [attr.x1]="midX" [attr.y1]="midY" [attr.x2]="cMLx1" [attr.y2]="cMLy1" />
+    <circle [attr.cx]="cMLx2" [attr.cy]="cMLy2" r="2" />
+    <line [attr.x1]="leftX" [attr.y1]="leftY" [attr.x2]="cMLx2" [attr.y2]="cMLy2" />
+  </g>
+
+  <!-- <path id="ellipse" d="
+    M 100 100
+    C 125, 65, 175, 65, 200 100
+    C 230, 150, 200, 200, 150 200
+    C 100, 200, 70, 150, 100 100
+    "/> -->
+
+  <!-- <path id="triangle" d="
+    M 100 100
+    C 200, 100, 200, 100, 200 100
+    C 150, 200, 150, 200, 150 200
+    C 100, 100, 100, 100, 100 100
+    " /> -->
+
+</svg>
