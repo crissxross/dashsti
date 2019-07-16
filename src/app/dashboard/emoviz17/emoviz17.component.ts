@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable, Subscription, combineLatest } from 'rxjs';
 import { Store, select } from '@ngrx/store';
@@ -10,7 +10,9 @@ import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 @Component({
   selector: 'app-emoviz17',
   templateUrl: './emoviz17.component.html',
-  styleUrls: ['./emoviz17.component.css']
+  styleUrls: ['./emoviz17.component.css'],
+  // TODO: is changeDetection correct?
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Emoviz17Component implements OnInit, OnDestroy {
   @ViewChild('emosvg', {static: true}) emosvg: ElementRef;

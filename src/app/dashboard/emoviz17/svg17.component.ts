@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { TweenMax, Power1 } from 'gsap/TweenMax';
 import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
@@ -6,7 +6,9 @@ import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 @Component({
   selector: 'app-svg17',
   templateUrl: './svg17.component.svg',
-  styleUrls: ['./svg17.component.css']
+  styleUrls: ['./svg17.component.css'],
+  // TODO: is changeDetection correct?
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Svg17Component implements OnInit, OnChanges {
   @ViewChild('emoShape', {static: true}) _emoShape: ElementRef;
@@ -60,6 +62,7 @@ export class Svg17Component implements OnInit, OnChanges {
     TweenMax.fromTo(this.emoShape, 0.5, {opacity: 0}, {opacity: 1, delay: 0.5});
   }
 
+  // TODO: check that I don't need to use SimpleChanges parameter
   ngOnChanges() {
     console.log('Latest PAD:', this.P, this.A, this.D);
 
