@@ -1,4 +1,4 @@
-<svg [attr.width]="viewportWidth" [attr.height]="viewportHeight">
+<svg [attr.width]="viewportWidth" [attr.height]="viewportHeight" viewBox="0 0 120 120">
 
 <g #cps id="emoShape-control-points">
     <!--   Top curve   -->

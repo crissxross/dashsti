@@ -14,15 +14,17 @@ import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 export class Svg16Component implements OnInit, OnDestroy {
   @ViewChild('emoShape', {static: true}) _emoShape: ElementRef;
 
+  // using getter method as in https://medium.com/@philipf5/patterns-for-using-greensock-in-angular-9ec5edf713fb
   get emoShape(): SVGPathElement {
     return this._emoShape.nativeElement;
   }
 
-  viewportWidth = 150;
-  viewportHeight = 150;
-  cx = this.viewportWidth * 0.5;
+  viewportWidth = 120;
+  viewportHeight = 120;
+  // cx shifted left a little to make room for right curve when a circle
+  cx = this.viewportWidth * 0.49;
   // cy drop down a little to make room for top curve when a circle
-  cy = this.viewportHeight * 0.59;
+  cy = this.viewportHeight * 0.61;
   sideLength = 100;
   // calculate height of equilateral triangle (see myNOTES)
   triHeight = Math.round(this.sideLength * Math.sqrt(3) / 2) ;
@@ -49,14 +51,14 @@ export class Svg16Component implements OnInit, OnDestroy {
   saturation: number;
   lightness: number;
   alpha: number;
-
+// TODO: change to Inputs from container component
   // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;
   dValue$: Observable<number>;
   PADprogress: Subscription;
-  pSubscription: Subscription;
 
+  // TODO: this is presentational component should not be subscribing to store directly
   constructor(private store: Store<fromPad.State>) {
     this.pValue$ = store.pipe(select(fromPad.getP));
     this.aValue$ = store.pipe(select(fromPad.getA));
@@ -64,12 +66,10 @@ export class Svg16Component implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    TweenMax.set(this.emoShape, {
-      fill: 'hsla(0, 50%, 50%, 0.75)',
-      // stroke: 'hsla(0, 50%, 50%, 0.5)'
-    });
+    // to hide the odd movement when svg instantiates TODO: What causes this?
+    TweenMax.fromTo(this.emoShape, 0.5, {opacity: 0}, {opacity: 1, delay: 0.5});
 
-    // PAD
+    // PAD OBSERVABLES
     // combineLatest takes an optional mapping function (last) after input Observables
     // NOTE: combineLatest is used here as a static method of Observable class
     this.PADprogress = combineLatest(this.pValue$, this.aValue$, this.dValue$, (p, a, d) => ({
@@ -83,7 +83,7 @@ export class Svg16Component implements OnInit, OnDestroy {
       // TODO: HSLA values maybe should use combined PAD values - e.g. saturation is a combination of P & A
       this.saturation = 60 + Math.round(pad.P * 40);
       this.lightness = 40 + Math.round(pad.A * 10);
-      this.alpha = 0.6 + pad.D * 0.4;
+      this.alpha = 0.7 + pad.D * 0.3;
       console.log('saturation:', this.saturation, 'lightness:', this.lightness, 'alpha:', this.alpha);
 
       this.setControlPoints(this.radius);
@@ -128,3 +128,36 @@ export class Svg16Component implements OnInit, OnDestroy {
     console.log('svg16 OnDestroy');
   }
 }
+
+// viewportWidth: number;
+  // viewportHeight: number;
+  // cx: number;
+  // cy: number;
+  // sideLength: number;
+  // triHeight: number;
+  // radius: number;
+  // leftX: number;
+  // leftY: number;
+  // rightX: number;
+  // rightY: number;
+  // midX: number;
+  // midY: number;
+
+  // setEmoShape() {
+  //   this.viewportWidth = 120;
+  //   this.viewportHeight = 120;
+  //   // cx shifted left a little to make room for right curve when a circle
+  //   this.cx = this.viewportWidth * 0.49;
+  //   // cy drop down a little to make room for top curve when a circle
+  //   this.cy = this.viewportHeight * 0.61;
+  //   this.sideLength = 100;
+  //   // calculate height of equilateral triangle (see myNOTES)
+  //   this.triHeight = Math.round(this.sideLength * Math.sqrt(3) / 2) ;
+  //   this.radius = 45; // for control points, 45 gives perfect circle
+  //   this.leftX = this.cx - this.sideLength / 2;
+  //   this.leftY = this.cy - this.triHeight / 2;
+  //   this.rightX = this.cx + this.sideLength / 2;
+  //   this.rightY = this.leftY; // this.cy - this.triHeight / 2;
+  //   this.midX = this.cx;
+  //   this.midY = this.cy + this.triHeight / 2;
+  // }

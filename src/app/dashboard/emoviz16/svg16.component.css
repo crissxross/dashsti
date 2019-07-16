@@ -2,7 +2,7 @@ svg {
   /* display: block; */
   /* width: 100%;
   height: 100%; */
-  border: 1px solid hsla(0, 0%, 80%, 0.1);
+  border: 1px dashed hsla(0, 0%, 80%, 0.1);
 }
 
 #emoShape {
@@ -13,6 +13,7 @@ svg {
 #emoShape-control-points {
   fill: hsla(200, 60%, 40%, 0.2);
   stroke: hsla(200, 60%, 40%, 0.5);
+  visibility: hidden;
 }
 
 #emoShape-control-points line {
@@ -24,3 +25,6 @@ svg {
   stroke: hsla(180, 8%, 47%, 0.25);
 }
 
+/* #emoShape-control-points {
+  visibility: hidden;
+} */

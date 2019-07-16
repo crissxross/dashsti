@@ -1,8 +1,12 @@
-div {
-  display: flex;
+:host {
+  border: 1px dashed hsl(120, 18%, 30%);
+  background-color: hsl(120, 15%, 18%);
 }
 
 .emosvg {
+  display: flex;
+  padding: 10px;
   /* transform: scaleX(0.75) scaleY(1.2) skewX(-10deg); */
   transform: scale(0.75);
+  /* transform: scale(1.5) translateY(40px); */
 }
