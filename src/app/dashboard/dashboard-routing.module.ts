@@ -28,6 +28,7 @@ import { Emoviz13Component } from './emoviz13/emoviz13.component';
 import { Emoviz14Component } from './emoviz14/emoviz14.component';
 import { Emoviz15Component } from './emoviz15/emoviz15.component';
 import { Emoviz16Component } from './emoviz16/emoviz16.component';
+import { Emoviz17Component } from './emoviz17/emoviz17.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,9 @@ const routes: Routes = [
       },
       {
         path: 'emoviz16', component: Emoviz16Component
+      },
+      {
+        path: 'emoviz17', component: Emoviz17Component
       },
       {
         path: 'emovizx', component: EmovizxComponent

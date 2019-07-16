@@ -51,14 +51,14 @@ export class Svg16Component implements OnInit, OnDestroy {
   saturation: number;
   lightness: number;
   alpha: number;
-// TODO: change to Inputs from container component
+// TODO: change to Inputs from container component SEE emoviz17 DONE
   // PAD properties
   pValue$: Observable<number>;
   aValue$: Observable<number>;
   dValue$: Observable<number>;
   PADprogress: Subscription;
 
-  // TODO: this is presentational component should not be subscribing to store directly
+  // TODO: this is presentational component should not be subscribing to store directly - SEE emoviz17 DONE
   constructor(private store: Store<fromPad.State>) {
     this.pValue$ = store.pipe(select(fromPad.getP));
     this.aValue$ = store.pipe(select(fromPad.getA));

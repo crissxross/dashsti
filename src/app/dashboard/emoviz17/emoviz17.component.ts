@@ -8,11 +8,11 @@ import { TweenMax, Power1 } from 'gsap/TweenMax';
 import { polarToCartesianX, polarToCartesianY } from '../../shared/utils';
 
 @Component({
-  selector: 'app-emoviz16',
-  templateUrl: './emoviz16.component.html',
-  styleUrls: ['../emoviz.css', './emoviz16.component.css']
+  selector: 'app-emoviz17',
+  templateUrl: './emoviz17.component.html',
+  styleUrls: ['./emoviz17.component.css']
 })
-export class Emoviz16Component implements OnInit, OnDestroy {
+export class Emoviz17Component implements OnInit, OnDestroy {
   @ViewChild('emosvg', {static: true}) emosvg: ElementRef;
   @ViewChild('svg1', {static: true}) svg1: ElementRef;
 
@@ -29,12 +29,6 @@ export class Emoviz16Component implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const emosvg = this.emosvg.nativeElement;
-    // TweenMax.set(emosvg, { opacity: 0 });
-    // TweenMax.to(emosvg, 0.5, { opacity: 1, delay: 0.5 });
-    // TweenMax.to(emosvg, 1, {scale: 0.5, delay: 2});
-    const svg1 = this.svg1.nativeElement;
-    TweenMax.to(svg1, 1, {rotation: 340, delay: 1});
 
     this.PADprogress = combineLatest(this.pValue$, this.aValue$, this.dValue$, (p, a, d) => ({
       P: p,
@@ -45,11 +39,10 @@ export class Emoviz16Component implements OnInit, OnDestroy {
 
       // TODO: more stuff here & pass PAD values down to child components
     });
-
   }
 
   ngOnDestroy() {
     this.PADprogress.unsubscribe();
-    console.log('emoviz16 OnDestroy');
+    console.log('emoviz17 OnDestroy');
   }
 }
