@@ -48,6 +48,7 @@ import { Emoviz16Component } from './emoviz16/emoviz16.component';
 import { Svg16Component } from './emoviz16/svg16.component';
 import { Emoviz17Component } from './emoviz17/emoviz17.component';
 import { Svg17Component } from './emoviz17/svg17.component';
+import { Wavezz17Component } from './emoviz17/wavezz17.component';
 
 @NgModule({
   imports: [
@@ -100,7 +101,8 @@ import { Svg17Component } from './emoviz17/svg17.component';
     Emoviz16Component,
     Svg16Component,
     Emoviz17Component,
-    Svg17Component
+    Svg17Component,
+    Wavezz17Component
   ]
 })
 export class DashboardModule { }

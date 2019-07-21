@@ -4,9 +4,17 @@
 }
 
 .emosvg {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   padding: 10px;
   /* transform: scaleX(0.75) scaleY(1.2) skewX(-10deg); */
   /* transform: scale(0.75); */
   /* transform: scale(1.5) translateY(40px); */
+}
+
+.wavezz {
+  grid-column: 1 / span 3;
+  /* grid-row: 2; */
+  /* display: grid;
+  grid-template-columns: 1fr; */
 }

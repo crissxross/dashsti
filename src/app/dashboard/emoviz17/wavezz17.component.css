@@ -1,0 +1,11 @@
+svg {
+  /* width: 100%; */
+  stroke: red;
+  stroke-width: 2;
+  fill: none;
+}
+
+path {
+  stroke: green;
+  /* fill: transparent; */
+}
