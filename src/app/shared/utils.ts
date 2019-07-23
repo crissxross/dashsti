@@ -1,5 +1,5 @@
 // ********** UTILITY functions for emoviz components ********
-
+// NOTE: theta is an angle
 // converts control point x from polar (cosine) to Cartesian x coordinate
 export function polarToCartesianX(theta: number, r: number) {
   const x = r * Math.cos(degreesToRadians(theta));

@@ -1,17 +1,38 @@
-<!-- <p>wavezz17 works!</p> -->
-<!-- <svg [attr.width]="viewportWidth" [attr.height]="viewportHeight"> -->
-<svg width="100%" [attr.height]="viewportHeight">
-  <path #emoLine d="
-      M 0 100
-      c 10 -10, 40 -10, 50 0
-      c 10 10, 40 10, 50 0
-      c 10 -10, 40 -10, 50 0
-      c 10 10, 40 10, 50 0
-      c 10 -10, 40 -10, 50 0
-      c 10 10, 40 10, 50 0
-      c 10 -10, 40 -10, 50 0
-      c 10 10, 40 10, 50 0
-      c 10 -10, 40 -10, 50 0
-      c 10 10, 40 10, 50 0
+<svg width="500" height="500" viewBox="0 0 500 500">
+
+  <path #emoLine d=""/>
+
+<!-- NOT WORKING...these CONTROL POINTS not drawing as expected. WHY? -->
+  <!-- <g #cps id="emoLine-control-points">
+    <rect [attr.x]="startX" [attr.y]="startY" width="4" height="4" stroke="white" />
+
+    <circle [attr.cx]="cTBx1 + startX" [attr.cy]="cTBy1 + startY" r="2" />
+    <line [attr.x1]="startX" [attr.y1]="startY" [attr.x2]="cTBx1 + startX" [attr.y2]="cTBy1 + startY" />
+
+    <circle [attr.cx]="cTBx2 + startX" [attr.cy]="cTBy2 + startY" r="2" />
+    <line [attr.x1]="bottomX + startX" [attr.y1]="bottomY + startY" [attr.x2]="cTBx2 + startX" [attr.y2]="cTBy2 + startY" />
+
+    <circle [attr.cx]="cBTx1 + startX" [attr.cy]="cBTy1 + startY" r="2" fill="yellow" />
+    <line [attr.x1]="bottomX + startX" [attr.y1]="bottomY + startY" [attr.x2]="cBTx1 + startX" [attr.y2]="cBTy1 + startY" class="yellow" />
+
+    <circle [attr.cx]="cBTx2 + startX" [attr.cy]="cBTy2 + startY" r="2" fill="yellow" />
+    <line [attr.x1]="topX + startX" [attr.y1]="topY + startY" [attr.x2]="cTBx2 + startX" [attr.y2]="cTBy2 + startY" class="yellow" />
+  </g> -->
+
+  <path class="test-path" d="
+      M 0 800
+      c 50 0 50 100 100 100
+      c 50 0 50 -100 100 -100
+      c 50 0 50 100 100 100
+      c 50 0 50 -100 100 -100
+      c 50 0 50 100 100 100
+      c 50 0 50 -100 100 -100
+
+      c 0 0 0 0 100 100
+      c 0 0 0 0 100 -100
+      c 0 0 0 0 100 100
+      c 0 0 0 0 100 -100
+      c 0 0 0 0 100 100
+      c 0 0 0 0 100 -100
     "/>
 </svg>

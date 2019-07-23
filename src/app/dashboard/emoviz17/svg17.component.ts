@@ -58,20 +58,20 @@ export class Svg17Component implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    // to hide the odd movement when svg instantiates TODO: What causes this?
-    TweenMax.fromTo(this.emoShape, 0.5, {opacity: 0}, {opacity: 1, delay: 0.5});
+    // fade in
+    TweenMax.fromTo(this.emoShape, 1, {opacity: 0}, {opacity: 1, delay: 0.1});
   }
 
   // TODO: check that I don't need to use SimpleChanges parameter
   ngOnChanges() {
-    console.log('Latest PAD:', this.P, this.A, this.D);
+    // console.log('Latest svg17 PAD:', this.P, this.A, this.D);
 
     this.radius = Math.round(this.P * 22.5 + 22.5);
     // TODO: HSLA values maybe should use combined PAD values - e.g. saturation is a combination of P & A
     this.saturation = 60 + Math.round(this.P * 40);
     this.lightness = 40 + Math.round(this.A * 10);
     this.alpha = 0.7 + this.D * 0.3;
-    console.log('saturation:', this.saturation, 'lightness:', this.lightness, 'alpha:', this.alpha);
+    // console.log('saturation:', this.saturation, 'lightness:', this.lightness, 'alpha:', this.alpha);
 
     this.setControlPoints(this.radius);
 
@@ -89,7 +89,7 @@ export class Svg17Component implements OnInit, OnChanges {
 
   setControlPoints(r: number) {
     // const r = radius;
-    console.log('setControlPoints r:', r);
+    // console.log('svg17 setControlPoints r:', r);
     // control points for left to right curve
     this.cLRx1 = Math.round(this.leftX + polarToCartesianX(60, r));
     this.cLRy1 = Math.round(this.leftY - polarToCartesianY(60, r));
