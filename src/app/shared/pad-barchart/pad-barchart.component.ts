@@ -58,7 +58,7 @@ export class PadBarchartComponent implements OnInit {
     this.pY$ = this.pValue$.pipe(map(v => (v >= 0) ? 100 - (v * 100) : 100));
     this.aY$ = this.aValue$.pipe(map(v => (v >= 0) ? 100 - (v * 100) : 100));
     this.dY$ = this.dValue$.pipe(map(v => (v >= 0) ? 100 - (v * 100) : 100));
-
+    // NOTE: Math.abs returns the absolute value of the given number
     this.pHeight$ = this.pValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 : v * 100));
     this.aHeight$ = this.aValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 : v * 100));
     this.dHeight$ = this.dValue$.pipe(map(v => (v < 0) ? Math.abs(v) * 100 : v * 100));
