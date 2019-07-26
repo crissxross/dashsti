@@ -1,25 +1,32 @@
-<svg width="500" height="500" viewBox="0 0 500 500">
+<svg width="500" height="250" viewBox="0 0 500 250">
 
   <path #emoLine d=""/>
 
-<!-- NOT WORKING...these CONTROL POINTS not drawing as expected. WHY? -->
-  <!-- <g #cps id="emoLine-control-points">
+<!-- CONTROL POINTS - when emoLine is drawn at FULL SCALE 1 -->
+  <g #cps id="emoLine-control-points">
     <rect [attr.x]="startX" [attr.y]="startY" width="4" height="4" stroke="white" />
-
-    <circle [attr.cx]="cTBx1 + startX" [attr.cy]="cTBy1 + startY" r="2" />
+    <!-- from start top -->
     <line [attr.x1]="startX" [attr.y1]="startY" [attr.x2]="cTBx1 + startX" [attr.y2]="cTBy1 + startY" />
-
+    <circle [attr.cx]="cTBx1 + startX" [attr.cy]="cTBy1 + startY" r="2" />
+    <!-- bottom 1 -->
     <circle [attr.cx]="cTBx2 + startX" [attr.cy]="cTBy2 + startY" r="2" />
     <line [attr.x1]="bottomX + startX" [attr.y1]="bottomY + startY" [attr.x2]="cTBx2 + startX" [attr.y2]="cTBy2 + startY" />
+    <!-- centre point of bottom -->
+    <circle [attr.cx]="bottomX + startX" [attr.cy]="bottomY + startY" r="3" fill="blue" />
+    <!-- bottom 2 -->
+    <line [attr.x1]="bottomX + startX" [attr.y1]="bottomY + startY" [attr.x2]="cBTx1 + startX + waveSize" [attr.y2]="cBTy1 + startY + waveSize" />
+    <circle [attr.cx]="cBTx1 + startX + waveSize" [attr.cy]="cBTy1 + startY + waveSize" r="2" fill="yellow" />
+    <!-- top 1 -->
+    <circle [attr.cx]="cBTx2 + startX + waveSize" [attr.cy]="cBTy2 + startY + waveSize" r="2" fill="yellow" />
+    <line [attr.x1]="topX + startX + waveSize" [attr.y1]="startY" [attr.x2]="cTBx2 + startX + waveSize" [attr.y2]="cTBy2" />
+    <!-- centre point of top -->
+    <circle [attr.cx]="topX + startX + waveSize" [attr.cy]="startY" r="3" fill="blue" />
+    <!-- top 2 - but below points are cosmetic, i.e. don't control curve -->
+    <!-- <line [attr.x1]="topX + startX + waveSize" [attr.y1]="startY" [attr.x2]="cTBx2 + startX + waveSize*2" [attr.y2]="cTBy2" />
+    <circle [attr.cx]="cBTx2 + startX + waveSize*2" [attr.cy]="cBTy2 + startY + waveSize" r="2" fill="yellow" /> -->
+  </g>
 
-    <circle [attr.cx]="cBTx1 + startX" [attr.cy]="cBTy1 + startY" r="2" fill="yellow" />
-    <line [attr.x1]="bottomX + startX" [attr.y1]="bottomY + startY" [attr.x2]="cBTx1 + startX" [attr.y2]="cBTy1 + startY" class="yellow" />
-
-    <circle [attr.cx]="cBTx2 + startX" [attr.cy]="cBTy2 + startY" r="2" fill="yellow" />
-    <line [attr.x1]="topX + startX" [attr.y1]="topY + startY" [attr.x2]="cTBx2 + startX" [attr.y2]="cTBy2 + startY" class="yellow" />
-  </g> -->
-
-  <path class="test-path" d="
+  <!-- <path class="test-path" d="
       M 0 800
       c 50 0 50 100 100 100
       c 50 0 50 -100 100 -100
@@ -34,5 +41,5 @@
       c 0 0 0 0 100 -100
       c 0 0 0 0 100 100
       c 0 0 0 0 100 -100
-    "/>
+    "/> -->
 </svg>

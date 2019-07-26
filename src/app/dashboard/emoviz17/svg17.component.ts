@@ -64,8 +64,6 @@ export class Svg17Component implements OnInit, OnChanges {
 
   // TODO: check that I don't need to use SimpleChanges parameter
   ngOnChanges() {
-    // console.log('Latest svg17 PAD:', this.P, this.A, this.D);
-
     this.radius = Math.round(this.P * 22.5 + 22.5);
     // TODO: HSLA values maybe should use combined PAD values - e.g. saturation is a combination of P & A
     this.saturation = 60 + Math.round(this.P * 40);

@@ -19,12 +19,14 @@ export class Wavezz17Component implements OnInit, OnChanges {
   startX = 10;
   startY = 100;
   waveSize = 100;
-  radius = 50; // for control points
   repeatWaves = 1;
   bottomX = this.waveSize;
   bottomY = this.waveSize;
   topX = this.waveSize;
   topY = -this.waveSize;
+  // for control points
+  radiusLeft = 50;
+  radiusRight = 100 - this.radiusLeft;
   cTBx1: number;
   cTBy1: number;
   cTBx2: number;
@@ -50,16 +52,15 @@ export class Wavezz17Component implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    // console.log('Latest wavezz17 PAD:', this.P, this.A, this.D);
-    // console.log('waveSize:', this.bottomX, this.bottomY, this.topX, this.topY);
-
+    this.radiusLeft = this.P * 50;
+    this.radiusRight = 100 - this.radiusLeft;
     // TODO: HSLA values maybe should use combined PAD values - e.g. saturation is a combination of P & A
     this.saturation = 60 + Math.round(this.P * 40);
     this.lightness = 40 + Math.round(this.A * 10);
     this.alpha = 0.7 + this.D * 0.3;
 
-    console.log('radtius:', this.radius, ', waveSize:', this.waveSize);
-    this.setControlPoints(this.radius);
+    console.log('radtiusLeft:', this.radiusLeft, 'radtiusRight:', this.radiusRight, ', waveSize:', this.waveSize);
+    this.setControlPoints(this.radiusLeft, this.radiusRight);
 
     this.drawPath();
   }
@@ -84,42 +85,23 @@ export class Wavezz17Component implements OnInit, OnChanges {
     return points;
   }
 
-  // TODO: try another way of calculating control points without using polarToCartesian because not drawing a circle
-  // TODO: TRY THIS: control points always stay in same Y positions as top and bottom Y points but...
-  // they change along the X axis in relation to top & bottom X points
-  // & must be between no difference to difference of half distance between X points
-  setControlPoints(r: number) {
+  setControlPoints(rL: number, rR: number) {
     // control points Top to Bottom S curve
-    this.cTBx1 = Math.round(this.topX + polarToCartesianX(180, r));
+    this.cTBx1 = Math.round(this.topX + polarToCartesianX(180, rR));
     // this.cTBy1 = Math.round(this.topY + polarToCartesianY(180, r));
     this.cTBy1 = 0;
-    this.cTBx2 = Math.round(this.bottomX + polarToCartesianX(180, r));
-    this.cTBy2 = Math.round(this.bottomY - polarToCartesianY(180, r));
-    // this.cTBy2 = this.waveSize;
+    this.cTBx2 = Math.round(this.bottomX + polarToCartesianX(180, rL));
+    this.cTBy2 = Math.round(this.bottomY - polarToCartesianY(180, rL));
 
     // control points Bottom to Top S curve
-    this.cBTx1 = Math.round(this.bottomX + polarToCartesianX(180, r));
+    this.cBTx1 = Math.round(this.bottomX + polarToCartesianX(180, rR));
     // this.cBTy1 = Math.round(this.bottomY + polarToCartesianY(180, r));
     this.cBTy1 = 0;
-    this.cBTx2 = Math.round(this.topX + polarToCartesianX(180, r));
-    this.cBTy2 = Math.round(this.topY - polarToCartesianY(180, r));
-    // this.cBTy2 = - this.waveSize;
-
-    console.log(
-      'control points: cTB', this.cTBx1, this.cTBy1, this.cTBx2, this.cTBy2, ', cBT', this.cBTx1, this.cBTy1, this.cBTx2, this.cBTy2
-      );
+    this.cBTx2 = Math.round(this.topX + polarToCartesianX(180, rL));
+    this.cBTy2 = Math.round(this.topY - polarToCartesianY(180, rL));
 
     // console.log(
-    //   'X: polarToCartesianX(90, r):', polarToCartesianX(90, r),
-    //   ', polarToCartesianX(180, r):', polarToCartesianX(180, r),
-    //   ', polarToCartesianX(270, r):', polarToCartesianX(270, r),
-    //   ', polarToCartesianX(360, r):', polarToCartesianX(360, r),
-    //   );
-    // console.log(
-    //   'Y: polarToCartesianY(90, r):', polarToCartesianY(90, r),
-    //   ', polarToCartesianY(180, r):', polarToCartesianY(180, r),
-    //   ', polarToCartesianY(270, r):', polarToCartesianY(270, r),
-    //   ', polarToCartesianY(360, r):', polarToCartesianY(360, r),
+    //   'control points: cTB', this.cTBx1, this.cTBy1, this.cTBx2, this.cTBy2, ', cBT', this.cBTx1, this.cBTy1, this.cBTx2, this.cBTy2
     //   );
   }
 

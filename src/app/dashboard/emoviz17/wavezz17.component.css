@@ -10,11 +10,6 @@ path {
   /* fill: transparent; */
 }
 
-.test-path {
-  stroke: grey;
-  transform: scale(0.4);
-}
-
 #emoLine-control-points {
   fill: hsla(300, 90%, 40%, 0.5);
   stroke: hsla(300, 90%, 40%, 0.5);
@@ -22,9 +17,15 @@ path {
 }
 
 #emoLine-control-points line {
-  stroke: hsla(300, 90%, 50%, 0.2);
+  stroke: hsla(300, 90%, 50%, 0.5);
 }
 
 #emoLine-control-points .yellow {
   stroke: hsla(60, 90%, 50%, 0.5);
+}
+
+/* TODO: for testing only */
+.test-path {
+  stroke: grey;
+  transform: scale(0.4);
 }
