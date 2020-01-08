@@ -39,7 +39,7 @@ export class Emoviz17Component implements OnInit, OnDestroy {
     })).subscribe(pad => {
       console.log('Latest PAD:', pad.P, pad.A, pad.D);
 
-      // TODO: more stuff here & pass PAD values down to child components
+      // TODO: anymore stuff to do here? If not, don't need subscription
     });
   }
 
