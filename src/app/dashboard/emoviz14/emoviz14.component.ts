@@ -20,6 +20,10 @@ export class Emoviz14Component implements OnInit, AfterViewInit {
   // imageUrl = '../../../assets/pPos1radial.png';
   offsetX = 100; // 40
   offsetY = 100; // 25
+  // TEMPORARY PAD values to fix compile errors
+  P = 0;
+  A = 0;
+  D = 0;
 
   constructor() { }
 

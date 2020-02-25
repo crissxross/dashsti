@@ -12,6 +12,10 @@ export class Emoviz13Component implements OnInit, AfterViewInit {
   @ViewChildren(Viz13Component)
   public sprites: QueryList<Viz13Component>;
   numOfSprites = 15; // input? as in gsap-lights
+  // TEMPORARY PAD values to fix compile errors
+  P = 0;
+  A = 0;
+  D = 0;
 
   constructor() { }
 
