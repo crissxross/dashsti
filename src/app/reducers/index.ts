@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 import * as fromPad from './pad.reducer';
 
 export interface State {
-  pad: fromPad.State;
+  pad: fromPad.PadState;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -19,7 +19,7 @@ export const metaReducers: MetaReducer<State>[] = !environment.production
   ? []
   : [];
 
-export const getPadFeatureState = createFeatureSelector<fromPad.State>(
+export const getPadFeatureState = createFeatureSelector<fromPad.PadState>(
   'pad',
 );
 
