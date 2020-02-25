@@ -43,9 +43,9 @@ https://greensock.com/forums/topic/13594-greensock-tweens-in-angular-2/#comment-
 })
 export class Emoviz4Component implements OnInit, OnDestroy, AfterViewInit {
   // svg elements
-  @ViewChild('bg', {static: false}) bg: ElementRef;
+  @ViewChild('bg') bg: ElementRef;
   // @ViewChild('Plines') Plines: ElementRef;
-  @ViewChild('P_', {static: false}) P_: ElementRef;
+  @ViewChild('P_') P_: ElementRef;
   P_path = 'M 0 76 l 200 0';
   // tslint:disable-next-line:max-line-length
   Ppos1path = 'M0,75.9C12.5,76,12.4,96,24.9,96S37.5,76.1,50,76.2,62.4,96.2,74.9,96.3,87.5,76.4,100,76.4s12.4,20.1,24.9,20.1S137.5,76.6,150,76.7s12.4,20.1,24.9,20.1S187.5,76.9,200,76.9';

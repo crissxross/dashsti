@@ -23,7 +23,7 @@ import { Point } from '../point';
   styleUrls: ['../emoviz.css', './emoviz7c.component.css']
 })
 export class Emoviz7cComponent implements OnInit, OnDestroy {
-  @ViewChild('canvas', {static: false}) canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;
   private running: boolean;
 
   // PAD properties

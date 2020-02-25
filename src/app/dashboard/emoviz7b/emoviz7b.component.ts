@@ -21,7 +21,7 @@ import { TweenMax } from 'gsap/TweenMax';
 })
 export class Emoviz7bComponent implements OnInit, OnDestroy {
   // or should it be {static: true} ???
-  @ViewChild('canvas', {static: false}) canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;
   private running: boolean;
 
   // PAD properties

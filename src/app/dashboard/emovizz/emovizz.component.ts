@@ -17,13 +17,13 @@ import MorphSVGPlugin from '../../../gsap-bonus/MorphSVGPlugin';
 })
 export class EmovizzComponent implements OnInit, OnDestroy {
 // svg elements
-  @ViewChild('bg', {static: false}) bg: ElementRef;
-  @ViewChild('gP', {static: false}) gP: ElementRef;
-  @ViewChild('gA', {static: false}) gA: ElementRef;
-  @ViewChild('gD', {static: false}) gD: ElementRef;
-  @ViewChild('rP', {static: false}) rP: ElementRef;
-  @ViewChild('rA', {static: false}) rA: ElementRef;
-  @ViewChild('rD', {static: false}) rD: ElementRef;
+  @ViewChild('bg') bg: ElementRef;
+  @ViewChild('gP') gP: ElementRef;
+  @ViewChild('gA') gA: ElementRef;
+  @ViewChild('gD') gD: ElementRef;
+  @ViewChild('rP') rP: ElementRef;
+  @ViewChild('rA') rA: ElementRef;
+  @ViewChild('rD') rD: ElementRef;
 // temporary
   // @ViewChild('poly6') poly6: ElementRef;
   // @ViewChild('poly8') poly8: ElementRef;

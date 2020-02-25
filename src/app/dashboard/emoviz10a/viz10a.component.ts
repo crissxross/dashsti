@@ -18,7 +18,7 @@ export class Viz10aComponent implements OnChanges {
   @Input() particleHeight: number;
   @Input() canvasWidth: number;
   @Input() canvasHeight: number;
-  @ViewChild('canvas', {static: false}) canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;
 
   S: number;
   L: number;

@@ -19,7 +19,7 @@ export class Viz9Component implements OnChanges {
   @Input() particleHeight: number;
   @Input() canvasWidth: number;
   @Input() canvasHeight: number;
-  @ViewChild('canvas', {static: false}) canvasRef: ElementRef;
+  @ViewChild('canvas') canvasRef: ElementRef;
 
   S: number;
   L: number;
